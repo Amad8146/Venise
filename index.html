@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
 <meta name="theme-color" content="#EA580C">
 <title>🍢 Maquis Venise — Commandez · Facturez · Encaissez</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍢</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23EA580C'/><text x='50' y='65' font-size='50' text-anchor='middle' fill='white'>🍢</text></svg>">
 <style>
 :root{
   --orange:#EA580C;--orange-d:#C2410C;--orange-l:#F97316;
@@ -28,39 +28,31 @@ img{max-width:100%;display:block}
 button{font-family:inherit;cursor:pointer}
 input,select,textarea{font-family:inherit}
 
-/* ========== NAVBAR ========== */
+/* LOGO SVG GLOBAL */
+.logo-svg { height: 42px; width: auto; vertical-align: middle; }
+.logo-hero { height: 80px; margin-bottom: 10px; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4)); }
+.logo-audio { width: 80px; height: 80px; margin: 0 auto; filter: drop-shadow(0 6px 16px rgba(234,88,12,0.4)); transition: transform 0.2s; }
+
+/* NAVBAR */
 .nav{
   position:sticky;top:0;z-index:100;
   background:linear-gradient(90deg,#7C2D12 0%,#C2410C 60%,#EA580C 100%);
-  padding:12px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:10px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
   box-shadow:0 2px 16px rgba(0,0,0,.15);
 }
-.nav .brand{
-  font-size:22px;font-weight:900;color:var(--jaune);
-  letter-spacing:.5px;text-shadow:0 2px 8px rgba(0,0,0,.3);margin-right:8px;
-}
-.nav a,.nav .nbtn{
-  padding:9px 14px;border-radius:12px;
-  background:rgba(255,255,255,.15);color:#fff;text-decoration:none;
-  font-weight:700;font-size:13px;border:none;transition:.2s;
-}
+.nav .brand{display:flex;align-items:center;gap:8px;font-size:22px;font-weight:900;color:var(--jaune);letter-spacing:.5px;text-shadow:0 2px 8px rgba(0,0,0,.3);margin-right:8px}
+.nav a,.nav .nbtn{padding:9px 14px;border-radius:12px;background:rgba(255,255,255,.15);color:#fff;text-decoration:none;font-weight:700;font-size:13px;border:none;transition:.2s}
 .nav a:hover,.nav .nbtn:hover{background:rgba(255,255,255,.3);transform:translateY(-1px)}
 .nav a.active{background:var(--jaune);color:var(--bois)}
 .nav .spacer{flex:1}
 .nav .user{color:#fff;font-size:13px;font-weight:600}
 
-/* ========== LAYOUT ========== */
+/* LAYOUT */
 .container{max-width:1200px;margin:0 auto;padding:20px 16px}
 .container-narrow{max-width:600px;margin:0 auto;padding:20px 16px}
 
-/* ========== BUTTONS ========== */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  padding:13px 22px;border-radius:14px;border:none;
-  font-size:15px;font-weight:700;transition:.15s;
-  background:linear-gradient(180deg,var(--orange-l),var(--orange));
-  color:#fff;box-shadow:0 6px 18px rgba(234,88,12,.35);
-}
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:14px;border:none;font-size:15px;font-weight:700;transition:.15s;background:linear-gradient(180deg,var(--orange-l),var(--orange));color:#fff;box-shadow:0 6px 18px rgba(234,88,12,.35)}
 .btn:active{transform:scale(.97)}
 .btn:disabled{background:#9CA3AF;box-shadow:none;cursor:not-allowed;opacity:.7}
 .btn-green{background:linear-gradient(180deg,#22C55E,var(--vert));box-shadow:0 6px 18px rgba(22,163,74,.35)}
@@ -69,113 +61,76 @@ input,select,textarea{font-family:inherit}
 .btn-sm{padding:8px 14px;font-size:13px}
 .btn-block{width:100%}
 
-/* ========== CARDS ========== */
-.card{
-  background:#fff;border-radius:var(--radius);padding:22px;
-  box-shadow:var(--shadow);margin-bottom:16px;
-}
+/* CARDS */
+.card{background:#fff;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);margin-bottom:16px}
 .card-title{font-size:18px;font-weight:800;color:var(--bois);margin-bottom:14px;display:flex;align-items:center;gap:8px}
 
-/* ========== INPUTS ========== */
-.input,.select,.textarea{
-  width:100%;padding:14px 16px;border-radius:12px;
-  border:2px solid var(--creme-2);background:#fff;
-  font-size:15px;color:var(--dark);transition:.15s;margin-bottom:12px;
-}
+/* INPUTS */
+.input,.select,.textarea{width:100%;padding:14px 16px;border-radius:12px;border:2px solid var(--creme-2);background:#fff;font-size:15px;color:var(--dark);transition:.15s;margin-bottom:12px}
 .input:focus,.select:focus,.textarea:focus{outline:none;border-color:var(--orange)}
 .textarea{resize:vertical;min-height:80px}
 .label{display:block;font-size:13px;font-weight:700;color:var(--bois-l);margin-bottom:6px}
 
-/* ========== HERO ========== */
-.hero{
-  position:relative;min-height:380px;border-radius:var(--radius);
-  overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;
-  padding:40px 32px;margin-bottom:24px;color:#fff;
-}
-.hero video,.hero .hero-bg{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;z-index:0;
-}
-.hero::after{
-  content:'';position:absolute;inset:0;z-index:1;
-  background:linear-gradient(180deg,rgba(31,20,16,.3) 0%,rgba(124,45,18,.92) 100%);
-}
+/* HERO */
+.hero{position:relative;min-height:420px;border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:40px 32px;margin-bottom:24px;color:#fff}
+.hero video,.hero .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(31,20,16,.3) 0%,rgba(124,45,18,.92) 100%)}
 .hero>*{position:relative;z-index:2}
 .hero h1{font-size:clamp(28px,5vw,48px);color:var(--jaune);margin-bottom:10px;line-height:1.1}
 .hero p{font-size:clamp(15px,2vw,19px);opacity:.95;margin-bottom:20px}
 .hero .actions{display:flex;gap:12px;flex-wrap:wrap}
 
-/* ========== GRID ========== */
+/* EVENT BANNER */
+.event-banner{background:linear-gradient(135deg,var(--orange),var(--jaune));color:var(--bois);padding:16px;border-radius:16px;margin-bottom:20px;box-shadow:0 8px 24px rgba(234,88,12,0.3);display:flex;align-items:center;gap:16px;animation:slideUp 0.5s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.event-banner .date-badge{background:#fff;border-radius:12px;padding:10px 14px;text-align:center;font-weight:900;line-height:1.1;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+.event-banner .date-badge span{display:block;font-size:24px;color:var(--orange-d)}
+.event-banner .date-badge small{font-size:11px;text-transform:uppercase;color:var(--grey)}
+.event-banner .info{flex:1}
+.event-banner h4{font-size:18px;margin-bottom:4px}
+.event-banner p{font-size:14px;opacity:0.9}
+
+/* GRID */
 .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
 .grid-2{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
 
-/* ========== MENU CARD ========== */
-.menu-card{
-  background:#fff;border-radius:16px;overflow:hidden;
-  box-shadow:var(--shadow);cursor:pointer;transition:.2s;
-  position:relative;
-}
+/* MENU CARD */
+.menu-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:.2s;position:relative}
 .menu-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
 .menu-card:active{transform:scale(.97)}
-.menu-card .img{
-  height:130px;background:linear-gradient(135deg,var(--creme-2),var(--orange-l));
-  display:flex;align-items:center;justify-content:center;
-  font-size:58px;color:#fff;position:relative;overflow:hidden;
-}
+.menu-card .img{height:130px;background:linear-gradient(135deg,var(--creme-2),var(--orange-l));display:flex;align-items:center;justify-content:center;font-size:58px;color:#fff;position:relative;overflow:hidden}
 .menu-card .img img{width:100%;height:100%;object-fit:cover}
 .menu-card .body{padding:12px 14px}
 .menu-card .name{font-weight:800;font-size:15px;color:var(--bois);margin-bottom:4px}
 .menu-card .price{font-size:18px;font-weight:900;color:var(--orange)}
-.menu-card .cat{
-  position:absolute;top:10px;right:10px;
-  background:rgba(0,0,0,.6);color:#fff;
-  padding:3px 8px;border-radius:20px;font-size:10px;font-weight:700;
-  text-transform:uppercase;z-index:2;
-}
+.menu-card .cat{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.6);color:#fff;padding:3px 8px;border-radius:20px;font-size:10px;font-weight:700;text-transform:uppercase;z-index:2}
 
-/* ========== VOICE BUTTON ========== */
-.voice-btn{
-  width:220px;height:220px;border-radius:50%;
-  background:radial-gradient(circle,#F97316 0%,#C2410C 100%);
-  color:#fff;border:none;font-size:22px;font-weight:900;
-  cursor:pointer;box-shadow:0 16px 40px rgba(194,65,12,.45);
-  display:flex;align-items:center;justify-content:center;
-  flex-direction:column;gap:6px;transition:.2s;
-}
+/* VOICE BUTTON */
+.voice-btn{width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,#F97316 0%,#C2410C 100%);color:#fff;border:none;font-size:22px;font-weight:900;cursor:pointer;box-shadow:0 16px 40px rgba(194,65,12,.45);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;transition:.2s}
 .voice-btn:active{transform:scale(.95)}
-.voice-btn.listening{
-  background:radial-gradient(circle,#FB923C 0%,#EA580C 100%);
-  animation:pulse 1.2s infinite;
-}
-@keyframes pulse{
-  0%,100%{transform:scale(1);box-shadow:0 16px 40px rgba(194,65,12,.45)}
-  50%{transform:scale(1.06);box-shadow:0 20px 60px rgba(234,88,12,.7)}
-}
+.voice-btn.listening{background:radial-gradient(circle,#FB923C 0%,#EA580C 100%);animation:pulse 1.2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 16px 40px rgba(194,65,12,.45)}50%{transform:scale(1.06);box-shadow:0 20px 60px rgba(234,88,12,.7)}}
 
-/* ========== TABS ========== */
+/* TABS */
 .tabs{display:flex;gap:6px;overflow-x:auto;padding:8px 0;margin-bottom:16px;border-bottom:2px solid var(--creme-2)}
-.tab{
-  padding:10px 16px;border-radius:12px;border:none;
-  background:transparent;color:var(--bois);
-  font-weight:700;cursor:pointer;white-space:nowrap;font-size:13px;transition:.15s;
-}
+.tab{padding:10px 16px;border-radius:12px;border:none;background:transparent;color:var(--bois);font-weight:700;cursor:pointer;white-space:nowrap;font-size:13px;transition:.15s}
 .tab:hover{background:var(--creme-2)}
 .tab.active{background:var(--orange);color:#fff}
 
-/* ========== BADGES ========== */
+/* BADGES */
 .badge{display:inline-block;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:800}
 .badge-pending{background:#FEF3C7;color:#92400E}
 .badge-paid{background:#D1FAE5;color:#065F46}
 .badge-cancelled{background:#FEE2E2;color:#991B1B}
 .badge-admin{background:#EDE9FE;color:#5B21B6}
 
-/* ========== TABLE ========== */
+/* TABLE */
 .table{width:100%;border-collapse:collapse;font-size:13px}
 .table th,.table td{padding:10px 8px;text-align:left;border-bottom:1px solid var(--creme-2)}
 .table th{color:var(--bois);font-weight:800;background:var(--creme);font-size:12px;text-transform:uppercase}
 .table tr:hover{background:var(--creme)}
 
-/* ========== STATS ========== */
+/* STATS */
 .stats{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin-bottom:20px}
 .stat{background:#fff;border-radius:16px;padding:18px;text-align:center;box-shadow:var(--shadow);border-top:4px solid var(--orange)}
 .stat .lbl{font-size:12px;color:var(--grey);text-transform:uppercase;font-weight:700;letter-spacing:.5px}
@@ -183,46 +138,13 @@ input,select,textarea{font-family:inherit}
 .stat.green{border-color:var(--vert)} .stat.green .val{color:var(--vert-d)}
 .stat.red{border-color:var(--red)} .stat.red .val{color:var(--red)}
 
-/* ========== TOAST ========== */
-#toast{
-  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
-  background:var(--dark);color:#fff;padding:14px 22px;border-radius:14px;
-  font-weight:700;box-shadow:0 8px 30px rgba(0,0,0,.3);
-  z-index:9999;opacity:0;transition:.3s;pointer-events:none;max-width:90vw;
-}
+/* TOAST */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--dark);color:#fff;padding:14px 22px;border-radius:14px;font-weight:700;box-shadow:0 8px 30px rgba(0,0,0,.3);z-index:1100;opacity:0;transition:.3s;pointer-events:none;max-width:90vw;text-align:center}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(-4px)}
 #toast.ok{background:var(--vert)}
 #toast.err{background:var(--red)}
 
-/* ========== PWA / PILL ========== */
-.pill{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:6px 12px;border-radius:999px;background:var(--creme-2);
-  color:var(--bois);font-size:12px;font-weight:700;
-}
-.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
-.dot.on{background:var(--vert);animation:blink 2s infinite}
-.dot.off{background:var(--grey)}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
-
-/* ========== INVOICE PRINT ========== */
-@media print{
-  body *{visibility:hidden !important}
-  #invoice-print,#invoice-print *{visibility:visible !important}
-  #invoice-print{position:absolute;left:0;top:0;width:100%;background:#fff}
-}
-
-/* ========== RESPONSIVE ========== */
-@media (max-width:640px){
-  .hero{padding:28px 20px;min-height:300px}
-  .nav{padding:10px 12px}
-  .nav .brand{font-size:18px}
-  .nav a,.nav .nbtn{padding:7px 10px;font-size:12px}
-  .voice-btn{width:170px;height:170px;font-size:18px}
-  .card{padding:16px}
-}
-
-/* ========== MISC ========== */
+/* MISC */
 .hidden{display:none !important}
 .center{text-align:center}
 .mt-12{margin-top:12px}.mt-20{margin-top:20px}
@@ -230,39 +152,269 @@ input,select,textarea{font-family:inherit}
 .items-center{align-items:center}.justify-between{justify-content:space-between}
 .wrap{flex-wrap:wrap}
 .text-muted{color:var(--grey);font-size:13px}
-.divider{height:1px;background:var(--creme-2);margin:16px 0}
-.qr-fake{
-  width:120px;height:120px;
-  background:
-    repeating-linear-gradient(0deg,#000 0 6px,#fff 6px 12px),
-    repeating-linear-gradient(90deg,#000 0 6px,#fff 6px 12px);
-  background-blend-mode:multiply;
-  border:4px solid #000;
-  image-rendering:pixelated;
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.dot.on{background:var(--vert);animation:blink 2s infinite}
+.dot.off{background:var(--grey)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* ===================== AUDIO FAB ===================== */
+.audio-fab{
+  position:fixed;bottom:20px;right:20px;z-index:100;
+  width:64px;height:64px;border-radius:50%;
+  background:linear-gradient(180deg,var(--jaune),var(--orange));
+  border:none;font-size:28px;cursor:pointer;
+  box-shadow:0 8px 24px rgba(234,88,12,0.5);
+  display:flex;align-items:center;justify-content:center;
+  animation:fabPulse 2.4s infinite;
+  transition:transform 0.15s;
+}
+.audio-fab:active{transform:scale(0.9)}
+.audio-fab::after{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  border:3px solid var(--jaune);opacity:0;
+  animation:fabRing 2.4s infinite;
+}
+@keyframes fabPulse{
+  0%,100%{box-shadow:0 8px 24px rgba(234,88,12,0.5);transform:scale(1)}
+  50%{box-shadow:0 8px 40px rgba(234,88,12,0.9);transform:scale(1.05)}
+}
+@keyframes fabRing{
+  0%{transform:scale(1);opacity:0.8}
+  100%{transform:scale(1.8);opacity:0}
+}
+
+/* ===================== AUDIO OVERLAY ===================== */
+.audio-overlay{
+  position:fixed;inset:0;z-index:1000;
+  background:rgba(31,20,16,0.88);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.3s;
+}
+.audio-overlay:not(.hidden){opacity:1;pointer-events:auto}
+.audio-player{
+  background:linear-gradient(135deg,#FFF7ED 0%,#FED7AA 100%);
+  border-radius:28px;padding:36px 28px 28px;
+  max-width:520px;width:100%;max-height:90vh;overflow-y:auto;
+  position:relative;
+  box-shadow:0 30px 80px rgba(0,0,0,0.5),0 0 0 4px rgba(251,191,36,0.3);
+  animation:audioSlideIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes audioSlideIn{
+  0%{transform:scale(0.9) translateY(20px);opacity:0}
+  100%{transform:scale(1) translateY(0);opacity:1}
+}
+.audio-close{
+  position:absolute;top:14px;right:14px;
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(0,0,0,0.08);border:none;
+  font-size:18px;cursor:pointer;color:var(--bois);
+  display:flex;align-items:center;justify-content:center;
+  transition:background 0.15s;
+}
+.audio-close:hover{background:rgba(0,0,0,0.15)}
+.audio-dots{display:flex;justify-content:center;gap:6px;margin-bottom:20px}
+.audio-dot{width:8px;height:8px;border-radius:50%;background:rgba(124,45,18,0.2);transition:.3s}
+.audio-dot.done{background:var(--orange-d)}
+.audio-dot.active{background:var(--orange);transform:scale(1.5);box-shadow:0 0 12px rgba(234,88,12,0.6)}
+.audio-visual{position:relative;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;height:100px}
+.audio-rings,.audio-rings::before,.audio-rings::after{
+  position:absolute;inset:-20px;border-radius:50%;
+  border:2px solid var(--orange);opacity:0;
+}
+.audio-overlay.playing .audio-rings{animation:audioRing 2s ease-out infinite}
+.audio-overlay.playing .audio-rings::before{content:'';animation:audioRing 2s ease-out 0.4s infinite}
+.audio-overlay.playing .audio-rings::after{content:'';animation:audioRing 2s ease-out 0.8s infinite}
+@keyframes audioRing{
+  0%{transform:scale(0.85);opacity:0.9}
+  100%{transform:scale(1.5);opacity:0}
+}
+.audio-overlay.playing .logo-audio{animation:audioBounce 1s ease-in-out infinite}
+@keyframes audioBounce{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.12)}
+}
+.audio-meta{text-align:center;margin-bottom:20px;min-height:120px}
+.audio-step{font-size:11px;color:var(--grey);font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px}
+.audio-title{font-size:22px;color:var(--bois);margin-bottom:12px;line-height:1.2;font-weight:900}
+.audio-text{font-size:15px;color:var(--bois-l);line-height:1.6;max-height:140px;overflow-y:auto;padding:0 4px}
+.audio-progress{height:6px;background:rgba(124,45,18,0.12);border-radius:3px;margin-bottom:22px;overflow:hidden}
+.audio-progress-bar{height:100%;background:linear-gradient(90deg,var(--orange-l),var(--orange-d));border-radius:3px;transition:width 0.4s ease;width:0%}
+.audio-controls{display:flex;justify-content:center;align-items:center;gap:12px}
+.audio-controls button{width:50px;height:50px;border-radius:50%;border:none;background:#fff;font-size:20px;cursor:pointer;color:var(--bois);box-shadow:0 4px 12px rgba(0,0,0,0.1);display:flex;align-items:center;justify-content:center;transition:transform 0.15s,box-shadow 0.15s}
+.audio-controls button:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,0.15)}
+.audio-controls button:active{transform:scale(0.92)}
+.audio-controls button.play{width:68px;height:68px;font-size:24px;background:linear-gradient(180deg,var(--orange-l),var(--orange-d));color:#fff;box-shadow:0 8px 24px rgba(234,88,12,0.45)}
+.audio-controls button.play:hover{box-shadow:0 10px 32px rgba(234,88,12,0.6)}
+
+/* ===================== AI ASSISTANT ===================== */
+.ai-fab{
+  position:fixed;bottom:20px;left:20px;z-index:100;
+  width:64px;height:64px;border-radius:50%;
+  background:linear-gradient(180deg,#7C2D12,#C2410C);
+  border:none;font-size:32px;cursor:pointer;
+  box-shadow:0 8px 24px rgba(124,45,18,0.5);
+  display:flex;align-items:center;justify-content:center;
+  animation:aiPulse 3s infinite;
+  transition:transform 0.15s;
+  color:#fff;
+}
+.ai-fab:active{transform:scale(0.9)}
+@keyframes aiPulse{
+  0%,100%{box-shadow:0 8px 24px rgba(124,45,18,0.5);transform:scale(1)}
+  50%{box-shadow:0 8px 40px rgba(124,45,18,0.9);transform:scale(1.05)}
+}
+.ai-window{
+  position:fixed;bottom:100px;left:20px;z-index:1001;
+  width:350px;max-width:calc(100vw - 40px);height:500px;max-height:calc(100vh - 140px);
+  background:#fff;border-radius:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+  display:flex;flex-direction:column;
+  transform-origin:bottom left;
+  transition:transform 0.3s, opacity 0.3s;
+  opacity:0;transform:scale(0.8);pointer-events:none;
+}
+.ai-window.open{opacity:1;transform:scale(1);pointer-events:auto}
+.ai-header{background:linear-gradient(90deg,#7C2D12,#EA580C);color:#fff;padding:16px;border-radius:20px 20px 0 0;display:flex;align-items:center;gap:10px}
+.ai-header .avatar{width:36px;height:36px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:20px}
+.ai-header h3{font-size:16px;margin:0;flex:1}
+.ai-close{background:transparent;border:none;color:#fff;font-size:20px;cursor:pointer}
+.ai-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#FFF7ED}
+.ai-msg{max-width:85%;padding:10px 14px;border-radius:16px;font-size:14px;line-height:1.4;animation:msgIn 0.3s ease}
+@keyframes msgIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.ai-msg.bot{background:#fff;color:var(--bois);border-bottom-left-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,0.05);align-self:flex-start}
+.ai-msg.user{background:var(--orange);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+.ai-msg.audio-btn{background:transparent;padding:0;max-width:100%;text-align:center}
+.ai-quick-replies{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.ai-quick-replies button{background:var(--creme-2);border:none;padding:6px 12px;border-radius:20px;font-size:12px;color:var(--bois);font-weight:700;cursor:pointer;transition:0.2s}
+.ai-quick-replies button:hover{background:var(--orange);color:#fff}
+.ai-input-area{padding:12px;border-top:1px solid var(--creme-2);display:flex;gap:8px;background:#fff;border-radius:0 0 20px 20px}
+.ai-input-area input{flex:1;padding:10px 14px;border:2px solid var(--creme-2);border-radius:20px;font-size:14px;outline:none}
+.ai-input-area input:focus{border-color:var(--orange)}
+.ai-input-area button{background:var(--orange);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.ai-input-area button.mic{background:var(--bois)}
+.ai-input-area button.mic.listening{background:var(--red);animation:pulse 1s infinite}
+
+/* FORM HIGHLIGHT (Voice Registration) */
+.highlight-field{border-color:var(--orange) !important;background:#FFF7ED !important;box-shadow:0 0 0 4px rgba(234,88,12,0.2) !important;transition:all 0.3s}
+
+@media (max-width:640px){
+  .hero{padding:28px 20px;min-height:340px}
+  .nav{padding:10px 12px}
+  .nav .brand{font-size:18px}
+  .nav a,.nav .nbtn{padding:7px 10px;font-size:12px}
+  .voice-btn{width:170px;height:170px;font-size:18px}
+  .card{padding:16px}
+  .audio-player{padding:28px 20px 20px;border-radius:22px}
+  .audio-title{font-size:19px}
+  .audio-text{font-size:14px;max-height:120px}
+  .audio-controls button{width:44px;height:44px;font-size:18px}
+  .audio-controls button.play{width:60px;height:60px;font-size:22px}
+  .audio-fab{width:56px;height:56px;font-size:24px;bottom:16px;right:16px}
+  .ai-fab{width:56px;height:56px;font-size:28px;bottom:16px;left:16px}
+  .ai-window{bottom:84px;left:16px;height:calc(100vh - 180px)}
 }
 </style>
 </head>
 <body>
 
+<!-- LOGO SVG DEFINITION -->
+<svg style="display:none;">
+  <defs>
+    <symbol id="venise-logo" viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="95" fill="#7C2D12" />
+      <circle cx="100" cy="100" r="85" fill="none" stroke="#FBBF24" stroke-width="4" stroke-dasharray="8 4" />
+      <path d="M100 40 Q130 80 120 120 Q110 150 100 160 Q90 150 80 120 Q70 80 100 40 Z" fill="#EA580C" />
+      <path d="M100 60 Q115 90 110 120 Q105 140 100 145 Q95 140 90 120 Q85 90 100 60 Z" fill="#FBBF24" />
+      <path d="M140 100 L160 100 L160 150 Q160 170 150 170 Q140 170 140 150 Z" fill="#16A34A" />
+      <rect x="145" y="80" width="10" height="20" fill="#16A34A" />
+      <rect x="143" y="75" width="14" height="8" rx="2" fill="#FBBF24" />
+      <text x="100" y="185" font-family="Arial, sans-serif" font-size="22" font-weight="900" fill="#FFF7ED" text-anchor="middle" letter-spacing="2">VENISE</text>
+    </symbol>
+  </defs>
+</svg>
+
 <nav class="nav" id="nav"></nav>
 <main id="main"></main>
+
+<!-- Bouton flottant audio -->
+<button id="audio-fab" class="audio-fab" onclick="startPresentation()" title="🎧 Écouter la présentation" aria-label="Écouter la présentation">🎧</button>
+
+<!-- Bouton flottant Agent IA -->
+<button id="ai-fab" class="ai-fab" onclick="toggleAIAssistant()" title="🤖 Assistant Venise" aria-label="Assistant Venise">🤖</button>
+
+<!-- Fenêtre de l'Agent IA -->
+<div id="ai-window" class="ai-window hidden">
+  <div class="ai-header">
+    <div class="avatar">🤖</div>
+    <h3>Venise Bot</h3>
+    <button class="ai-close" onclick="toggleAIAssistant()">✕</button>
+  </div>
+  <div class="ai-messages" id="ai-messages"></div>
+  <div class="ai-input-area">
+    <button class="mic" id="ai-mic" onclick="toggleAIMic()" title="Parler à l'assistant">🎙️</button>
+    <input type="text" id="ai-input" placeholder="Posez une question..." onkeypress="if(event.key==='Enter') sendAIMessage()">
+    <button onclick="sendAIMessage()">➤</button>
+  </div>
+</div>
+
+<!-- Overlay présentation audio -->
+<div id="audio-overlay" class="audio-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="audio-title">
+  <div class="audio-player">
+    <button class="audio-close" onclick="stopPresentation()" aria-label="Fermer">✕</button>
+    <div class="audio-dots" id="audio-dots"></div>
+    <div class="audio-visual">
+      <div class="audio-rings"></div>
+      <svg class="logo-audio"><use href="#venise-logo"/></svg>
+    </div>
+    <div class="audio-meta">
+      <div class="audio-step" id="audio-step">1 / 9</div>
+      <h2 class="audio-title" id="audio-title">Chargement...</h2>
+      <p class="audio-text" id="audio-text"></p>
+    </div>
+    <div class="audio-progress"><div class="audio-progress-bar" id="audio-progress-bar"></div></div>
+    <div class="audio-controls">
+      <button onclick="prevSegment()" title="Précédent" aria-label="Précédent">⏮️</button>
+      <button class="play" id="audio-play-btn" onclick="togglePlayPause()" title="Lecture/Pause" aria-label="Lecture/Pause">⏸️</button>
+      <button onclick="stopPresentation()" title="Arrêter" aria-label="Arrêter">⏹️</button>
+      <button onclick="nextSegment()" title="Suivant" aria-label="Suivant">⏭️</button>
+    </div>
+  </div>
+</div>
+
 <div id="toast"></div>
-<div id="invoice-print" class="hidden"></div>
 
 <script>
 /* =====================================================
-   MAQUIS VENISE — APPLICATION UNIQUE (localStorage)
-   Version 1.0.0
+   MAQUIS VENISE — VERSION 1.4.0
+   Ajout : Inscription 100% Vocale + Agent Intelligent
    ===================================================== */
-
-/* ===================== STORAGE ===================== */
 const DB_KEY = 'venise_v1';
+const DB_VERSION = '1.4.0';
+
+const LOGO_BASE64 = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <circle cx="100" cy="100" r="95" fill="#7C2D12" />
+  <circle cx="100" cy="100" r="85" fill="none" stroke="#FBBF24" stroke-width="4" stroke-dasharray="8 4" />
+  <path d="M100 40 Q130 80 120 120 Q110 150 100 160 Q90 150 80 120 Q70 80 100 40 Z" fill="#EA580C" />
+  <path d="M100 60 Q115 90 110 120 Q105 140 100 145 Q95 140 90 120 Q85 90 100 60 Z" fill="#FBBF24" />
+  <path d="M140 100 L160 100 L160 150 Q160 170 150 170 Q140 170 140 150 Z" fill="#16A34A" />
+  <rect x="145" y="80" width="10" height="20" fill="#16A34A" />
+  <rect x="143" y="75" width="14" height="8" rx="2" fill="#FBBF24" />
+  <text x="100" y="185" font-family="Arial, sans-serif" font-size="22" font-weight="900" fill="#FFF7ED" text-anchor="middle" letter-spacing="2">VENISE</text>
+</svg>
+`)));
+
 const MENU_IMG = {
   poulet:'https://images.pexels.com/photos/2338407/pexels-photo-2338407.jpeg?auto=compress&cs=tinysrgb&w=600',
   attieke:'https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=600',
   alloco:'https://images.pexels.com/photos/541040/pexels-photo-541040.jpeg?auto=compress&cs=tinysrgb&w=600',
   biere:'https://images.pexels.com/photos/155263/pexels-photo-155263.jpeg?auto=compress&cs=tinysrgb&w=600',
   jus:'https://images.pexels.com/photos/96974/pexels-photo-96974.jpeg?auto=compress&cs=tinysrgb&w=600',
+  eau:'https://images.pexels.com/photos/327090/pexels-photo-327090.jpeg?auto=compress&cs=tinysrgb&w=600',
   default:'https://images.pexels.com/photos/1105325/pexels-photo-1105325.jpeg?auto=compress&cs=tinysrgb&w=600'
 };
 const HERO_VIDEOS = [
@@ -270,7 +422,20 @@ const HERO_VIDEOS = [
   'https://videos.pexels.com/video-files/2098989/2098989-hd_1920_1080_30fps.mp4'
 ];
 
+const PRESENTATION = [
+  { titre: "Bienvenue au Maquis Venise", texte: "Bienvenue au Maquis Venise, à Riviera 4, M'Pouto. Notre maquis vous accueille dans une ambiance chaleureuse, à l'ivoirienne. Ici, on mange bien, on boit frais, et on passe du bon temps entre amis." },
+  { titre: "Notre maquis, notre cuisine", texte: "Chez nous, on ne rigole pas avec la cuisine ! Poulet braisé doré à point, attiéké frais du jour, alloco croustillant, garba généreux, poisson braisé à la perfection. Et toujours une bière bien fraîche pour accompagner." },
+  { titre: "Découvrez l'application Venise", texte: "Aujourd'hui, le Maquis Venise franchit un cap. Nous vous proposons une application unique en son genre, pensée pour vous simplifier la vie. Commander, payer, recevoir son reçu : tout est désormais possible depuis votre téléphone." },
+  { titre: "Commander en parlant", texte: "Notre application est faite pour tout le monde. Vous ne savez ni lire ni écrire ? Pas de problème ! Appuyez sur le gros bouton orange, parlez naturellement, et l'application enregistre votre commande." },
+  { titre: "Payer comme vous voulez", texte: "Payer n'a jamais été aussi simple. En espèces à la caisse, ou par Mobile Money : Orange Money, MTN, Moov, Wave. Tous les moyens de paiement sont acceptés." },
+  { titre: "Votre reçu en un clin d'œil", texte: "Après chaque commande, votre reçu ou votre facture est généré automatiquement. Conforme à la réglementation, avec la TVA et le numéro de contribuable." },
+  { titre: "Pour nos clients fidèles", texte: "Vous venez souvent ? Nous vous chouchoutons ! Points de fidélité, promotions surprises, invitations aux événements du maquis, cadeaux d'anniversaire." },
+  { titre: "Pour le patron, tout est automatisé", texte: "Côté gestion, tout est automatisé. Suivi des ventes en temps réel, gestion du stock, journal quotidien, alertes en cas de rupture, validation à distance." },
+  { titre: "Rejoignez-nous !", texte: "Alors, qu'attendez-vous ? Passez votre commande dès aujourd'hui, venez nous voir à Riviera 4, M'Pouto. Le Maquis Venise vous attend. À très bientôt, et bon appétit !" }
+];
+
 const DEFAULT_DB = {
+  version: DB_VERSION,
   users:[
     {id:1, name:'Patron', role:'admin', pin:'1234'},
     {id:2, name:'Awa', role:'serveuse', pin:'1111'},
@@ -278,36 +443,56 @@ const DEFAULT_DB = {
   ],
   clients:[],
   menu:[
-    {id:1,name:'Poulet braisé',category:'Plats',price:5000,cost:2200,image:MENU_IMG.poulet,aliases:['poulet','braisé','poulet braise'],available:true},
-    {id:2,name:'Attiéké poisson',category:'Plats',price:3000,cost:1200,image:MENU_IMG.attieke,aliases:['attieke','poisson','atieke poisson','atchéké'],available:true},
-    {id:3,name:'Alloco',category:'Accompagnement',price:1000,cost:300,image:MENU_IMG.alloco,aliases:['alloco','banane'],available:true},
-    {id:4,name:'Bière Flag',category:'Boissons',price:1000,cost:600,image:MENU_IMG.biere,aliases:['flag','biere flag','bière'],available:true},
-    {id:5,name:'Bière Castel',category:'Boissons',price:1200,cost:700,image:MENU_IMG.biere,aliases:['castel'],available:true},
-    {id:6,name:'Bissap',category:'Boissons',price:500,cost:150,image:MENU_IMG.jus,aliases:['bissap','jus'],available:true},
-    {id:7,name:'Garba',category:'Plats',price:2000,cost:800,image:MENU_IMG.attieke,aliases:['garba','thoni'],available:true},
-    {id:8,name:'Poulet DG',category:'Plats',price:6000,cost:2800,image:MENU_IMG.poulet,aliases:['dg','poulet dg'],available:true}
+    {id:1,name:'Bière Flag (33cl)',category:'Bières (Brassivoire)',price:1000,cost:700,image:MENU_IMG.biere,aliases:['flag','biere flag','bière'],available:true},
+    {id:2,name:'Bière Castel (33cl)',category:'Bières (Brassivoire)',price:1200,cost:900,image:MENU_IMG.biere,aliases:['castel'],available:true},
+    {id:3,name:'Bière Ivoire (33cl)',category:'Bières (Brassivoire)',price:1000,cost:700,image:MENU_IMG.biere,aliases:['ivoire','biere ivoire'],available:true},
+    {id:4,name:'Bière Awa (33cl)',category:'Bières (Brassivoire)',price:1000,cost:700,image:MENU_IMG.biere,aliases:['awa','biere awa'],available:true},
+    {id:5,name:'Bière Doppel (33cl)',category:'Bières (Solibra)',price:1500,cost:1100,image:MENU_IMG.biere,aliases:['doppel','dopp'],available:true},
+    {id:6,name:'Bière Beaufort (33cl)',category:'Bières (Solibra)',price:1500,cost:1100,image:MENU_IMG.biere,aliases:['beaufort','bofort'],available:true},
+    {id:7,name:'Bière Solibra (33cl)',category:'Bières (Solibra)',price:1000,cost:700,image:MENU_IMG.biere,aliases:['solibra','soli'],available:true},
+    {id:8,name:'Bière Pils (33cl)',category:'Bières (Solibra)',price:1000,cost:700,image:MENU_IMG.biere,aliases:['pils'],available:true},
+    {id:9,name:'Guinness (33cl)',category:'Bières (Brassivoire)',price:1300,cost:1000,image:MENU_IMG.biere,aliases:['guiness','ginness'],available:true},
+    {id:10,name:'Malta Guinness (33cl)',category:'Sans Alcool',price:1000,cost:700,image:MENU_IMG.biere,aliases:['malta'],available:true},
+    {id:11,name:'Coca-Cola (33cl)',category:'Sodas',price:700,cost:400,image:MENU_IMG.jus,aliases:['coca','coca cola'],available:true},
+    {id:12,name:'Fanta Orange (33cl)',category:'Sodas',price:700,cost:400,image:MENU_IMG.jus,aliases:['fanta','fanta orange'],available:true},
+    {id:13,name:'Fanta Citron (33cl)',category:'Sodas',price:700,cost:400,image:MENU_IMG.jus,aliases:['fanta citron'],available:true},
+    {id:14,name:'Sprite (33cl)',category:'Sodas',price:700,cost:400,image:MENU_IMG.jus,aliases:['sprite'],available:true},
+    {id:15,name:'Eau Minérale (1.5L)',category:'Eaux',price:500,cost:250,image:MENU_IMG.eau,aliases:['eau','eau minerale'],available:true},
+    {id:16,name:'Bissap Maison',category:'Jus Locaux',price:500,cost:150,image:MENU_IMG.jus,aliases:['bissap','jus bissap'],available:true},
+    {id:17,name:'Gingembre (Gnamakoudji)',category:'Jus Locaux',price:500,cost:150,image:MENU_IMG.jus,aliases:['gingembre','gnamakoudji'],available:true},
+    {id:18,name:'Poulet braisé',category:'Plats',price:5000,cost:2200,image:MENU_IMG.poulet,aliases:['poulet','braisé','poulet braise'],available:true},
+    {id:19,name:'Attiéké poisson',category:'Plats',price:3000,cost:1200,image:MENU_IMG.attieke,aliases:['attieke','poisson','atieke poisson','atchéké'],available:true},
+    {id:20,name:'Alloco',category:'Accompagnement',price:1000,cost:300,image:MENU_IMG.alloco,aliases:['alloco','banane'],available:true},
+    {id:21,name:'Garba',category:'Plats',price:2000,cost:800,image:MENU_IMG.attieke,aliases:['garba','thoni'],available:true},
+    {id:22,name:'Poulet DG',category:'Plats',price:6000,cost:2800,image:MENU_IMG.poulet,aliases:['dg','poulet dg'],available:true}
   ],
   stock:[
-    {id:1,name:'Poulet entier',unit:'u',qty:20,threshold:5},
-    {id:2,name:'Sac de riz',unit:'kg',qty:50,threshold:10},
-    {id:3,name:'Casier Flag',unit:'casier',qty:10,threshold:3},
-    {id:4,name:'Poisson (carpe)',unit:'u',qty:30,threshold:8}
+    {id:1,name:'Casier Flag',unit:'casier',qty:10,threshold:3},
+    {id:2,name:'Casier Castel',unit:'casier',qty:10,threshold:3},
+    {id:3,name:'Casier Ivoire',unit:'casier',qty:5,threshold:2},
+    {id:4,name:'Poulet entier',unit:'u',qty:20,threshold:5},
+    {id:5,name:'Poisson (carpe)',unit:'u',qty:30,threshold:8}
   ],
-  orders:[], stockMoves:[], audit:[], promos:[], playlist:[], b2b:[], invoices:[],
+  orders:[], stockMoves:[], audit:[], promos:[], playlist:[], b2b:[], invoices:[], events:[],
   settings:{
-    company:'Maquis Venise',
-    address:'Riviera 4 M\'Pouto, Abidjan, Côte d\'Ivoire',
-    phone:'+225 07 00 00 00 00',
-    ncc:'',
-    tva:18,
-    version:'1.0.0',
-    invoicePrefix:'FAC'
+    company:'Maquis Venise', address:'Riviera 4 M\'Pouto, Abidjan, Côte d\'Ivoire', phone:'+225 07 00 00 00 00', ncc:'', tva:18, version:DB_VERSION, invoicePrefix:'FAC', waveLink:'', whatsappNumber:'+2250700000000' // Numéro par défaut à modifier
   }
 };
 
-let db = (()=>{ try{ return JSON.parse(localStorage.getItem(DB_KEY)) || JSON.parse(JSON.stringify(DEFAULT_DB)); }catch(e){ return JSON.parse(JSON.stringify(DEFAULT_DB)); } })();
-
-function save(){ localStorage.setItem(DB_KEY, JSON.stringify(db)); }
+let db;
+function loadDB(){
+  try {
+    const raw = localStorage.getItem(DB_KEY);
+    if(!raw) throw new Error('empty');
+    const parsed = JSON.parse(raw);
+    if(parsed.version !== DB_VERSION) throw new Error('version mismatch');
+    db = parsed;
+  } catch(e){
+    db = JSON.parse(JSON.stringify(DEFAULT_DB));
+    save();
+  }
+}
+function save(){ try{ localStorage.setItem(DB_KEY, JSON.stringify(db)); }catch(e){ console.error('Save failed', e); } }
 function nextId(arr){ return arr.length ? Math.max(...arr.map(x=>x.id))+1 : 1; }
 function audit(userId, action, entity, entityId, payload){
   db.audit.unshift({id:Date.now()+Math.random(), user_id:userId, action, entity, entity_id:entityId, payload:payload||{}, at:new Date().toISOString()});
@@ -318,47 +503,50 @@ function fmt(n){ return (n||0).toLocaleString('fr-FR'); }
 function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function today(){ return new Date().toISOString().slice(0,10); }
 
-/* ===================== STATE ===================== */
-const state = {
-  user: null,
-  page: 'home',
-  cart: [],
-  voiceTranscript: '',
-  listening: false,
-  adminTab: 'dashboard',
-  factDocType: 'facture',
-  factClient: null,
-  factItems: [],
-  printOrder: null
-};
+const state = { user:null, page:'home', cart:[], listening:false, adminTab:'dashboard', factItems:[], _clientTable:'', _serveuseTable:'', _journalPeriod:'day' };
+const audioState = { playing:false, paused:false, currentIndex:0, utterance:null };
+const aiState = { open:false, listening:false, rec:null };
+let cachedVoices = [];
+function updateVoices(){ if(window.speechSynthesis) cachedVoices = window.speechSynthesis.getVoices() || []; }
+if(window.speechSynthesis){ updateVoices(); window.speechSynthesis.onvoiceschanged = updateVoices; }
+function getVoice(){
+  if(!cachedVoices.length) updateVoices();
+  if(!cachedVoices.length) return null;
+  let v = cachedVoices.find(x => x.lang === 'fr-FR' && /female|amelie|aurelie|audrey|marie|julie|google/i.test(x.name));
+  if(!v) v = cachedVoices.find(x => x.lang === 'fr-FR');
+  if(!v) v = cachedVoices.find(x => x.lang && x.lang.startsWith('fr'));
+  return v || cachedVoices[0] || null;
+}
 
-/* ===================== UI HELPERS ===================== */
+// CORE: Stop all audio to prevent conflicts
+function stopAllAudio() {
+  try { window.speechSynthesis.cancel(); } catch(e){}
+  if(audioState.playing || audioState.paused) { audioState.playing = false; audioState.paused = false; showAudioOverlay(false); }
+  if(state.listening && _rec) { try{ _rec.stop(); }catch(e){} }
+  if(aiState.listening && aiState.rec) { try{ aiState.rec.stop(); }catch(e){} }
+}
+
 function toast(msg, type='ok', ms=2800){
   const el = document.getElementById('toast');
-  el.textContent = msg;
-  el.className = 'show ' + type;
-  clearTimeout(el._t);
-  el._t = setTimeout(()=>{ el.className=''; }, ms);
+  if(!el) return;
+  el.textContent = msg; el.className = 'show ' + type;
+  clearTimeout(el._t); el._t = setTimeout(()=>{ el.className=''; }, ms);
 }
 function speak(text){
+  if(state.listening || aiState.listening) return; // Don't speak if user is talking
   try{
     const u = new SpeechSynthesisUtterance(text);
     u.lang='fr-FR'; u.rate=.95; u.pitch=1.05;
+    const v = getVoice(); if(v) u.voice = v;
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(u);
   }catch(e){}
 }
 function navigate(page){
-  state.page = page;
-  render();
-  window.scrollTo({top:0,behavior:'smooth'});
+  stopAllAudio();
+  state.page = page; render(); window.scrollTo({top:0,behavior:'smooth'});
 }
-function logout(){
-  state.user = null;
-  state.cart = [];
-  navigate('home');
-  toast('Déconnecté');
-}
+function logout(){ state.user = null; state.cart = []; navigate('home'); toast('Déconnecté'); }
 function loginPin(userId, pin){
   const u = db.users.find(x=>x.id===userId);
   if(!u){ toast('Utilisateur inconnu','err'); return false; }
@@ -370,11 +558,277 @@ function loginPin(userId, pin){
   return true;
 }
 
-/* ===================== ROUTER ===================== */
+/* ===================== AI ASSISTANT ENGINE ===================== */
+function toggleAIAssistant() {
+  const win = document.getElementById('ai-window');
+  aiState.open = !aiState.open;
+  if(aiState.open) {
+    stopAllAudio();
+    win.classList.remove('hidden');
+    setTimeout(() => win.classList.add('open'), 10);
+    if(document.getElementById('ai-messages').children.length === 0) {
+      addAIMessage('bot', "Bonjour ! Je suis Venise Bot 🤖. Je suis là pour vous aider à utiliser l'application. Que voulez-vous faire ?", [
+        { text: "📱 Comment commander ?", action: "navigate('client')" },
+        { text: "📝 S'inscrire", action: "navigate('register')" },
+        { text: "🗣️ Parler au patron", action: "contactAdmin()" }
+      ]);
+    }
+  } else {
+    win.classList.remove('open');
+    setTimeout(() => win.classList.add('hidden'), 300);
+  }
+}
+function addAIMessage(role, text, quickReplies = []) {
+  const msgs = document.getElementById('ai-messages');
+  const div = document.createElement('div');
+  div.className = `ai-msg ${role}`;
+  div.innerHTML = `<div>${esc(text)}</div>`;
+  
+  if (quickReplies.length > 0) {
+    const qDiv = document.createElement('div');
+    qDiv.className = 'ai-quick-replies';
+    quickReplies.forEach(qr => {
+      const btn = document.createElement('button');
+      btn.textContent = qr.text;
+      btn.onclick = () => {
+        addAIMessage('user', qr.text);
+        eval(qr.action);
+      };
+      qDiv.appendChild(btn);
+    });
+    div.appendChild(qDiv);
+  }
+  
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  if(role === 'bot') speak(text.replace(/[^\w\sàâéèêëîïôöùûüçÀÂÉÈÊËÎÏÔÖÙÛÜÇ.,!?'-]/g,''));
+}
+function sendAIMessage() {
+  const input = document.getElementById('ai-input');
+  const text = input.value.trim();
+  if (!text) return;
+  addAIMessage('user', text);
+  input.value = '';
+  processAIQuery(text.toLowerCase());
+}
+function processAIQuery(q) {
+  setTimeout(() => {
+    if (q.includes('commander') || q.includes('plat') || q.includes('boire') || q.includes('manger')) {
+      addAIMessage('bot', "Pour commander, allez dans l'onglet 'Commander'. Vous pouvez toucher les images des plats, ou utiliser le micro pour parler !", [{ text: "Aller à la commande", action: "navigate('client')" }]);
+    } else if (q.includes('inscri') || q.includes('compte') || q.includes('enregistr')) {
+      addAIMessage('bot', "Pour vous inscrire, allez dans 'Inscription'. Vous pouvez même utiliser l'inscription vocale si vous ne savez pas écrire !", [{ text: "S'inscrire maintenant", action: "navigate('register')" }]);
+    } else if (q.includes('patron') || q.includes('humain') || q.includes('admin') || q.includes('appeler') || q.includes('problème')) {
+      addAIMessage('bot', "Je vous mets en contact avec le patron sur WhatsApp.", [{ text: "Ouvrir WhatsApp", action: "contactAdmin()" }]);
+    } else if (q.includes('payer') || q.includes('wave') || q.includes('argent')) {
+      addAIMessage('bot', "Vous pouvez payer en espèces à la caisse, ou par Mobile Money (Wave, Orange, MTN, Moov).");
+    } else if (q.includes('voix') || q.includes('parler') || q.includes('micro')) {
+      addAIMessage('bot', "Cherchez le gros bouton orange avec un micro 🎙️. Appuyez dessus, parlez, et l'application comprendra votre commande !");
+    } else if (q.includes('merci') || q.includes('bonjour') || q.includes('salut')) {
+      addAIMessage('bot', "Avec plaisir ! Passez une excellente journée au Maquis Venise. 🍢");
+    } else {
+      addAIMessage('bot', "Je ne suis pas sûr de comprendre. Voulez-vous que je vous aide sur un de ces sujets ?", [
+        { text: "Commander", action: "processAIQuery('comment commander')" },
+        { text: "S'inscrire", action: "processAIQuery('inscription')" },
+        { text: "Parler au patron", action: "contactAdmin()" }
+      ]);
+    }
+  }, 600);
+}
+function contactAdmin() {
+  const num = (db.settings.whatsappNumber || '+2250700000000').replace(/\D/g, '');
+  window.open(`https://wa.me/${num}?text=Bonjour,%20j'ai%20besoin%20d'aide%20avec%20l'application%20Venise.`, '_blank');
+  addAIMessage('bot', "Je vous ai ouvert WhatsApp. Si le patron n'est pas disponible, réessayez plus tard.");
+}
+function toggleAIMic() {
+  if(aiState.listening) { try{ aiState.rec.stop(); }catch(e){} return; }
+  if(!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) { toast('Micro non supporté','err'); return; }
+  stopAllAudio();
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  aiState.rec = new SR();
+  aiState.rec.lang = 'fr-FR';
+  aiState.rec.interimResults = false;
+  aiState.rec.onstart = () => { aiState.listening = true; document.getElementById('ai-mic').classList.add('listening'); };
+  aiState.rec.onend = () => { aiState.listening = false; document.getElementById('ai-mic').classList.remove('listening'); };
+  aiState.rec.onresult = (e) => {
+    const text = e.results[0][0].transcript;
+    addAIMessage('user', text);
+    processAIQuery(text.toLowerCase());
+  };
+  try { aiState.rec.start(); } catch(e) {}
+}
+
+/* ===================== VOICE REGISTRATION ENGINE ===================== */
+let vRegIndex = 0;
+let vRegData = {};
+let vRegRec = null;
+const V_REG_STEPS = [
+  { key: 'name', q: "Quel est votre nom complet ?", field: 'reg-name' },
+  { key: 'phone', q: "Quel est votre numéro de téléphone ?", field: 'reg-phone' },
+  { key: 'address', q: "Où habitez-vous ? Quel quartier ?", field: 'reg-address' },
+  { key: 'consent', q: "Acceptez-vous que nous gardions vos coordonnées ? Répondez Oui ou Non.", field: 'reg-consent' }
+];
+
+function startVoiceRegistration() {
+  stopAllAudio();
+  vRegIndex = 0;
+  vRegData = {};
+  document.getElementById('reg-name').value = '';
+  document.getElementById('reg-phone').value = '';
+  document.getElementById('reg-address').value = '';
+  document.getElementById('reg-consent').checked = false;
+  speak("Très bien, je vais vous poser quelques questions. Parlez après le bip.");
+  setTimeout(() => askVoiceRegStep(), 3000);
+}
+
+function askVoiceRegStep() {
+  if (vRegIndex >= V_REG_STEPS.length) {
+    finishVoiceRegistration();
+    return;
+  }
+  const step = V_REG_STEPS[vRegIndex];
+  
+  // Highlight the field visually
+  document.querySelectorAll('.highlight-field').forEach(el => el.classList.remove('highlight-field'));
+  const fieldEl = document.getElementById(step.field);
+  if(fieldEl) {
+    fieldEl.classList.add('highlight-field');
+    if(fieldEl.type !== 'checkbox') fieldEl.focus();
+  }
+
+  speak(step.q);
+  
+  // Start recording after speaking finishes (roughly)
+  setTimeout(() => {
+    if(!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) return;
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    vRegRec = new SR();
+    vRegRec.lang = 'fr-FR';
+    vRegRec.interimResults = false;
+    vRegRec.onresult = (e) => {
+      const text = e.results[0][0].transcript;
+      handleVoiceRegAnswer(step.key, text, fieldEl);
+    };
+    vRegRec.onerror = (e) => {
+      if(e.error === 'no-speech') {
+        speak("Je n'ai rien entendu. Réessayez.");
+        setTimeout(askVoiceRegStep, 2000);
+      }
+    };
+    try { vRegRec.start(); } catch(e) {}
+  }, 2500); // Wait for speech to finish roughly
+}
+
+function handleVoiceRegAnswer(key, text, fieldEl) {
+  if (key === 'consent') {
+    const isYes = text.toLowerCase().includes('oui') || text.toLowerCase().includes('ouais') || text.toLowerCase().includes('d\'accord');
+    fieldEl.checked = isYes;
+    speak(isYes ? "Merci, c'est noté." : "Compris. Nous ne garderons pas vos données.");
+    vRegIndex++;
+    setTimeout(askVoiceRegStep, 2000);
+  } else {
+    let cleanText = text;
+    if (key === 'phone') {
+      // Clean up spoken numbers (roughly)
+      cleanText = text.replace(/\s/g, '').replace(/zéro/g, '0').replace(/un/g, '1').replace(/deux/g, '2').replace(/trois/g, '3').replace(/quatre/g, '4').replace(/cinq/g, '5').replace(/six/g, '6').replace(/sept/g, '7').replace(/huit/g, '8').replace(/neuf/g, '9').replace(/zéro/g, '0');
+      // Keep only digits
+      cleanText = cleanText.replace(/\D/g, '');
+      if(cleanText.length > 10) cleanText = cleanText.slice(-10); // Keep last 10 digits
+    }
+    fieldEl.value = cleanText;
+    speak("J'ai bien noté : " + cleanText + ". Passons à la suite.");
+    vRegIndex++;
+    setTimeout(askVoiceRegStep, 3000);
+  }
+}
+
+function finishVoiceRegistration() {
+  document.querySelectorAll('.highlight-field').forEach(el => el.classList.remove('highlight-field'));
+  speak("Merci ! J'ai toutes les informations. Vous pouvez maintenant valider votre inscription.");
+  toast('Inscription vocale terminée !', 'ok');
+  // Visual cue on submit button
+  const btn = document.querySelector('button[onclick="doRegister()"]');
+  if(btn) {
+    btn.classList.add('highlight-field');
+    btn.innerHTML = "✅ Cliquez ici pour finaliser";
+  }
+}
+
+/* ===================== UI HELPERS (REST OF APP) ===================== */
+function startPresentation(){
+  if(state.listening){ try{ _rec && _rec.stop(); }catch(e){} }
+  if(aiState.listening){ try{ aiState.rec.stop(); }catch(e){} }
+  if(!window.speechSynthesis){
+    showAudioOverlay(true);
+    document.getElementById('audio-title').textContent = PRESENTATION[0].titre;
+    document.getElementById('audio-text').textContent = PRESENTATION[0].texte + " (Synthèse vocale non supportée sur ce navigateur.)";
+    return;
+  }
+  audioState.currentIndex = 0; audioState.playing = true; audioState.paused = false;
+  showAudioOverlay(true); updateAudioUI(); playSegment(0);
+}
+function playSegment(index){
+  if(index >= PRESENTATION.length){ endPresentation(); return; }
+  audioState.currentIndex = index; audioState.playing = true; audioState.paused = false;
+  updateAudioUI();
+  try { window.speechSynthesis.cancel(); } catch(e){}
+  const seg = PRESENTATION[index];
+  const utter = new SpeechSynthesisUtterance(seg.titre.replace(/[^\w\sàâéèêëîïôöùûüçÀÂÉÈÊËÎÏÔÖÙÛÜÇ.,!?'-]/g,'') + '. ' + seg.texte);
+  utter.lang = 'fr-FR'; utter.rate = 0.95; utter.pitch = 1.05; utter.volume = 1;
+  const voice = getVoice(); if(voice) utter.voice = voice;
+  utter.onstart = () => { if(audioState.currentIndex === index){ audioState.paused = false; updateAudioUI(); } };
+  utter.onend = () => {
+    if(!audioState.playing || audioState.currentIndex !== index || audioState.paused) return;
+    setTimeout(() => { if(audioState.playing && !audioState.paused && audioState.currentIndex === index) playSegment(index + 1); }, 600);
+  };
+  utter.onerror = (e) => {
+    if(e.error === 'interrupted' || e.error === 'canceled') return;
+    setTimeout(() => { if(audioState.playing && audioState.currentIndex === index) playSegment(index + 1); }, 400);
+  };
+  audioState.utterance = utter;
+  try { window.speechSynthesis.speak(utter); } catch(e){}
+}
+function pausePresentation(){ if(!audioState.playing || audioState.paused) return; try{ window.speechSynthesis.pause(); }catch(e){} audioState.paused = true; updateAudioUI(); }
+function resumePresentation(){
+  if(!audioState.paused) return;
+  try {
+    if(window.speechSynthesis.paused){ window.speechSynthesis.resume(); audioState.paused = false; updateAudioUI(); }
+    else playSegment(audioState.currentIndex);
+  } catch(e){ playSegment(audioState.currentIndex); }
+}
+function togglePlayPause(){ if(!audioState.playing && !audioState.paused) startPresentation(); else if(audioState.paused) resumePresentation(); else pausePresentation(); }
+function stopPresentation(){ audioState.playing=false; audioState.paused=false; audioState.currentIndex=0; try{ window.speechSynthesis.cancel(); }catch(e){} showAudioOverlay(false); }
+function nextSegment(){ if(!audioState.playing && !audioState.paused) startPresentation(); else { try{ window.speechSynthesis.cancel(); }catch(e){} playSegment(Math.min(audioState.currentIndex + 1, PRESENTATION.length - 1)); } }
+function prevSegment(){ if(!audioState.playing && !audioState.paused) startPresentation(); else { try{ window.speechSynthesis.cancel(); }catch(e){} playSegment(Math.max(audioState.currentIndex - 1, 0)); } }
+function endPresentation(){ audioState.playing=false; audioState.paused=false; audioState.currentIndex=0; try{ window.speechSynthesis.cancel(); }catch(e){} showAudioOverlay(false); toast('🎉 Merci d\'avoir écouté !', 'ok', 4000); }
+function showAudioOverlay(show){
+  const overlay = document.getElementById('audio-overlay');
+  const fab = document.getElementById('audio-fab');
+  if(!overlay) return;
+  if(show){ overlay.classList.remove('hidden'); if(fab) fab.classList.add('hidden'); document.body.style.overflow='hidden'; }
+  else { overlay.classList.add('hidden'); overlay.classList.remove('playing'); document.body.style.overflow=''; updateFabVisibility(); }
+}
+function updateAudioUI(){
+  const step = document.getElementById('audio-step'), title = document.getElementById('audio-title'), text = document.getElementById('audio-text'), bar = document.getElementById('audio-progress-bar'), dots = document.getElementById('audio-dots'), playBtn = document.getElementById('audio-play-btn'), overlay = document.getElementById('audio-overlay');
+  const seg = PRESENTATION[audioState.currentIndex]; if(!seg) return;
+  if(step) step.textContent = `${audioState.currentIndex + 1} / ${PRESENTATION.length}`;
+  if(title) title.textContent = seg.titre;
+  if(text) text.textContent = seg.texte;
+  if(bar) bar.style.width = `${((audioState.currentIndex + 1) / PRESENTATION.length) * 100}%`;
+  if(dots) dots.innerHTML = PRESENTATION.map((_, i) => `<div class="audio-dot ${i < audioState.currentIndex ? 'done' : ''} ${i === audioState.currentIndex ? 'active' : ''}"></div>`).join('');
+  if(playBtn) playBtn.textContent = audioState.paused ? '▶️' : '⏸️';
+  if(overlay) audioState.playing && !audioState.paused ? overlay.classList.add('playing') : overlay.classList.remove('playing');
+}
+function updateFabVisibility(){
+  const fab = document.getElementById('audio-fab'); if(!fab) return;
+  const showOn = ['home', 'client', 'register'].includes(state.page);
+  showOn && !audioState.playing && !audioState.paused ? fab.classList.remove('hidden') : fab.classList.add('hidden');
+}
+window.addEventListener('beforeunload', () => { stopAllAudio(); });
+
 const PAGES = {
-  home: {render: renderHome, public: true, label:'🏠 Accueil'},
-  login: {render: renderLogin, public: true, label:'🔐 Connexion'},
-  register: {render: renderRegister, public: true, label:'📝 Inscription'},
+  home: {render: renderHome, label:'🏠 Accueil'},
+  login: {render: renderLogin, label:'🔐 Connexion'},
+  register: {render: renderRegister, label:'📝 Inscription'},
   client: {render: renderClient, label:'📱 Commander'},
   serveuse: {render: renderServeuse, roles:['serveuse','admin'], label:'🎙️ Commandes'},
   cashier: {render: renderCashier, roles:['caissier','admin'], label:'💰 Caisse'},
@@ -384,194 +838,123 @@ const PAGES = {
 };
 
 function render(){
-  renderNav();
-  const page = PAGES[state.page] || PAGES.home;
-  if(page.roles && (!state.user || !page.roles.includes(state.user.role))){
-    toast('Accès refusé — connectez-vous','err');
-    navigate(state.user ? 'home' : 'login');
-    return;
+  try {
+    renderNav();
+    const page = PAGES[state.page] || PAGES.home;
+    if(page.roles && (!state.user || !page.roles.includes(state.user.role))){ toast('Accès refusé','err'); navigate('login'); return; }
+    const root = document.getElementById('main');
+    if(root) { root.innerHTML = ''; page.render(root); }
+    updateFabVisibility();
+  } catch(e){
+    document.getElementById('main').innerHTML = `<div class="container"><div class="card center"><h2>⚠️ Erreur</h2><p>${esc(e.message)}</p><button class="btn mt-12" onclick="location.reload()">Recharger</button></div></div>`;
   }
-  document.getElementById('main').innerHTML = '';
-  page.render(document.getElementById('main'));
 }
 
-/* ===================== NAVBAR ===================== */
 function renderNav(){
-  const nav = document.getElementById('nav');
-  let html = `<div class="brand">🍢 VENISE</div>`;
+  const nav = document.getElementById('nav'); if(!nav) return;
+  let html = `<div class="brand"><svg class="logo-svg"><use href="#venise-logo"/></svg> VENISE</div>`;
   const pages = state.user
-    ? Object.entries(PAGES).filter(([k,p])=>{
-        if(k==='login'||k==='register') return false;
-        if(p.roles && !p.roles.includes(state.user.role)) return false;
-        return true;
-      })
+    ? Object.entries(PAGES).filter(([k,p])=>{ if(k==='login'||k==='register') return false; if(p.roles && !p.roles.includes(state.user.role)) return false; return true; })
     : [['home','🏠 Accueil'],['login','🔐 Connexion'],['register','📝 Inscription'],['client','📱 Commander']];
-  pages.forEach(([k,label])=>{
-    html += `<a href="#${k}" class="${state.page===k?'active':''}">${label}</a>`;
-  });
+  pages.forEach(([k,label])=>{ html += `<a href="#${k}" class="${state.page===k?'active':''}">${label}</a>`; });
   html += `<div class="spacer"></div>`;
-  html += `<span class="pill" style="background:rgba(255,255,255,.2);color:#fff">${navigator.onLine?'<span class="dot on"></span>En ligne':'<span class="dot off"></span>Hors-ligne'}</span>`;
-  if(state.user){
-    html += `<span class="user">👤 ${esc(state.user.name)} (${state.user.role})</span>`;
-    html += `<button class="nbtn" onclick="logout()">Quitter</button>`;
-  }
+  html += `<span class="pill" style="background:rgba(255,255,255,.2);color:#fff;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:800;display:inline-flex;align-items:center;gap:4px">${navigator.onLine?'<span class="dot on"></span> En ligne':'<span class="dot off"></span> Hors-ligne'}</span>`;
+  if(state.user){ html += `<span class="user">👤 ${esc(state.user.name)}</span><button class="nbtn" onclick="logout()">Quitter</button>`; }
   nav.innerHTML = html;
   nav.querySelectorAll('a').forEach(a=>a.onclick=(e)=>{ e.preventDefault(); navigate(a.getAttribute('href').slice(1)); });
 }
 
-/* ===================== HOME ===================== */
 function renderHome(root){
   const promo = db.promos.filter(p=>p.active).slice(0,3);
   const videoUrl = HERO_VIDEOS[Math.floor(Math.random()*HERO_VIDEOS.length)];
+  const upcomingEvents = db.events.filter(e => new Date(e.date) >= new Date(new Date().setHours(0,0,0,0))).sort((a,b)=>new Date(a.date)-new Date(b.date)).slice(0,2);
+  let eventsHtml = '';
+  if(upcomingEvents.length > 0) {
+    eventsHtml = upcomingEvents.map(e => {
+      const d = new Date(e.date);
+      const day = d.getDate();
+      const month = d.toLocaleString('fr-FR', { month: 'short' });
+      return `<div class="event-banner"><div class="date-badge"><span>${day}</span><small>${month}</small></div><div class="info"><h4>${esc(e.title)}</h4><p>${esc(e.description)}</p></div></div>`;
+    }).join('');
+  }
   root.innerHTML = `
     <div class="container">
       <div class="hero">
-        <video autoplay muted loop playsinline poster="${MENU_IMG.poulet}">
-          <source src="${videoUrl}" type="video/mp4">
-        </video>
-        <h1>Bienvenue au Maquis Venise 🍢</h1>
+        <video autoplay muted loop playsinline poster="${MENU_IMG.poulet}"><source src="${videoUrl}" type="video/mp4"></video>
+        <div style="position:relative;z-index:2;margin-bottom:20px"><svg class="logo-hero"><use href="#venise-logo"/></svg></div>
+        <h1>Bienvenue au Maquis Venise</h1>
         <p>Riviera 4 M'Pouto — Commandez à l'avance, régalez-vous sur place.<br>Factures, reçus, paiement Mobile Money, tout est prêt.</p>
         <div class="actions">
           <button class="btn btn-green" onclick="navigate('client')">📱 Commander maintenant</button>
+          <button class="btn" style="background:linear-gradient(180deg,#FBBF24,#EA580C)" onclick="startPresentation()">🎧 Écouter la présentation</button>
           <button class="btn btn-ghost" style="color:#fff;border-color:#fff" onclick="navigate('login')">🔐 Espace équipe</button>
         </div>
       </div>
-
-      ${promo.length ? `
-      <h2 style="color:var(--bois);margin-bottom:14px;font-size:24px">🎉 Promos du moment</h2>
-      <div class="grid-2" style="margin-bottom:24px">
-        ${promo.map(p=>`
-          <div class="card">
-            <div class="card-title">${esc(p.title)}</div>
-            <p style="color:var(--grey);margin-bottom:10px;font-size:14px">${esc(p.description||'')}</p>
-            ${p.media_type==='video' && p.media_url
-              ? `<video src="${esc(p.media_url)}" controls style="width:100%;border-radius:12px"></video>`
-              : p.media_url
-              ? `<img src="${esc(p.media_url)}" alt="" style="width:100%;border-radius:12px;max-height:220px;object-fit:cover">`
-              : ''}
-          </div>`).join('')}
-      </div>` : ''}
-
-      <h2 style="color:var(--bois);margin-bottom:14px;font-size:24px">📋 Notre carte</h2>
-      <div class="grid">
-        ${db.menu.filter(m=>m.available).slice(0,8).map(m=>`
-          <div class="menu-card" onclick="quickAdd(${m.id})">
-            <span class="cat">${esc(m.category)}</span>
-            <div class="img">${m.image?`<img src="${esc(m.image)}" onerror="this.style.display='none';this.parentElement.innerHTML='🍢'">`:'🍢'}</div>
-            <div class="body">
-              <div class="name">${esc(m.name)}</div>
-              <div class="price">${fmt(m.price)} F</div>
-            </div>
-          </div>`).join('')}
-      </div>
-
-      <div class="card mt-20" style="background:linear-gradient(135deg,var(--creme-2),var(--jaune));border:none">
-        <div class="card-title">🚀 Comment ça marche ?</div>
-        <div class="grid-2" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
-          <div><strong>1. 📱 Commandez</strong><p class="text-muted">Depuis chez vous ou à table, en 2 minutes.</p></div>
-          <div><strong>2. 🎙️ Ou dictez</strong><p class="text-muted">Parlez, on vous comprend. Zéro lecture requise.</p></div>
-          <div><strong>3. 💳 Payez</strong><p class="text-muted">Cash ou Mobile Money (Orange, MTN, Moov, Wave).</p></div>
-          <div><strong>4. 🧾 Recevez</strong><p class="text-muted">Reçu PDF immédiat, conforme DGI.</p></div>
+      ${eventsHtml}
+      <div class="card" style="background:linear-gradient(135deg,#7C2D12,#EA580C);color:#fff;border:none">
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+          <div style="font-size:72px;line-height:1;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3))">🎧</div>
+          <div style="flex:1;min-width:220px">
+            <h3 style="color:var(--jaune);font-size:24px;margin-bottom:8px">Découvrez Venise en audio</h3>
+            <p style="opacity:.95;margin-bottom:14px;font-size:15px">2 minutes pour tout savoir : le maquis, les plats, et comment commander en parlant.</p>
+            <button class="btn" style="background:linear-gradient(180deg,#FBBF24,#D97706);color:var(--bois);font-weight:900" onclick="startPresentation()">▶️ Lancer la présentation audio</button>
+          </div>
         </div>
       </div>
+      ${promo.length ? `<h2 style="color:var(--bois);margin-bottom:14px;font-size:24px">🎉 Promos du moment</h2><div class="grid-2" style="margin-bottom:24px">${promo.map(p=>`<div class="card"><div class="card-title">${esc(p.title)}</div><p style="color:var(--grey);margin-bottom:10px;font-size:14px">${esc(p.description||'')}</p>${p.media_type==='video' && p.media_url ? `<video src="${esc(p.media_url)}" controls style="width:100%;border-radius:12px"></video>` : p.media_url ? `<img src="${esc(p.media_url)}" alt="" style="width:100%;border-radius:12px;max-height:220px;object-fit:cover">` : ''}</div>`).join('')}</div>` : ''}
+      <h2 style="color:var(--bois);margin-bottom:14px;font-size:24px">📋 Notre carte</h2>
+      <div class="grid">${db.menu.filter(m=>m.available).slice(0,12).map(m=>`<div class="menu-card" onclick="quickAdd(${m.id})"><span class="cat">${esc(m.category)}</span><div class="img">${m.image?`<img src="${esc(m.image)}" onerror="this.style.display='none';this.parentElement.innerHTML='🍢'">`:'🍢'}</div><div class="body"><div class="name">${esc(m.name)}</div><div class="price">${fmt(m.price)} F</div></div></div>`).join('')}</div>
     </div>
   `;
 }
-
 function quickAdd(menuId){
-  const m = db.menu.find(x=>x.id===menuId);
-  if(!m) return;
+  const m = db.menu.find(x=>x.id===menuId); if(!m) return;
   if(!state.user){ navigate('client'); return; }
   const existing = state.cart.find(x=>x.menu_id===m.id);
-  if(existing) existing.qty++;
-  else state.cart.push({menu_id:m.id, name:m.name, price:m.price, qty:1});
+  if(existing) existing.qty++; else state.cart.push({menu_id:m.id, name:m.name, price:m.price, qty:1});
   toast(`${m.name} ajouté au panier`);
 }
 
-/* ===================== LOGIN ===================== */
 function renderLogin(root){
-  root.innerHTML = `
-    <div class="container-narrow">
-      <div class="card">
-        <h2 style="color:var(--bois);margin-bottom:8px">🔐 Connexion équipe</h2>
-        <p class="text-muted" style="margin-bottom:20px">Sélectionnez votre profil puis entrez votre code PIN.</p>
-        <div id="login-users"></div>
-        <div id="login-pin" class="hidden">
-          <div id="pin-user" style="text-align:center;font-size:20px;font-weight:800;color:var(--orange-d);margin-bottom:16px"></div>
-          <div id="pin-display" style="text-align:center;font-size:44px;letter-spacing:14px;font-weight:900;color:var(--orange);margin-bottom:20px;min-height:56px">_</div>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px">
-            ${[1,2,3,4,5,6,7,8,9].map(n=>`<button class="btn btn-sm" style="padding:18px;font-size:22px" onclick="pinPress('${n}')">${n}</button>`).join('')}
-            <button class="btn btn-sm" style="padding:18px;font-size:16px;background:#9CA3AF;box-shadow:none" onclick="pinPress('C')">C</button>
-            <button class="btn btn-sm" style="padding:18px;font-size:22px" onclick="pinPress('0')">0</button>
-            <button class="btn btn-sm btn-green" style="padding:18px;font-size:18px" onclick="pinSubmit()">✓</button>
-          </div>
-          <button class="btn btn-ghost btn-block" onclick="cancelLogin()">← Changer d'utilisateur</button>
-        </div>
-      </div>
-    </div>
-  `;
+  root.innerHTML = `<div class="container-narrow"><div class="card"><div class="center" style="margin-bottom:20px"><svg style="height:80px"><use href="#venise-logo"/></svg></div><h2 style="color:var(--bois);margin-bottom:8px;text-align:center">🔐 Connexion équipe</h2><p class="text-muted" style="margin-bottom:20px;text-align:center">Sélectionnez votre profil</p><div id="login-users"></div><div id="login-pin" class="hidden"><div id="pin-user" style="text-align:center;font-size:20px;font-weight:800;color:var(--orange-d);margin-bottom:16px"></div><div id="pin-display" style="text-align:center;font-size:44px;letter-spacing:14px;font-weight:900;color:var(--orange);margin-bottom:20px;min-height:56px">_</div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px">${[1,2,3,4,5,6,7,8,9].map(n=>`<button class="btn btn-sm" style="padding:18px;font-size:22px" onclick="pinPress('${n}')">${n}</button>`).join('')}<button class="btn btn-sm" style="padding:18px;font-size:16px;background:#9CA3AF;box-shadow:none" onclick="pinPress('C')">C</button><button class="btn btn-sm" style="padding:18px;font-size:22px" onclick="pinPress('0')">0</button><button class="btn btn-sm btn-green" style="padding:18px;font-size:18px" onclick="pinSubmit()">✓</button></div><button class="btn btn-ghost btn-block" onclick="cancelLogin()">← Changer d'utilisateur</button></div></div></div>`;
   renderLoginUsers();
 }
-
 let _pinBuf = '', _pinUser = null;
 function renderLoginUsers(){
-  const wrap = document.getElementById('login-users');
-  if(!wrap) return;
-  wrap.innerHTML = db.users.filter(u=>u.active!==false).map(u=>`
-    <button class="btn btn-block" style="margin-bottom:10px;font-size:16px" onclick="selectLoginUser(${u.id})">
-      ${u.role==='admin'?'👔':u.role==='caissier'?'💰':'🍽️'} ${esc(u.name)}
-    </button>`).join('');
+  const wrap = document.getElementById('login-users'); if(!wrap) return;
+  wrap.innerHTML = db.users.map(u=>`<button class="btn btn-block" style="margin-bottom:10px;font-size:16px" onclick="selectLoginUser(${u.id})">${u.role==='admin'?'👔':u.role==='caissier'?'💰':'🍽️'} ${esc(u.name)}</button>`).join('');
 }
-function selectLoginUser(id){
-  _pinUser = id; _pinBuf = '';
-  document.getElementById('login-users').classList.add('hidden');
-  document.getElementById('login-pin').classList.remove('hidden');
-  const u = db.users.find(x=>x.id===id);
-  document.getElementById('pin-user').textContent = u.name;
-  updatePinDisplay();
-}
-function cancelLogin(){
-  _pinUser=null; _pinBuf='';
-  document.getElementById('login-users').classList.remove('hidden');
-  document.getElementById('login-pin').classList.add('hidden');
-}
-function pinPress(n){
-  if(n==='C'){ _pinBuf=''; }
-  else if(_pinBuf.length<4){ _pinBuf += n; }
-  updatePinDisplay();
-  if(_pinBuf.length===4) setTimeout(pinSubmit, 150);
-}
-function updatePinDisplay(){
-  const d = document.getElementById('pin-display');
-  if(!d) return;
-  d.textContent = _pinBuf ? '•'.repeat(_pinBuf.length) : '_';
-}
-function pinSubmit(){
-  if(!_pinUser || _pinBuf.length!==4) return;
-  if(loginPin(_pinUser, _pinBuf)){ _pinBuf=''; _pinUser=null; }
-  else { _pinBuf=''; updatePinDisplay(); }
-}
+function selectLoginUser(id){ _pinUser = id; _pinBuf = ''; document.getElementById('login-users').classList.add('hidden'); document.getElementById('login-pin').classList.remove('hidden'); const u = db.users.find(x=>x.id===id); document.getElementById('pin-user').textContent = u.name; updatePinDisplay(); }
+function cancelLogin(){ _pinUser=null; _pinBuf=''; document.getElementById('login-users').classList.remove('hidden'); document.getElementById('login-pin').classList.add('hidden'); }
+function pinPress(n){ if(n==='C'){ _pinBuf=''; } else if(_pinBuf.length<4){ _pinBuf += n; } updatePinDisplay(); if(_pinBuf.length===4) setTimeout(pinSubmit, 150); }
+function updatePinDisplay(){ const d = document.getElementById('pin-display'); if(!d) return; d.textContent = _pinBuf ? '•'.repeat(_pinBuf.length) : '_'; }
+function pinSubmit(){ if(!_pinUser || _pinBuf.length!==4) return; if(loginPin(_pinUser, _pinBuf)){ _pinBuf=''; _pinUser=null; } else { _pinBuf=''; updatePinDisplay(); } }
 
-/* ===================== REGISTER (CLIENT) ===================== */
 function renderRegister(root){
   root.innerHTML = `
     <div class="container-narrow">
       <div class="card">
         <h2 style="color:var(--bois);margin-bottom:8px">📝 Inscrivez-vous</h2>
         <p class="text-muted" style="margin-bottom:20px">Recevez vos points fidélité, vos promos et commandez plus vite.</p>
+        
+        <button class="btn btn-block mt-12" style="background:linear-gradient(180deg,#7C2D12,#C2410C);color:#fff;margin-bottom:20px" onclick="startVoiceRegistration()">
+          🎙️ S'inscrire par la voix (Sans écrire)
+        </button>
+
         <label class="label">Nom complet *</label>
         <input class="input" id="reg-name" placeholder="Ex : Awa Koné">
+        
         <label class="label">Téléphone *</label>
         <input class="input" id="reg-phone" type="tel" placeholder="Ex : 0700000000">
+        
         <label class="label">Adresse (facultatif)</label>
         <input class="input" id="reg-address" placeholder="Quartier, repère">
+        
         <div style="display:flex;gap:10px;align-items:flex-start;margin:14px 0;font-size:13px">
           <input type="checkbox" id="reg-consent" style="margin-top:3px">
-          <label for="reg-consent" class="text-muted">
-            J'accepte que Maquis Venise conserve mes coordonnées pour me contacter (promos, commandes).
-            Conformément à la loi ivoirienne 2013-450, je peux demander la suppression à tout moment.
-          </label>
+          <label for="reg-consent" class="text-muted">J'accepte que Maquis Venise conserve mes coordonnées pour me contacter (promos, commandes). Conformément à la loi ivoirienne 2013-450.</label>
         </div>
+        
         <button class="btn btn-green btn-block" onclick="doRegister()">✅ Créer mon compte</button>
         <p class="text-muted mt-12" style="text-align:center">Déjà inscrit ? <a href="#login" style="color:var(--orange);font-weight:700" onclick="event.preventDefault();navigate('login')">Connectez-vous</a></p>
       </div>
@@ -579,1041 +962,249 @@ function renderRegister(root){
   `;
 }
 function doRegister(){
-  const name = document.getElementById('reg-name').value.trim();
-  const phone = document.getElementById('reg-phone').value.trim();
-  const address = document.getElementById('reg-address').value.trim();
-  const consent = document.getElementById('reg-consent').checked;
+  const name = document.getElementById('reg-name').value.trim(), phone = document.getElementById('reg-phone').value.trim(), address = document.getElementById('reg-address').value.trim(), consent = document.getElementById('reg-consent').checked;
   if(!name || !phone){ toast('Nom et téléphone obligatoires','err'); return; }
   if(!consent){ toast('Vous devez accepter les conditions','err'); return; }
   if(db.clients.find(c=>c.phone===phone)){ toast('Ce numéro est déjà inscrit','err'); return; }
   const c = { id:nextId(db.clients), name, phone, address, points:0, credit_owed:0, credit_limit:0, consent:true, created_at:new Date().toISOString() };
-  db.clients.push(c);
-  audit(null, 'client_register', 'clients', c.id, {name, phone});
-  save();
-  toast('✅ Inscription réussie ! Bienvenue ' + name);
-  navigate('client');
+  db.clients.push(c); audit(null, 'client_register', 'clients', c.id, {name, phone}); save(); toast('✅ Inscription réussie ! Bienvenue ' + name); navigate('client');
 }
 
-/* ===================== CLIENT (commande) ===================== */
 function renderClient(root){
   const cats = [...new Set(db.menu.filter(m=>m.available).map(m=>m.category))];
-  root.innerHTML = `
-    <div class="container">
-      <div class="card" style="background:linear-gradient(135deg,var(--orange-l),var(--orange-d));color:#fff;border:none">
-        <h2 style="font-size:26px;margin-bottom:6px">📱 Commandez chez Venise</h2>
-        <p style="opacity:.95">Choisissez vos plats, on prépare, vous récupérez ou mangez sur place.</p>
-      </div>
-
-      <div class="card">
-        <label class="label">Numéro de table (si sur place)</label>
-        <input class="input" id="client-table" placeholder="Ex: 4" value="${state._clientTable||''}">
-      </div>
-
-      ${cats.map(cat=>`
-        <h3 style="color:var(--bois);margin:20px 0 12px;font-size:20px">${esc(cat)}</h3>
-        <div class="grid">
-          ${db.menu.filter(m=>m.available && m.category===cat).map(m=>`
-            <div class="menu-card" onclick="clientAdd(${m.id})">
-              <div class="img">${m.image?`<img src="${esc(m.image)}" onerror="this.style.display='none';this.parentElement.innerHTML='🍢'">`:'🍢'}</div>
-              <div class="body">
-                <div class="name">${esc(m.name)}</div>
-                <div class="price">${fmt(m.price)} F</div>
-              </div>
-            </div>`).join('')}
-        </div>
-      `).join('')}
-
-      <div id="client-cart" class="mt-20"></div>
-    </div>
-  `;
+  root.innerHTML = `<div class="container"><div class="card" style="background:linear-gradient(135deg,var(--orange-l),var(--orange-d));color:#fff;border:none"><h2 style="font-size:26px;margin-bottom:6px">📱 Commandez chez Venise</h2><p style="opacity:.95">Choisissez vos plats, on prépare, vous récupérez ou mangez sur place.</p></div><div class="card"><label class="label">Numéro de table (si sur place)</label><input class="input" id="client-table" placeholder="Ex: 4" value="${state._clientTable||''}"></div>${cats.map(cat=>`<h3 style="color:var(--bois);margin:20px 0 12px;font-size:20px">${esc(cat)}</h3><div class="grid">${db.menu.filter(m=>m.available && m.category===cat).map(m=>`<div class="menu-card" onclick="clientAdd(${m.id})"><div class="img">${m.image?`<img src="${esc(m.image)}" onerror="this.style.display='none';this.parentElement.innerHTML='🍢'">`:'🍢'}</div><div class="body"><div class="name">${esc(m.name)}</div><div class="price">${fmt(m.price)} F</div></div></div>`).join('')}</div>`).join('')}<div id="client-cart" class="mt-20"></div></div>`;
   renderClientCart();
 }
-function clientAdd(id){
-  const m = db.menu.find(x=>x.id===id); if(!m) return;
-  const e = state.cart.find(x=>x.menu_id===id);
-  if(e) e.qty++; else state.cart.push({menu_id:id, name:m.name, price:m.price, qty:1});
-  renderClientCart();
-  toast(m.name + ' ajouté');
-}
-function clientRemove(idx){
-  state.cart.splice(idx,1);
-  renderClientCart();
-}
+function clientAdd(id){ const m = db.menu.find(x=>x.id===id); if(!m) return; const e = state.cart.find(x=>x.menu_id===id); if(e) e.qty++; else state.cart.push({menu_id:id, name:m.name, price:m.price, qty:1}); renderClientCart(); toast(m.name + ' ajouté'); }
+function clientRemove(idx){ state.cart.splice(idx,1); renderClientCart(); }
 function renderClientCart(){
-  const el = document.getElementById('client-cart');
-  if(!el) return;
-  if(!state.cart.length){
-    el.innerHTML = `<div class="card center text-muted">🛒 Votre panier est vide</div>`;
-    return;
-  }
+  const el = document.getElementById('client-cart'); if(!el) return;
+  if(!state.cart.length){ el.innerHTML = `<div class="card center text-muted">🛒 Votre panier est vide</div>`; return; }
   const total = state.cart.reduce((s,i)=>s+i.price*i.qty,0);
-  el.innerHTML = `
-    <div class="card">
-      <div class="card-title">🛒 Votre panier</div>
-      ${state.cart.map((it,i)=>`
-        <div class="flex justify-between items-center" style="padding:10px 0;border-bottom:1px solid var(--creme-2)">
-          <span><strong>${it.qty}×</strong> ${esc(it.name)}</span>
-          <span class="flex gap-8 items-center">
-            <strong>${fmt(it.price*it.qty)} F</strong>
-            <button class="btn btn-sm btn-red" onclick="clientRemove(${i})">✕</button>
-          </span>
-        </div>`).join('')}
-      <div style="margin-top:14px;font-size:22px;font-weight:900;color:var(--orange-d);text-align:right">Total : ${fmt(total)} FCFA</div>
-      <button class="btn btn-green btn-block mt-12" onclick="clientSend()">✅ Envoyer ma commande</button>
-      <p class="text-muted mt-12 center" style="font-size:12px">Paiement : cash ou Mobile Money à la caisse</p>
-    </div>
-  `;
+  el.innerHTML = `<div class="card"><div class="card-title">🛒 Votre panier</div>${state.cart.map((it,i)=>`<div class="flex justify-between items-center" style="padding:10px 0;border-bottom:1px solid var(--creme-2)"><span><strong>${it.qty}×</strong> ${esc(it.name)}</span><span class="flex gap-8 items-center"><strong>${fmt(it.price*it.qty)} F</strong><button class="btn btn-sm btn-red" onclick="clientRemove(${i})">✕</button></span></div>`).join('')}<div style="margin-top:14px;font-size:22px;font-weight:900;color:var(--orange-d);text-align:right">Total : ${fmt(total)} FCFA</div><button class="btn btn-green btn-block mt-12" onclick="clientSend()">✅ Envoyer ma commande</button></div>`;
 }
 function clientSend(){
   if(!state.cart.length) return;
   const table = (document.getElementById('client-table')?.value||'').trim() || 'client';
   const total = state.cart.reduce((s,i)=>s+i.price*i.qty,0);
-  const order = {
-    id: nextId(db.orders),
-    client_id: null,
-    user_id: null,
-    table_no: table,
-    status: 'pending',
-    total, payment_method: null, payment_status: 'unpaid',
-    items: state.cart.map(i=>({...i})),
-    created_at: new Date().toISOString()
-  };
-  db.orders.push(order);
-  audit(null, 'client_order', 'orders', order.id, {total});
-  save();
-  state.cart = [];
-  renderClientCart();
-  toast('✅ Commande envoyée ! Nous préparons');
-  speak('Commande envoyée. Merci !');
+  const order = { id: nextId(db.orders), client_id:null, user_id:null, table_no:table, status:'pending', total, payment_method:null, payment_status:'unpaid', items: state.cart.map(i=>({...i})), created_at:new Date().toISOString() };
+  db.orders.push(order); audit(null, 'client_order', 'orders', order.id, {total}); save(); state.cart = []; renderClientCart(); toast('✅ Commande envoyée !'); speak('Commande envoyée. Merci !');
 }
 
-/* ===================== SERVEUSE (voix + tactile) ===================== */
 let _rec = null;
 function renderServeuse(root){
-  root.innerHTML = `
-    <div class="container">
-      <div class="card">
-        <label class="label">Numéro de table</label>
-        <input class="input" id="serveuse-table" placeholder="Ex: 4" value="${state._serveuseTable||''}">
-      </div>
-      <div class="grid-2">
-        <div class="card center">
-          <button class="voice-btn" id="voice-btn" onclick="toggleVoice()">🎙️<span>Parler</span></button>
-          <p id="voice-status" class="text-muted mt-12">Appuyez et dictez la commande</p>
-          <button class="btn btn-ghost btn-block mt-12" onclick="toggleMenuGrid()">📋 Menu tactile</button>
-        </div>
-        <div>
-          <div class="card">
-            <div class="card-title">🗣️ Ce que j'ai entendu</div>
-            <p id="voice-transcript" style="font-size:18px;color:var(--orange-d);min-height:24px">—</p>
-          </div>
-          <div id="serveuse-cart"></div>
-        </div>
-      </div>
-      <div id="serveuse-menu" class="hidden mt-20">
-        <div class="card">
-          <div class="card-title">📋 Touchez pour ajouter</div>
-          <div class="grid">
-            ${db.menu.filter(m=>m.available).map(m=>`
-              <div class="menu-card" onclick="clientAdd(${m.id});renderServeuseCart()">
-                <div class="img">${m.image?`<img src="${esc(m.image)}" onerror="this.style.display='none';this.parentElement.innerHTML='🍢'">`:'🍢'}</div>
-                <div class="body">
-                  <div class="name">${esc(m.name)}</div>
-                  <div class="price">${fmt(m.price)} F</div>
-                </div>
-              </div>`).join('')}
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
+  root.innerHTML = `<div class="container"><div class="card"><label class="label">Numéro de table</label><input class="input" id="serveuse-table" placeholder="Ex: 4" value="${state._serveuseTable||''}"></div><div class="grid-2"><div class="card center"><button class="voice-btn" id="voice-btn" onclick="toggleVoice()">🎙️<span>Parler</span></button><p id="voice-status" class="text-muted mt-12">Appuyez et dictez la commande</p><button class="btn btn-ghost btn-block mt-12" onclick="toggleMenuGrid()">📋 Menu tactile</button></div><div><div class="card"><div class="card-title">🗣️ Ce que j'ai entendu</div><p id="voice-transcript" style="font-size:18px;color:var(--orange-d);min-height:24px">—</p></div><div id="serveuse-cart"></div></div></div><div id="serveuse-menu" class="hidden mt-20"><div class="card"><div class="card-title">📋 Touchez pour ajouter</div><div class="grid">${db.menu.filter(m=>m.available).map(m=>`<div class="menu-card" onclick="clientAdd(${m.id});renderServeuseCart()"><div class="img">${m.image?`<img src="${esc(m.image)}" onerror="this.style.display='none';this.parentElement.innerHTML='🍢'">`:'🍢'}</div><div class="body"><div class="name">${esc(m.name)}</div><div class="price">${fmt(m.price)} F</div></div></div>`).join('')}</div></div></div></div>`;
   renderServeuseCart();
 }
-function toggleMenuGrid(){
-  document.getElementById('serveuse-menu').classList.toggle('hidden');
-}
+function toggleMenuGrid(){ document.getElementById('serveuse-menu').classList.toggle('hidden'); }
 function renderServeuseCart(){
-  const el = document.getElementById('serveuse-cart');
-  if(!el) return;
-  if(!state.cart.length){
-    el.innerHTML = `<div class="card center text-muted">🛒 Panier vide</div>`;
-    return;
-  }
+  const el = document.getElementById('serveuse-cart'); if(!el) return;
+  if(!state.cart.length){ el.innerHTML = `<div class="card center text-muted">🛒 Panier vide</div>`; return; }
   const total = state.cart.reduce((s,i)=>s+i.price*i.qty,0);
-  el.innerHTML = `
-    <div class="card">
-      <div class="card-title">🛒 Panier</div>
-      ${state.cart.map((it,i)=>`
-        <div class="flex justify-between items-center" style="padding:10px 0;border-bottom:1px solid var(--creme-2)">
-          <span><strong>${it.qty}×</strong> ${esc(it.name)}</span>
-          <span class="flex gap-8 items-center">
-            <strong>${fmt(it.price*it.qty)} F</strong>
-            <button class="btn btn-sm btn-red" onclick="clientRemove(${i});renderServeuseCart()">✕</button>
-          </span>
-        </div>`).join('')}
-      <div style="margin-top:14px;font-size:22px;font-weight:900;color:var(--orange-d);text-align:right">Total : ${fmt(total)} FCFA</div>
-      <button class="btn btn-green btn-block mt-12" onclick="serveuseSend()">✅ Envoyer</button>
-    </div>
-  `;
+  el.innerHTML = `<div class="card"><div class="card-title">🛒 Panier</div>${state.cart.map((it,i)=>`<div class="flex justify-between items-center" style="padding:10px 0;border-bottom:1px solid var(--creme-2)"><span><strong>${it.qty}×</strong> ${esc(it.name)}</span><span class="flex gap-8 items-center"><strong>${fmt(it.price*it.qty)} F</strong><button class="btn btn-sm btn-red" onclick="clientRemove(${i});renderServeuseCart()">✕</button></span></div>`).join('')}<div style="margin-top:14px;font-size:22px;font-weight:900;color:var(--orange-d);text-align:right">Total : ${fmt(total)} FCFA</div><button class="btn btn-green btn-block mt-12" onclick="serveuseSend()">✅ Envoyer</button></div>`;
 }
 function serveuseSend(){
   if(!state.cart.length) return;
   const table = (document.getElementById('serveuse-table')?.value||'').trim() || 'serveuse';
   const total = state.cart.reduce((s,i)=>s+i.price*i.qty,0);
-  const order = {
-    id: nextId(db.orders),
-    client_id: null, user_id: state.user.id,
-    table_no: table, status:'pending', total,
-    payment_method:null, payment_status:'unpaid',
-    items: state.cart.map(i=>({...i})),
-    created_at: new Date().toISOString()
-  };
-  db.orders.push(order);
-  audit(state.user.id, 'create_order', 'orders', order.id, {total});
-  save();
-  state.cart = [];
-  renderServeuseCart();
-  speak(`Commande envoyée. Total ${total} francs.`);
-  toast('✅ Commande envoyée');
+  const order = { id: nextId(db.orders), client_id:null, user_id:state.user.id, table_no:table, status:'pending', total, payment_method:null, payment_status:'unpaid', items: state.cart.map(i=>({...i})), created_at:new Date().toISOString() };
+  db.orders.push(order); audit(state.user.id, 'create_order', 'orders', order.id, {total}); save(); state.cart = []; renderServeuseCart(); speak(`Commande envoyée. Total ${total} francs.`); toast('✅ Commande envoyée');
 }
 function toggleVoice(){
-  if(state.listening){
-    try{ _rec && _rec.stop(); }catch(e){}
-    return;
-  }
+  if(state.listening){ try{ _rec && _rec.stop(); }catch(e){} return; }
+  if(audioState.playing || audioState.paused){ toast('Arrêtez la présentation audio d\'abord','err'); return; }
+  if(aiState.listening){ toast('L\'assistant écoute, veuillez patienter','err'); return; }
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if(!SR){ toast('Reconnaissance vocale non supportée. Utilisez Chrome ou Edge.','err'); return; }
-  _rec = new SR();
-  _rec.lang='fr-FR'; _rec.continuous=false; _rec.interimResults=true;
+  _rec = new SR(); _rec.lang='fr-FR'; _rec.continuous=false; _rec.interimResults=true;
   _rec.onstart = ()=>{ state.listening=true; updateVoiceBtn(); };
   _rec.onend = ()=>{ state.listening=false; updateVoiceBtn(); };
   _rec.onerror = (e)=>{ state.listening=false; updateVoiceBtn(); toast('Erreur micro : '+e.error,'err'); };
   _rec.onresult = (e)=>{
     let finalText='', interim='';
-    for(let i=e.resultIndex;i<e.results.length;i++){
-      if(e.results[i].isFinal) finalText += e.results[i][0].transcript;
-      else interim += e.results[i][0].transcript;
-    }
-    document.getElementById('voice-transcript').textContent = finalText || interim || '—';
+    for(let i=e.resultIndex;i<e.results.length;i++){ if(e.results[i].isFinal) finalText += e.results[i][0].transcript; else interim += e.results[i][0].transcript; }
+    const tEl = document.getElementById('voice-transcript'); if(tEl) tEl.textContent = finalText || interim || '—';
     if(finalText) parseVoice(finalText);
   };
   try{ _rec.start(); }catch(e){ toast('Micro déjà actif','err'); }
 }
-function updateVoiceBtn(){
-  const b = document.getElementById('voice-btn');
-  const s = document.getElementById('voice-status');
-  if(!b) return;
-  if(state.listening){ b.classList.add('listening'); b.innerHTML='🎙️<span>J\'écoute...</span>'; s.textContent='Parlez maintenant'; }
-  else { b.classList.remove('listening'); b.innerHTML='🎙️<span>Parler</span>'; }
-}
+function updateVoiceBtn(){ const b = document.getElementById('voice-btn'), s = document.getElementById('voice-status'); if(!b) return; if(state.listening){ b.classList.add('listening'); b.innerHTML='🎙️<span>J\'écoute...</span>'; if(s) s.textContent='Parlez maintenant'; } else { b.classList.remove('listening'); b.innerHTML='🎙️<span>Parler</span>'; } }
 const FR_NUM = {un:1,une:1,deux:2,trois:3,quatre:4,cinq:5,six:6,sept:7,huit:8,neuf:9,dix:10};
 function parseVoice(text){
-  const lower = text.toLowerCase();
-  let added = [];
+  const lower = text.toLowerCase(); let added = [];
   for(const m of db.menu.filter(x=>x.available)){
     const names = [m.name.toLowerCase(), ...(m.aliases||[]).map(a=>a.toLowerCase())];
     if(!names.some(n=>lower.includes(n))) continue;
-    let qty = 1;
-    const words = lower.split(/[\s,]+/);
-    for(let i=0;i<words.length;i++){
-      const ahead = words.slice(i+1,i+6);
-      if(ahead.some(x=>names.includes(x))){
-        if(FR_NUM[words[i]]) qty = FR_NUM[words[i]];
-        else if(/^\d+$/.test(words[i])) qty = parseInt(words[i]);
-        break;
-      }
-    }
+    let qty = 1; const words = lower.split(/[\s,]+/);
+    for(let i=0;i<words.length;i++){ const ahead = words.slice(i+1,i+6); if(ahead.some(x=>names.includes(x))){ if(FR_NUM[words[i]]) qty = FR_NUM[words[i]]; else if(/^\d+$/.test(words[i])) qty = parseInt(words[i]); break; } }
     const e = state.cart.find(x=>x.menu_id===m.id);
     if(e) e.qty += qty; else state.cart.push({menu_id:m.id,name:m.name,price:m.price,qty});
     added.push(`${qty} ${m.name}`);
   }
   renderServeuseCart();
-  if(added.length){
-    speak('J\'ai ajouté ' + added.join(', '));
-    toast('✅ Ajouté : ' + added.join(', '));
-  } else {
-    speak('Je n\'ai pas reconnu. Essayez ou utilisez le menu.');
-    toast('Aucun plat reconnu','err');
-  }
+  if(added.length){ speak('J\'ai ajouté ' + added.join(', ')); toast('✅ Ajouté : ' + added.join(', ')); } else { speak('Je n\'ai pas reconnu.'); toast('Aucun plat reconnu','err'); }
 }
 
-/* ===================== CASHIER ===================== */
 function renderCashier(root){
   const pending = db.orders.filter(o=>o.status==='pending').reverse();
-  root.innerHTML = `
-    <div class="container">
-      <h2 style="color:var(--bois);margin-bottom:14px">💰 Caisse — Commandes en attente</h2>
-      ${pending.length===0 ? `<div class="card center text-muted">Aucune commande en attente</div>` :
-        `<div class="grid-2">${pending.map(o=>`
-          <div class="card">
-            <div class="flex justify-between items-center" style="margin-bottom:10px">
-              <strong style="color:var(--orange);font-size:22px">#${o.id}</strong>
-              <span class="badge badge-pending">En attente</span>
-            </div>
-            <p class="text-muted">Table ${esc(o.table_no)} · ${o.items.length} article(s)</p>
-            <div style="margin:10px 0">
-              ${o.items.map(i=>`<div class="flex justify-between" style="font-size:13px;padding:3px 0"><span>${i.qty}× ${esc(i.name)}</span><span>${fmt(i.price*i.qty)} F</span></div>`).join('')}
-            </div>
-            <p style="font-size:22px;font-weight:900;color:var(--orange-d);margin:10px 0">${fmt(o.total)} FCFA</p>
-            <label class="label">Mode de paiement</label>
-            <select class="select" id="pay-${o.id}">
-              <option value="cash">💵 Cash</option>
-              <option value="orange">📱 Orange Money</option>
-              <option value="mtn">📱 MTN MoMo</option>
-              <option value="moov">📱 Moov Money</option>
-              <option value="wave">📱 Wave</option>
-            </select>
-            <input class="input" id="ref-${o.id}" placeholder="Référence transaction (Mobile Money)">
-            <div class="flex gap-8">
-              <button class="btn btn-green" style="flex:1" onclick="validateOrder(${o.id})">✅ Valider</button>
-              <button class="btn btn-ghost btn-sm" onclick="printReceipt(${o.id})">🧾 Reçu</button>
-            </div>
-          </div>`).join('')}</div>`
-      }
-      <h2 style="color:var(--bois);margin:30px 0 14px">📜 Commandes payées récentes</h2>
-      <div class="card">
-        <table class="table">
-          <thead><tr><th>#</th><th>Table</th><th>Total</th><th>Paiement</th><th>Date</th><th>Action</th></tr></thead>
-          <tbody>
-            ${db.orders.filter(o=>o.status==='paid').slice(-15).reverse().map(o=>`
-              <tr>
-                <td>${o.id}</td>
-                <td>${esc(o.table_no)}</td>
-                <td>${fmt(o.total)} F</td>
-                <td><span class="badge badge-paid">${o.payment_method||'cash'}</span></td>
-                <td>${new Date(o.created_at).toLocaleString('fr-FR',{dateStyle:'short',timeStyle:'short'})}</td>
-                <td><button class="btn btn-sm btn-ghost" onclick="printReceipt(${o.id})">🧾</button></td>
-              </tr>`).join('')}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  `;
+  root.innerHTML = `<div class="container"><h2 style="color:var(--bois);margin-bottom:14px">💰 Caisse — Commandes en attente</h2>${pending.length===0 ? `<div class="card center text-muted">Aucune commande en attente</div>` : `<div class="grid-2">${pending.map(o=>`<div class="card"><div class="flex justify-between items-center" style="margin-bottom:10px"><strong style="color:var(--orange);font-size:22px">#${o.id}</strong><span class="badge badge-pending">En attente</span></div><p class="text-muted">Table ${esc(o.table_no)} · ${o.items.length} article(s)</p><div style="margin:10px 0">${o.items.map(i=>`<div class="flex justify-between" style="font-size:13px;padding:3px 0"><span>${i.qty}× ${esc(i.name)}</span><span>${fmt(i.price*i.qty)} F</span></div>`).join('')}</div><p style="font-size:22px;font-weight:900;color:var(--orange-d);margin:10px 0">${fmt(o.total)} FCFA</p><label class="label">Mode de paiement</label><select class="select" id="pay-${o.id}"><option value="cash">💵 Cash</option><option value="orange">📱 Orange Money</option><option value="mtn">📱 MTN MoMo</option><option value="moov">📱 Moov Money</option><option value="wave">📱 Wave</option></select><input class="input" id="ref-${o.id}" placeholder="Référence transaction (Mobile Money)"><div class="flex gap-8"><button class="btn btn-green" style="flex:1" onclick="validateOrder(${o.id})">✅ Valider</button></div></div>`).join('')}</div>`}<h2 style="color:var(--bois);margin:30px 0 14px">📜 Commandes payées récentes</h2><div class="card"><table class="table"><thead><tr><th>#</th><th>Table</th><th>Total</th><th>Paiement</th><th>Date</th><th>Action</th></tr></thead><tbody>${db.orders.filter(o=>o.status==='paid').slice(-15).reverse().map(o=>`<tr><td>${o.id}</td><td>${esc(o.table_no)}</td><td>${fmt(o.total)} F</td><td><span class="badge badge-paid">${esc(o.payment_method||'cash')}</span></td><td>${new Date(o.created_at).toLocaleString('fr-FR',{dateStyle:'short',timeStyle:'short'})}</td><td><button class="btn btn-sm btn-ghost" onclick="printReceipt(${o.id})">🧾 Reçu</button></td></tr>`).join('') || '<tr><td colspan="6" class="text-muted">Aucune commande payée</td></tr>'}</tbody></table></div></div>`;
 }
 function validateOrder(id){
   const o = db.orders.find(x=>x.id===id); if(!o) return;
-  const method = document.getElementById('pay-'+id).value;
-  const ref = document.getElementById('ref-'+id).value.trim();
+  const method = document.getElementById('pay-'+id).value, ref = document.getElementById('ref-'+id).value.trim();
   if(method!=='cash' && !ref){ toast('Renseignez la référence Mobile Money','err'); return; }
-  o.status = 'paid';
-  o.payment_status = 'paid';
-  o.payment_method = method;
-  o.payment_ref = ref || null;
-  o.paid_at = new Date().toISOString();
-  audit(state.user.id, 'validate_order', 'orders', id, {method, ref});
-  // Décrémenter le stock pour les articles qui y sont liés (optionnel)
-  save();
-  toast('✅ Commande validée');
-  speak('Commande validée. Merci !');
-  render();
+  o.status = 'paid'; o.payment_status = 'paid'; o.payment_method = method; o.payment_ref = ref || null; o.paid_at = new Date().toISOString();
+  audit(state.user.id, 'validate_order', 'orders', id, {method, ref}); save(); toast('✅ Commande validée'); speak('Commande validée. Merci !'); render();
 }
 
-/* ===================== RECEIPT / INVOICE PDF ===================== */
 function buildInvoiceHTML(o, docType='reçu'){
   const s = db.settings;
   const num = (s.invoicePrefix||'FAC') + '-' + new Date().getFullYear() + '-' + String(o.id).padStart(4,'0');
-  const totalTTC = o.total;
-  const totalHT = Math.round(totalTTC / (1 + s.tva/100));
-  const tva = totalTTC - totalHT;
-  return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${docType} ${num}</title>
-  <style>
-    body{font-family:Arial,sans-serif;padding:30px;color:#222;max-width:800px;margin:auto}
-    .head{display:flex;justify-content:space-between;align-items:start;padding-bottom:20px;border-bottom:3px solid #EA580C;margin-bottom:20px}
-    .logo{font-size:32px;font-weight:900;color:#EA580C}
-    .company{font-size:13px;color:#555;margin-top:6px;line-height:1.6}
-    .doc-title{text-align:right}
-    .doc-title h1{margin:0;color:#C2410C;font-size:26px}
-    .doc-title .num{font-family:monospace;color:#666;margin-top:6px}
-    .doc-title .date{font-size:13px;color:#888;margin-top:4px}
-    .client{background:#FFF7ED;padding:16px;border-radius:10px;margin-bottom:20px}
-    .client strong{color:#7C2D12}
-    table{width:100%;border-collapse:collapse;margin:20px 0}
-    th{background:#7C2D12;color:#fff;padding:12px;text-align:left;font-size:13px}
-    td{padding:10px 12px;border-bottom:1px solid #FED7AA;font-size:14px}
-    .totals{margin-left:auto;width:320px;margin-top:16px}
-    .totals .row{display:flex;justify-content:space-between;padding:8px 0;font-size:14px}
-    .totals .row.total{font-weight:900;font-size:20px;color:#C2410C;border-top:2px solid #EA580C;padding-top:12px;margin-top:8px}
-    .footer{margin-top:40px;padding-top:20px;border-top:1px solid #ddd;font-size:11px;color:#888;text-align:center}
-    .qr{display:inline-block;width:80px;height:80px;background:repeating-linear-gradient(0deg,#000 0 4px,#fff 4px 8px),repeating-linear-gradient(90deg,#000 0 4px,#fff 4px 8px);background-blend-mode:multiply;border:3px solid #000;margin-top:8px}
-    @media print{body{padding:0}button{display:none}}
-  </style></head><body>
-  <div class="head">
-    <div>
-      <div class="logo">🍢 ${esc(s.company)}</div>
-      <div class="company">${esc(s.address)}<br>Tél : ${esc(s.phone)}${s.ncc?'<br>NCC : '+esc(s.ncc):''}</div>
-    </div>
-    <div class="doc-title">
-      <h1>${esc(docType.toUpperCase())}</h1>
-      <div class="num">N° ${num}</div>
-      <div class="date">Date : ${new Date(o.paid_at||o.created_at).toLocaleDateString('fr-FR')}</div>
-    </div>
-  </div>
-  <div class="client">
-    <strong>Client</strong><br>
-    ${o.client_name?esc(o.client_name):'Client comptoir'}<br>
-    ${o.table_no?'Table : '+esc(o.table_no):''}
-  </div>
-  <table>
-    <thead><tr><th>Désignation</th><th style="width:60px">Qté</th><th style="width:100px">PU</th><th style="width:120px;text-align:right">Total</th></tr></thead>
-    <tbody>
-      ${o.items.map(i=>`<tr><td>${esc(i.name)}</td><td>${i.qty}</td><td>${fmt(i.price)} F</td><td style="text-align:right">${fmt(i.price*i.qty)} F</td></tr>`).join('')}
-    </tbody>
-  </table>
-  <div class="totals">
-    <div class="row"><span>Total HT</span><span>${fmt(totalHT)} FCFA</span></div>
-    <div class="row"><span>TVA (${s.tva}%)</span><span>${fmt(tva)} FCFA</span></div>
-    <div class="row total"><span>NET À PAYER</span><span>${fmt(totalTTC)} FCFA</span></div>
-  </div>
-  <div class="footer">
-    Mode de paiement : <strong>${esc(o.payment_method||'cash')}</strong>
-    ${o.payment_ref?' · Réf : '+esc(o.payment_ref):''}<br>
-    Merci de votre visite au Maquis Venise — À bientôt !<br>
-    <div class="qr" title="QR FNE (simulé)"></div><br>
-    <em>Document généré électroniquement — Signature électronique DGI simulée.</em>
-  </div>
-  <script>window.onload=()=>setTimeout(()=>window.print(),300);</script>
-  </body></html>`;
+  const totalTTC = o.total, totalHT = Math.round(totalTTC / (1 + s.tva/100)), tva = totalTTC - totalHT;
+  return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${docType} ${num}</title><style>body{font-family:Arial,sans-serif;padding:30px;color:#222;max-width:800px;margin:auto}.head{display:flex;justify-content:space-between;align-items:start;padding-bottom:20px;border-bottom:3px solid #EA580C;margin-bottom:20px}.logo-img{height:70px;width:auto}.company{font-size:13px;color:#555;margin-top:6px;line-height:1.6}.doc-title{text-align:right}.doc-title h1{margin:0;color:#C2410C;font-size:26px}.doc-title .num{font-family:monospace;color:#666;margin-top:6px}.doc-title .date{font-size:13px;color:#888;margin-top:4px}.client{background:#FFF7ED;padding:16px;border-radius:10px;margin-bottom:20px}.client strong{color:#7C2D12}table{width:100%;border-collapse:collapse;margin:20px 0}th{background:#7C2D12;color:#fff;padding:12px;text-align:left;font-size:13px}td{padding:10px 12px;border-bottom:1px solid #FED7AA;font-size:14px}.totals{margin-left:auto;width:320px;margin-top:16px}.totals .row{display:flex;justify-content:space-between;padding:8px 0;font-size:14px}.totals .row.total{font-weight:900;font-size:20px;color:#C2410C;border-top:2px solid #EA580C;padding-top:12px;margin-top:8px}.footer{margin-top:40px;padding-top:20px;border-top:1px solid #ddd;font-size:11px;color:#888;text-align:center}.qr{display:inline-block;width:80px;height:80px;background:repeating-linear-gradient(0deg,#000 0 4px,#fff 4px 8px),repeating-linear-gradient(90deg,#000 0 4px,#fff 4px 8px);background-blend-mode:multiply;border:3px solid #000;margin-top:8px}@media print{body{padding:0}button{display:none}}</style></head><body><div class="head"><div><img src="${LOGO_BASE64}" class="logo-img" alt="Venise"><div class="company">${esc(s.address)}<br>Tél : ${esc(s.phone)}${s.ncc?'<br>NCC : '+esc(s.ncc):''}</div></div><div class="doc-title"><h1>${esc(docType.toUpperCase())}</h1><div class="num">N° ${num}</div><div class="date">Date : ${new Date(o.paid_at||o.created_at).toLocaleDateString('fr-FR')}</div></div></div><div class="client"><strong>Client</strong><br>${o.client_name?esc(o.client_name):'Client comptoir'}<br>${o.table_no?'Table : '+esc(o.table_no):''}</div><table><thead><tr><th>Désignation</th><th style="width:60px">Qté</th><th style="width:100px">PU</th><th style="width:120px;text-align:right">Total</th></tr></thead><tbody>${o.items.map(i=>`<tr><td>${esc(i.name)}</td><td>${i.qty}</td><td>${fmt(i.price)} F</td><td style="text-align:right">${fmt(i.price*i.qty)} F</td></tr>`).join('')}</tbody></table><div class="totals"><div class="row"><span>Total HT</span><span>${fmt(totalHT)} FCFA</span></div><div class="row"><span>TVA (${s.tva}%)</span><span>${fmt(tva)} FCFA</span></div><div class="row total"><span>NET À PAYER</span><span>${fmt(totalTTC)} FCFA</span></div></div><div class="footer">Mode de paiement : <strong>${esc(o.payment_method||'cash')}</strong>${o.payment_ref?' · Réf : '+esc(o.payment_ref):''}<br>Merci de votre visite au Maquis Venise — À bientôt !<br><div class="qr" title="QR FNE (simulé)"></div><br><em>Document généré électroniquement — Signature électronique DGI simulée.</em></div><script>window.onload=()=>setTimeout(()=>window.print(),300);<\/script></body></html>`;
 }
-function printReceipt(orderId){
-  const o = db.orders.find(x=>x.id===orderId); if(!o) return;
-  const w = window.open('', '_blank');
-  w.document.write(buildInvoiceHTML(o, 'reçu'));
-  w.document.close();
-}
+function printReceipt(orderId){ const o = db.orders.find(x=>x.id===orderId); if(!o) return; const html = buildInvoiceHTML(o, 'reçu'); const blob = new Blob([html], {type:'text/html'}); window.open(URL.createObjectURL(blob), '_blank'); }
 
-/* ===================== ADMIN ===================== */
 function renderAdmin(root){
   const tabs = [
-    ['dashboard','📊 Tableau'],
-    ['journal','📔 Journal'],
-    ['stock','📦 Stock'],
-    ['clients','👥 Clients'],
-    ['promos','🎉 Promos'],
-    ['playlist','🎵 Playlist'],
-    ['b2b','🤝 B2B'],
-    ['users','👤 Équipe'],
-    ['audit','🔒 Audit']
+    ['dashboard','📊 Tableau'],['journal','📔 Journal'],['menu','🍢 Menu'],['events','📅 Événements'],['stock','📦 Stock'],
+    ['clients','👥 Clients'],['promos','🎉 Promos'],['playlist','🎵 Playlist'],
+    ['b2b','🤝 B2B'],['users','👤 Équipe'],['audit','🔒 Audit']
   ];
-  root.innerHTML = `
-    <div class="container">
-      <h2 style="color:var(--bois);margin-bottom:10px">📊 Administration</h2>
-      <div class="tabs">
-        ${tabs.map(([k,l])=>`<button class="tab ${state.adminTab===k?'active':''}" onclick="state.adminTab='${k}';renderAdmin(document.getElementById('main'))">${l}</button>`).join('')}
-      </div>
-      <div id="admin-content"></div>
-    </div>
-  `;
+  root.innerHTML = `<div class="container"><h2 style="color:var(--bois);margin-bottom:10px">📊 Administration</h2><div class="tabs">${tabs.map(([k,l])=>`<button class="tab ${state.adminTab===k?'active':''}" onclick="state.adminTab='${k}';renderAdmin(document.getElementById('main'))">${l}</button>`).join('')}</div><div id="admin-content"></div></div>`;
   const c = document.getElementById('admin-content');
-  if(state.adminTab==='dashboard') adminDashboard(c);
-  else if(state.adminTab==='journal') adminJournal(c);
-  else if(state.adminTab==='stock') adminStock(c);
-  else if(state.adminTab==='clients') adminClients(c);
-  else if(state.adminTab==='promos') adminPromos(c);
-  else if(state.adminTab==='playlist') adminPlaylist(c);
-  else if(state.adminTab==='b2b') adminB2B(c);
-  else if(state.adminTab==='users') adminUsers(c);
-  else if(state.adminTab==='audit') adminAudit(c);
+  const fns = {dashboard:adminDashboard, journal:adminJournal, menu:adminMenu, events:adminEvents, stock:adminStock, clients:adminClients, promos:adminPromos, playlist:adminPlaylist, b2b:adminB2B, users:adminUsers, audit:adminAudit};
+  (fns[state.adminTab]||adminDashboard)(c);
 }
 
 function adminDashboard(root){
-  const paid = db.orders.filter(o=>o.status==='paid');
-  const todayPaid = paid.filter(o=>o.paid_at && o.paid_at.slice(0,10)===today());
-  const totalRevenue = paid.reduce((s,o)=>s+o.total,0);
-  const alerts = db.stock.filter(s=>s.qty<=s.threshold);
-  const topItems = {};
-  paid.forEach(o=>o.items.forEach(i=>{
-    topItems[i.name] = topItems[i.name] || {qty:0, rev:0};
-    topItems[i.name].qty += i.qty;
-    topItems[i.name].rev += i.price*i.qty;
-  }));
+  const paid = db.orders.filter(o=>o.status==='paid'), todayPaid = paid.filter(o=>o.paid_at && o.paid_at.slice(0,10)===today()), totalRevenue = paid.reduce((s,o)=>s+o.total,0), alerts = db.stock.filter(s=>s.qty<=s.threshold);
+  const topItems = {}; paid.forEach(o=>o.items.forEach(i=>{ topItems[i.name] = topItems[i.name] || {qty:0, rev:0}; topItems[i.name].qty += i.qty; topItems[i.name].rev += i.price*i.qty; }));
   const top = Object.entries(topItems).sort((a,b)=>b[1].rev-a[1].rev).slice(0,5);
-
-  // 30 derniers jours
-  const last30 = [];
-  for(let i=29;i>=0;i--){
-    const d = new Date(); d.setDate(d.getDate()-i);
-    const key = d.toISOString().slice(0,10);
-    const rev = paid.filter(o=>o.paid_at && o.paid_at.slice(0,10)===key).reduce((s,o)=>s+o.total,0);
-    last30.push({day:key.slice(5), rev});
-  }
+  const last30 = []; for(let i=29;i>=0;i--){ const d = new Date(); d.setDate(d.getDate()-i); const key = d.toISOString().slice(0,10); const rev = paid.filter(o=>o.paid_at && o.paid_at.slice(0,10)===key).reduce((s,o)=>s+o.total,0); last30.push({day:key.slice(5), rev}); }
   const maxRev = Math.max(...last30.map(d=>d.rev), 1);
-
-  root.innerHTML = `
-    <div class="stats">
-      <div class="stat green"><div class="lbl">Aujourd'hui</div><div class="val">${fmt(todayPaid.reduce((s,o)=>s+o.total,0))} F</div></div>
-      <div class="stat"><div class="lbl">Total encaissé</div><div class="val">${fmt(totalRevenue)} F</div></div>
-      <div class="stat"><div class="lbl">Commandes</div><div class="val">${paid.length}</div></div>
-      <div class="stat ${alerts.length?'red':'green'}"><div class="lbl">Alertes stock</div><div class="val">${alerts.length}</div></div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">📈 Chiffre d'affaires (30 jours)</div>
-      <div style="display:flex;align-items:flex-end;gap:3px;height:160px;padding:10px 0">
-        ${last30.map(d=>`<div title="${d.day} : ${fmt(d.rev)} F" style="flex:1;background:linear-gradient(180deg,var(--orange-l),var(--orange-d));height:${Math.max(4,d.rev/maxRev*100)}%;border-radius:4px 4px 0 0;min-height:4px"></div>`).join('')}
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">🏆 Top ventes</div>
-      <table class="table">
-        <thead><tr><th>Plat</th><th>Qté</th><th>CA</th></tr></thead>
-        <tbody>${top.map(([n,d])=>`<tr><td>${esc(n)}</td><td>${d.qty}</td><td style="color:var(--vert-d);font-weight:800">${fmt(d.rev)} F</td></tr>`).join('') || '<tr><td colspan="3" class="text-muted">Aucune vente</td></tr>'}</tbody>
-      </table>
-    </div>
-
-    ${alerts.length?`<div class="card" style="border-left:6px solid var(--red)">
-      <div class="card-title" style="color:var(--red)">⚠️ Stock bas</div>
-      <ul style="padding-left:20px">${alerts.map(a=>`<li>${esc(a.name)} — ${a.qty} ${esc(a.unit)} (seuil ${a.threshold})</li>`).join('')}</ul>
-    </div>`:''}
-  `;
+  root.innerHTML = `<div class="stats"><div class="stat green"><div class="lbl">Aujourd'hui</div><div class="val">${fmt(todayPaid.reduce((s,o)=>s+o.total,0))} F</div></div><div class="stat"><div class="lbl">Total encaissé</div><div class="val">${fmt(totalRevenue)} F</div></div><div class="stat"><div class="lbl">Commandes</div><div class="val">${paid.length}</div></div><div class="stat ${alerts.length?'red':'green'}"><div class="lbl">Alertes stock</div><div class="val">${alerts.length}</div></div></div><div class="card"><div class="card-title">📈 Chiffre d'affaires (30 jours)</div><div style="display:flex;align-items:flex-end;gap:3px;height:160px;padding:10px 0">${last30.map(d=>`<div title="${d.day} : ${fmt(d.rev)} F" style="flex:1;background:linear-gradient(180deg,var(--orange-l),var(--orange-d));height:${Math.max(4,d.rev/maxRev*100)}%;border-radius:4px 4px 0 0;min-height:4px"></div>`).join('')}</div></div><div class="card"><div class="card-title">🏆 Top ventes</div><table class="table"><thead><tr><th>Plat</th><th>Qté</th><th>CA</th></tr></thead><tbody>${top.map(([n,d])=>`<tr><td>${esc(n)}</td><td>${d.qty}</td><td style="color:var(--vert-d);font-weight:800">${fmt(d.rev)} F</td></tr>`).join('') || '<tr><td colspan="3" class="text-muted">Aucune vente</td></tr>'}</tbody></table></div>${alerts.length?`<div class="card" style="border-left:6px solid var(--red)"><div class="card-title" style="color:var(--red)">⚠️ Stock bas</div><ul style="padding-left:20px">${alerts.map(a=>`<li>${esc(a.name)} — ${a.qty} ${esc(a.unit)} (seuil ${a.threshold})</li>`).join('')}</ul></div>`:''}`;
 }
 
 function adminJournal(root){
-  const periods = [['day','Jour'],['week','Semaine'],['month','Mois'],['year','Année']];
-  const cur = state._journalPeriod || 'day';
-  const paid = db.orders.filter(o=>o.status==='paid');
-  const groups = {};
-  paid.forEach(o=>{
-    const d = new Date(o.paid_at || o.created_at);
-    let key;
-    if(cur==='day') key = d.toISOString().slice(0,10);
-    else if(cur==='week'){ const onejan = new Date(d.getFullYear(),0,1); const week = Math.ceil((((d - onejan)/86400000)+onejan.getDay()+1)/7); key = d.getFullYear()+'-S'+String(week).padStart(2,'0'); }
-    else if(cur==='month') key = d.toISOString().slice(0,7);
-    else key = String(d.getFullYear());
-    groups[key] = groups[key] || {count:0, rev:0};
-    groups[key].count++; groups[key].rev += o.total;
-  });
+  const periods = [['day','Jour'],['week','Semaine'],['month','Mois'],['year','Année']], cur = state._journalPeriod || 'day';
+  const paid = db.orders.filter(o=>o.status==='paid'), groups = {};
+  paid.forEach(o=>{ const d = new Date(o.paid_at || o.created_at); let key; if(cur==='day') key = d.toISOString().slice(0,10); else if(cur==='week'){ const onejan = new Date(d.getFullYear(),0,1); const week = Math.ceil((((d - onejan)/86400000)+onejan.getDay()+1)/7); key = d.getFullYear()+'-S'+String(week).padStart(2,'0'); } else if(cur==='month') key = d.toISOString().slice(0,7); else key = String(d.getFullYear()); groups[key] = groups[key] || {count:0, rev:0}; groups[key].count++; groups[key].rev += o.total; });
   const rows = Object.entries(groups).sort((a,b)=>b[0].localeCompare(a[0]));
-  root.innerHTML = `
-    <div class="card">
-      <div class="card-title">📔 Journal des ventes</div>
-      <div class="flex gap-8 wrap" style="margin-bottom:16px">
-        ${periods.map(([k,l])=>`<button class="tab ${cur===k?'active':''}" onclick="state._journalPeriod='${k}';adminJournal(document.getElementById('admin-content'))">${l}</button>`).join('')}
-      </div>
-      <table class="table">
-        <thead><tr><th>Période</th><th>Commandes</th><th>CA</th></tr></thead>
-        <tbody>${rows.map(([k,v])=>`<tr><td>${k}</td><td>${v.count}</td><td style="color:var(--vert-d);font-weight:800">${fmt(v.rev)} F</td></tr>`).join('') || '<tr><td colspan="3" class="text-muted">Aucune vente</td></tr>'}</tbody>
-      </table>
-    </div>
-  `;
+  root.innerHTML = `<div class="card"><div class="card-title">📔 Journal des ventes</div><div class="flex gap-8 wrap" style="margin-bottom:16px">${periods.map(([k,l])=>`<button class="tab ${cur===k?'active':''}" onclick="state._journalPeriod='${k}';adminJournal(document.getElementById('admin-content'))">${l}</button>`).join('')}</div><table class="table"><thead><tr><th>Période</th><th>Commandes</th><th>CA</th></tr></thead><tbody>${rows.map(([k,v])=>`<tr><td>${k}</td><td>${v.count}</td><td style="color:var(--vert-d);font-weight:800">${fmt(v.rev)} F</td></tr>`).join('') || '<tr><td colspan="3" class="text-muted">Aucune vente</td></tr>'}</tbody></table></div>`;
 }
+
+function adminMenu(root){
+  root.innerHTML = `<div class="card"><div class="card-title">🍢 Ajouter un plat</div><input class="input" id="m-name" placeholder="Nom (ex: Bière Flag)"><input class="input" id="m-cat" placeholder="Catégorie (ex: Bières)"><input class="input" id="m-price" type="number" placeholder="Prix (FCFA)"><input class="input" id="m-img" placeholder="URL image (laisser vide = emoji)"><button class="btn btn-green btn-block" onclick="menuAdd()">Ajouter</button></div><div class="card"><div class="card-title">📋 Carte actuelle (${db.menu.length})</div><table class="table"><thead><tr><th>Nom</th><th>Catégorie</th><th>Prix</th><th>Actions</th></tr></thead><tbody>${db.menu.map(m=>`<tr><td>${esc(m.name)}</td><td>${esc(m.category)}</td><td><input type="number" value="${m.price}" style="width:80px;padding:5px;border:1px solid #ccc;border-radius:5px" onchange="menuUpdatePrice(${m.id}, this.value)"> F</td><td><button class="btn btn-sm ${m.available?'btn-green':'btn-red'}" onclick="menuToggle(${m.id})">${m.available?'Dispo':'Rupture'}</button><button class="btn btn-sm btn-ghost" onclick="menuDelete(${m.id})">🗑</button></td></tr>`).join('')}</tbody></table></div>`;
+}
+function menuAdd(){
+  const name = document.getElementById('m-name').value.trim(), category = document.getElementById('m-cat').value.trim() || 'Plats', price = parseFloat(document.getElementById('m-price').value) || 0, image = document.getElementById('m-img').value.trim();
+  if(!name || price<=0){ toast('Nom et prix requis','err'); return; }
+  db.menu.push({id:nextId(db.menu), name, category, price, cost:0, image, aliases:[name.toLowerCase()], available:true}); audit(state.user.id, 'menu_add', 'menu', null, {name}); save(); adminMenu(document.getElementById('admin-content')); toast('✅ Plat ajouté');
+}
+function menuUpdatePrice(id, newPrice){ const m = db.menu.find(x=>x.id===id); if(!m) return; m.price = parseFloat(newPrice) || 0; audit(state.user.id, 'menu_update_price', 'menu', id, {price:m.price}); save(); toast('✅ Prix mis à jour'); }
+function menuToggle(id){ const m = db.menu.find(x=>x.id===id); if(!m) return; m.available = !m.available; audit(state.user.id, 'menu_toggle', 'menu', id, {available:m.available}); save(); adminMenu(document.getElementById('admin-content')); }
+function menuDelete(id){ if(!confirm('Supprimer ce plat ?')) return; db.menu = db.menu.filter(x=>x.id!==id); audit(state.user.id, 'menu_delete', 'menu', id); save(); adminMenu(document.getElementById('admin-content')); }
+
+function adminEvents(root){
+  root.innerHTML = `<div class="card"><div class="card-title">📅 Nouvel événement / Promo datée</div><input class="input" id="ev-title" placeholder="Titre (ex: Soirée Match, Fête de la Musique)"><input class="input" id="ev-date" type="date"><textarea class="textarea" id="ev-desc" placeholder="Description (ex: Bière à 800F, ambiance garantie)"></textarea><button class="btn btn-green btn-block" onclick="eventAdd()">Créer l'événement</button></div><div class="card"><div class="card-title">Événements à venir</div><table class="table"><thead><tr><th>Date</th><th>Titre</th><th>Description</th><th>Actions</th></tr></thead><tbody>${db.events.sort((a,b)=>new Date(a.date)-new Date(b.date)).map(e=>`<tr><td>${new Date(e.date).toLocaleDateString('fr-FR')}</td><td><strong>${esc(e.title)}</strong></td><td>${esc(e.description)}</td><td><button class="btn btn-sm btn-red" onclick="eventDelete(${e.id})">🗑</button></td></tr>`).join('') || '<tr><td colspan="4" class="text-muted">Aucun événement</td></tr>'}</tbody></table></div>`;
+}
+function eventAdd(){
+  const title = document.getElementById('ev-title').value.trim(), date = document.getElementById('ev-date').value, description = document.getElementById('ev-desc').value.trim();
+  if(!title || !date){ toast('Titre et date requis','err'); return; }
+  db.events.push({id:nextId(db.events), title, date, description}); audit(state.user.id, 'event_add', 'events', null, {title}); save(); adminEvents(document.getElementById('admin-content')); toast('✅ Événement créé');
+}
+function eventDelete(id){ db.events = db.events.filter(e=>e.id!==id); save(); adminEvents(document.getElementById('admin-content')); }
 
 function adminStock(root){
-  root.innerHTML = `
-    <div class="card">
-      <div class="card-title">📦 Stock</div>
-      <table class="table">
-        <thead><tr><th>Article</th><th>Qté</th><th>Seuil</th><th>Actions</th></tr></thead>
-        <tbody>${db.stock.map(s=>`
-          <tr>
-            <td>${esc(s.name)}</td>
-            <td style="font-weight:800;color:${s.qty<=s.threshold?'var(--red)':'var(--vert-d)'}">${s.qty} ${esc(s.unit)}</td>
-            <td>${s.threshold}</td>
-            <td>
-              <button class="btn btn-sm btn-green" onclick="stockMove(${s.id},1)">+1</button>
-              <button class="btn btn-sm btn-red" onclick="stockMove(${s.id},-1)">−1</button>
-              <button class="btn btn-sm btn-ghost" onclick="stockAdjust(${s.id})">Ajuster</button>
-            </td>
-          </tr>`).join('')}</tbody>
-      </table>
-      <button class="btn btn-block mt-12" onclick="stockAdd()">➕ Ajouter un article</button>
-    </div>
-  `;
+  root.innerHTML = `<div class="card"><div class="card-title">📦 Stock</div><table class="table"><thead><tr><th>Article</th><th>Qté</th><th>Seuil</th><th>Actions</th></tr></thead><tbody>${db.stock.map(s=>`<tr><td>${esc(s.name)}</td><td style="font-weight:800;color:${s.qty<=s.threshold?'var(--red)':'var(--vert-d)'}">${s.qty} ${esc(s.unit)}</td><td>${s.threshold}</td><td><button class="btn btn-sm btn-green" onclick="stockMove(${s.id},1)">+1</button><button class="btn btn-sm btn-red" onclick="stockMove(${s.id},-1)">−1</button><button class="btn btn-sm btn-ghost" onclick="stockAdjust(${s.id})">Ajuster</button></td></tr>`).join('')}</tbody></table><button class="btn btn-block mt-12" onclick="stockAdd()">➕ Ajouter un article</button></div>`;
 }
-function stockMove(id, delta){
-  const s = db.stock.find(x=>x.id===id); if(!s) return;
-  s.qty += delta;
-  db.stockMoves.unshift({id:Date.now(), item_id:id, qty_change:delta, reason:delta>0?'entrée':'sortie', user_id:state.user.id, at:new Date().toISOString()});
-  audit(state.user.id,'stock_move','stock',id,{delta});
-  save(); adminStock(document.getElementById('admin-content'));
-}
-function stockAdjust(id){
-  const s = db.stock.find(x=>x.id===id); if(!s) return;
-  const v = prompt('Nouvelle quantité pour '+s.name+':', s.qty);
-  if(v===null) return;
-  const n = parseFloat(v);
-  if(isNaN(n)) return;
-  const delta = n - s.qty;
-  s.qty = n;
-  db.stockMoves.unshift({id:Date.now(), item_id:id, qty_change:delta, reason:'ajustement', user_id:state.user.id, at:new Date().toISOString()});
-  audit(state.user.id,'stock_adjust','stock',id,{delta});
-  save(); adminStock(document.getElementById('admin-content'));
-}
-function stockAdd(){
-  const name = prompt('Nom de l\'article :'); if(!name) return;
-  const unit = prompt('Unité (u, kg, casier) :','u') || 'u';
-  const qty = parseFloat(prompt('Quantité :','0')) || 0;
-  const threshold = parseFloat(prompt('Seuil d\'alerte :','0')) || 0;
-  db.stock.push({id:nextId(db.stock), name, unit, qty, threshold});
-  audit(state.user.id,'stock_add','stock',null,{name});
-  save(); adminStock(document.getElementById('admin-content'));
-}
+function stockMove(id, delta){ const s = db.stock.find(x=>x.id===id); if(!s) return; s.qty += delta; audit(state.user.id,'stock_move','stock',id,{delta}); save(); adminStock(document.getElementById('admin-content')); }
+function stockAdjust(id){ const s = db.stock.find(x=>x.id===id); if(!s) return; const v = prompt('Nouvelle quantité pour '+s.name+':', s.qty); if(v===null) return; const n = parseFloat(v); if(isNaN(n)) return; s.qty = n; audit(state.user.id,'stock_adjust','stock',id); save(); adminStock(document.getElementById('admin-content')); }
+function stockAdd(){ const name = prompt('Nom de l\'article :'); if(!name) return; const unit = prompt('Unité (u, kg, casier) :','u') || 'u'; const qty = parseFloat(prompt('Quantité :','0')) || 0; const threshold = parseFloat(prompt('Seuil d\'alerte :','0')) || 0; db.stock.push({id:nextId(db.stock), name, unit, qty, threshold}); save(); adminStock(document.getElementById('admin-content')); }
 
 function adminClients(root){
-  root.innerHTML = `
-    <div class="card">
-      <div class="card-title">👥 Clients (${db.clients.length})</div>
-      <table class="table">
-        <thead><tr><th>Nom</th><th>Tél</th><th>Points</th><th>Crédit</th><th>Actions</th></tr></thead>
-        <tbody>${db.clients.map(c=>`
-          <tr>
-            <td>${esc(c.name)}</td>
-            <td>${esc(c.phone)}</td>
-            <td>${c.points}</td>
-            <td style="color:${c.credit_owed>0?'var(--red)':'var(--vert-d)'};font-weight:800">${fmt(c.credit_owed)} F</td>
-            <td>
-              <button class="btn btn-sm btn-ghost" onclick="clientCredit(${c.id},'add')">+Crédit</button>
-              <button class="btn btn-sm btn-green" onclick="clientCredit(${c.id},'pay')">Payer</button>
-            </td>
-          </tr>`).join('') || '<tr><td colspan="5" class="text-muted">Aucun client inscrit</td></tr>'}</tbody>
-      </table>
-    </div>
-  `;
+  root.innerHTML = `<div class="card"><div class="card-title">👥 Clients (${db.clients.length})</div><table class="table"><thead><tr><th>Nom</th><th>Tél</th><th>Points</th><th>Crédit</th><th>Actions</th></tr></thead><tbody>${db.clients.map(c=>`<tr><td>${esc(c.name)}</td><td>${esc(c.phone)}</td><td>${c.points}</td><td style="color:${c.credit_owed>0?'var(--red)':'var(--vert-d)'};font-weight:800">${fmt(c.credit_owed)} F</td><td><button class="btn btn-sm btn-ghost" onclick="clientCredit(${c.id},'add')">+Crédit</button><button class="btn btn-sm btn-green" onclick="clientCredit(${c.id},'pay')">Payer</button></td></tr>`).join('') || '<tr><td colspan="5" class="text-muted">Aucun client</td></tr>'}</tbody></table></div>`;
 }
-function clientCredit(id, action){
-  const c = db.clients.find(x=>x.id===id); if(!c) return;
-  const v = parseFloat(prompt(action==='add'?'Montant du crédit à ajouter :':'Montant payé :','0'));
-  if(!v || v<=0) return;
-  if(action==='add'){ c.credit_owed += v; }
-  else { c.credit_owed = Math.max(0, c.credit_owed - v); c.points += Math.floor(v/1000); }
-  audit(state.user.id,'client_credit','clients',id,{action, amount:v});
-  save(); adminClients(document.getElementById('admin-content'));
-}
+function clientCredit(id, action){ const c = db.clients.find(x=>x.id===id); if(!c) return; const v = parseFloat(prompt(action==='add'?'Montant du crédit à ajouter :':'Montant payé :','0')); if(!v || v<=0) return; if(action==='add'){ c.credit_owed += v; } else { c.credit_owed = Math.max(0, c.credit_owed - v); c.points += Math.floor(v/1000); } save(); adminClients(document.getElementById('admin-content')); }
 
 function adminPromos(root){
-  root.innerHTML = `
-    <div class="card">
-      <div class="card-title">➕ Nouvelle promo</div>
-      <input class="input" id="promo-title" placeholder="Titre (ex: Happy Hour)">
-      <textarea class="textarea" id="promo-desc" placeholder="Description"></textarea>
-      <input class="input" id="promo-url" placeholder="URL image ou vidéo (Pexels, Unsplash, Mixkit...)">
-      <select class="select" id="promo-type"><option value="image">Image</option><option value="video">Vidéo</option></select>
-      <button class="btn btn-green btn-block" onclick="promoCreate()">Publier</button>
-    </div>
-    <div class="grid-2">
-      ${db.promos.filter(p=>p.active).map(p=>`
-        <div class="card">
-          <div class="card-title">${esc(p.title)}</div>
-          <p class="text-muted" style="margin-bottom:10px">${esc(p.description||'')}</p>
-          ${p.media_type==='video'&&p.media_url?`<video src="${esc(p.media_url)}" controls style="width:100%;border-radius:12px"></video>`:p.media_url?`<img src="${esc(p.media_url)}" style="width:100%;border-radius:12px;max-height:200px;object-fit:cover">`:''}
-          <button class="btn btn-sm btn-red mt-12" onclick="promoDelete(${p.id})">Supprimer</button>
-        </div>`).join('') || '<div class="card text-muted">Aucune promo active</div>'}
-    </div>
-  `;
+  root.innerHTML = `<div class="card"><div class="card-title">➕ Nouvelle promo</div><input class="input" id="promo-title" placeholder="Titre"><textarea class="textarea" id="promo-desc" placeholder="Description"></textarea><input class="input" id="promo-url" placeholder="URL image/vidéo"><select class="select" id="promo-type"><option value="image">Image</option><option value="video">Vidéo</option></select><button class="btn btn-green btn-block" onclick="promoCreate()">Publier</button></div><div class="grid-2">${db.promos.map(p=>`<div class="card"><div class="card-title">${esc(p.title)}</div><p class="text-muted" style="margin-bottom:10px">${esc(p.description||'')}</p>${p.media_type==='video'&&p.media_url?`<video src="${esc(p.media_url)}" controls style="width:100%;border-radius:12px"></video>`:p.media_url?`<img src="${esc(p.media_url)}" style="width:100%;border-radius:12px;max-height:200px;object-fit:cover">`:''}<button class="btn btn-sm btn-red mt-12" onclick="promoDelete(${p.id})">Supprimer</button></div>`).join('') || '<div class="card text-muted">Aucune promo</div>'}</div>`;
 }
-function promoCreate(){
-  const title = document.getElementById('promo-title').value.trim();
-  const description = document.getElementById('promo-desc').value.trim();
-  const media_url = document.getElementById('promo-url').value.trim();
-  const media_type = document.getElementById('promo-type').value;
-  if(!title){ toast('Titre obligatoire','err'); return; }
-  db.promos.push({id:nextId(db.promos), title, description, media_url, media_type, active:true, created_at:new Date().toISOString()});
-  audit(state.user.id,'promo_create','promos',null,{title});
-  save(); adminPromos(document.getElementById('admin-content')); toast('✅ Promo publiée');
-}
-function promoDelete(id){
-  if(!confirm('Supprimer cette promo ?')) return;
-  db.promos = db.promos.filter(p=>p.id!==id);
-  audit(state.user.id,'promo_delete','promos',id);
-  save(); adminPromos(document.getElementById('admin-content'));
-}
+function promoCreate(){ const title = document.getElementById('promo-title').value.trim(), description = document.getElementById('promo-desc').value.trim(), media_url = document.getElementById('promo-url').value.trim(), media_type = document.getElementById('promo-type').value; if(!title){ toast('Titre obligatoire','err'); return; } db.promos.push({id:nextId(db.promos), title, description, media_url, media_type, active:true}); save(); adminPromos(document.getElementById('admin-content')); }
+function promoDelete(id){ db.promos = db.promos.filter(p=>p.id!==id); save(); adminPromos(document.getElementById('admin-content')); }
 
 function adminPlaylist(root){
-  root.innerHTML = `
-    <div class="card">
-      <div class="card-title">➕ Ajouter un morceau</div>
-      <input class="input" id="pl-title" placeholder="Titre">
-      <input class="input" id="pl-artist" placeholder="Artiste">
-      <input class="input" id="pl-url" placeholder="URL mp3 ou stream">
-      <button class="btn btn-green btn-block" onclick="plAdd()">Ajouter</button>
-      <p class="text-muted mt-12" style="color:var(--red);font-weight:700">⚠️ Licence BURIDA obligatoire pour musique commerciale en CI.</p>
-    </div>
-    <div class="card">
-      <div class="card-title">🎵 Playlist maquis</div>
-      ${db.playlist.map(p=>`
-        <div class="flex justify-between items-center" style="padding:10px;border-bottom:1px solid var(--creme-2)">
-          <span>🎵 ${esc(p.title)} — ${esc(p.artist)}</span>
-          <span class="flex gap-8">
-            <button class="btn btn-sm" onclick="playSong('${esc(p.url)}')">▶</button>
-            <button class="btn btn-sm btn-red" onclick="plDelete(${p.id})">✕</button>
-          </span>
-        </div>`).join('') || '<p class="text-muted">Aucun morceau</p>'}
-      <div id="player-slot" class="mt-12"></div>
-    </div>
-  `;
+  root.innerHTML = `<div class="card"><div class="card-title">➕ Ajouter un morceau</div><input class="input" id="pl-title" placeholder="Titre"><input class="input" id="pl-artist" placeholder="Artiste"><input class="input" id="pl-url" placeholder="URL mp3"><button class="btn btn-green btn-block" onclick="plAdd()">Ajouter</button></div><div class="card"><div class="card-title">🎵 Playlist</div>${db.playlist.map(p=>`<div class="flex justify-between items-center" style="padding:10px;border-bottom:1px solid var(--creme-2)"><span>🎵 ${esc(p.title)} — ${esc(p.artist)}</span><span class="flex gap-8"><button class="btn btn-sm" onclick="playSong('${esc(p.url)}')">▶</button><button class="btn btn-sm btn-red" onclick="plDelete(${p.id})">✕</button></span></div>`).join('') || '<p class="text-muted">Aucun morceau</p>'}<div id="player-slot" class="mt-12"></div></div>`;
 }
-function plAdd(){
-  const title = document.getElementById('pl-title').value.trim();
-  const artist = document.getElementById('pl-artist').value.trim();
-  const url = document.getElementById('pl-url').value.trim();
-  if(!title||!url){ toast('Titre et URL requis','err'); return; }
-  db.playlist.push({id:nextId(db.playlist), title, artist, url, position:db.playlist.length});
-  audit(state.user.id,'playlist_add','playlist',null,{title});
-  save(); adminPlaylist(document.getElementById('admin-content'));
-}
-function plDelete(id){
-  db.playlist = db.playlist.filter(p=>p.id!==id);
-  save(); adminPlaylist(document.getElementById('admin-content'));
-}
-function playSong(url){
-  document.getElementById('player-slot').innerHTML = `<audio src="${esc(url)}" controls autoplay style="width:100%"></audio>`;
-}
+function plAdd(){ const title = document.getElementById('pl-title').value.trim(), artist = document.getElementById('pl-artist').value.trim(), url = document.getElementById('pl-url').value.trim(); if(!title||!url){ toast('Titre et URL requis','err'); return; } db.playlist.push({id:nextId(db.playlist), title, artist, url}); save(); adminPlaylist(document.getElementById('admin-content')); }
+function plDelete(id){ db.playlist = db.playlist.filter(p=>p.id!==id); save(); adminPlaylist(document.getElementById('admin-content')); }
+function playSong(url){ document.getElementById('player-slot').innerHTML = `<audio src="${esc(url)}" controls autoplay style="width:100%"></audio>`; }
 
 function adminB2B(root){
-  root.innerHTML = `
-    <div class="card">
-      <div class="card-title">🤝 Nouveau RDV B2B</div>
-      <input class="input" id="b2b-company" placeholder="Entreprise">
-      <input class="input" id="b2b-contact" placeholder="Contact">
-      <input class="input" id="b2b-phone" placeholder="Téléphone">
-      <input class="input" id="b2b-date" type="datetime-local">
-      <textarea class="textarea" id="b2b-notes" placeholder="Notes"></textarea>
-      <button class="btn btn-green btn-block" onclick="b2bAdd()">Enregistrer</button>
-    </div>
-    <div class="card">
-      <div class="card-title">Rendez-vous (${db.b2b.length})</div>
-      <table class="table">
-        <thead><tr><th>Entreprise</th><th>Contact</th><th>Tél</th><th>Date</th></tr></thead>
-        <tbody>${db.b2b.map(m=>`<tr><td>${esc(m.company)}</td><td>${esc(m.contact_name)}</td><td>${esc(m.phone)}</td><td>${esc(m.scheduled_at)}</td></tr>`).join('') || '<tr><td colspan="4" class="text-muted">Aucun RDV</td></tr>'}</tbody>
-      </table>
-    </div>
-  `;
+  root.innerHTML = `<div class="card"><div class="card-title">🤝 Nouveau RDV B2B</div><input class="input" id="b2b-company" placeholder="Entreprise"><input class="input" id="b2b-contact" placeholder="Contact"><input class="input" id="b2b-phone" placeholder="Téléphone"><input class="input" id="b2b-date" type="datetime-local"><button class="btn btn-green btn-block" onclick="b2bAdd()">Enregistrer</button></div><div class="card"><div class="card-title">Rendez-vous</div><table class="table"><thead><tr><th>Entreprise</th><th>Contact</th><th>Tél</th><th>Date</th></tr></thead><tbody>${db.b2b.map(m=>`<tr><td>${esc(m.company)}</td><td>${esc(m.contact_name)}</td><td>${esc(m.phone)}</td><td>${esc(m.scheduled_at)}</td></tr>`).join('') || '<tr><td colspan="4" class="text-muted">Aucun RDV</td></tr>'}</tbody></table></div>`;
 }
-function b2bAdd(){
-  const company = document.getElementById('b2b-company').value.trim();
-  const contact_name = document.getElementById('b2b-contact').value.trim();
-  const phone = document.getElementById('b2b-phone').value.trim();
-  const scheduled_at = document.getElementById('b2b-date').value;
-  const notes = document.getElementById('b2b-notes').value;
-  if(!company||!phone){ toast('Entreprise et téléphone requis','err'); return; }
-  db.b2b.push({id:nextId(db.b2b), company, contact_name, phone, scheduled_at, notes, created_at:new Date().toISOString()});
-  save(); adminB2B(document.getElementById('admin-content'));
-}
+function b2bAdd(){ const company = document.getElementById('b2b-company').value.trim(), contact_name = document.getElementById('b2b-contact').value.trim(), phone = document.getElementById('b2b-phone').value.trim(), scheduled_at = document.getElementById('b2b-date').value; if(!company||!phone){ toast('Entreprise et téléphone requis','err'); return; } db.b2b.push({id:nextId(db.b2b), company, contact_name, phone, scheduled_at}); save(); adminB2B(document.getElementById('admin-content')); }
 
 function adminUsers(root){
-  root.innerHTML = `
-    <div class="card">
-      <div class="card-title">👤 Équipe</div>
-      <table class="table">
-        <thead><tr><th>Nom</th><th>Rôle</th><th>PIN</th></tr></thead>
-        <tbody>${db.users.map(u=>`<tr><td>${esc(u.name)}</td><td><span class="badge badge-${u.role==='admin'?'admin':u.role==='caissier'?'paid':'pending'}">${u.role}</span></td><td>••••</td></tr>`).join('')}</tbody>
-      </table>
-    </div>
-    <div class="card">
-      <div class="card-title">➕ Ajouter un employé</div>
-      <input class="input" id="u-name" placeholder="Nom">
-      <select class="select" id="u-role"><option value="serveuse">Serveuse</option><option value="caissier">Caissier</option><option value="admin">Admin</option></select>
-      <input class="input" id="u-pin" placeholder="PIN (4 chiffres)" maxlength="4" inputmode="numeric">
-      <button class="btn btn-green btn-block" onclick="userAdd()">Ajouter</button>
-    </div>
-  `;
+  root.innerHTML = `<div class="card"><div class="card-title">👤 Équipe</div><table class="table"><thead><tr><th>Nom</th><th>Rôle</th></tr></thead><tbody>${db.users.map(u=>`<tr><td>${esc(u.name)}</td><td><span class="badge badge-${u.role==='admin'?'admin':u.role==='caissier'?'paid':'pending'}">${u.role}</span></td></tr>`).join('')}</tbody></table></div><div class="card"><div class="card-title">➕ Ajouter</div><input class="input" id="u-name" placeholder="Nom"><select class="select" id="u-role"><option value="serveuse">Serveuse</option><option value="caissier">Caissier</option><option value="admin">Admin</option></select><input class="input" id="u-pin" placeholder="PIN (4 chiffres)" maxlength="4" inputmode="numeric"><button class="btn btn-green btn-block" onclick="userAdd()">Ajouter</button></div>`;
 }
-function userAdd(){
-  const name = document.getElementById('u-name').value.trim();
-  const role = document.getElementById('u-role').value;
-  const pin = document.getElementById('u-pin').value.trim();
-  if(!name||pin.length!==4){ toast('Nom et PIN 4 chiffres requis','err'); return; }
-  db.users.push({id:nextId(db.users), name, role, pin});
-  audit(state.user.id,'user_add','users',null,{name, role});
-  save(); adminUsers(document.getElementById('admin-content')); toast('✅ Employé ajouté');
-}
+function userAdd(){ const name = document.getElementById('u-name').value.trim(), role = document.getElementById('u-role').value, pin = document.getElementById('u-pin').value.trim(); if(!name||pin.length!==4){ toast('Nom et PIN 4 chiffres requis','err'); return; } db.users.push({id:nextId(db.users), name, role, pin}); save(); adminUsers(document.getElementById('admin-content')); toast('✅ Ajouté'); }
 
 function adminAudit(root){
-  root.innerHTML = `
-    <div class="card">
-      <div class="card-title">🔒 Journal d'audit (${db.audit.length})</div>
-      <table class="table">
-        <thead><tr><th>Date</th><th>Utilisateur</th><th>Action</th><th>Entité</th></tr></thead>
-        <tbody>${db.audit.slice(0,200).map(a=>{
-          const u = db.users.find(x=>x.id===a.user_id);
-          return `<tr><td style="font-size:11px">${new Date(a.at).toLocaleString('fr-FR')}</td><td>${u?esc(u.name):'—'}</td><td><strong>${esc(a.action)}</strong></td><td>${esc(a.entity)}#${esc(a.entity_id||'')}</td></tr>`;
-        }).join('') || '<tr><td colspan="4" class="text-muted">Vide</td></tr>'}</tbody>
-      </table>
-    </div>
-  `;
+  root.innerHTML = `<div class="card"><div class="card-title">🔒 Audit</div><table class="table"><thead><tr><th>Date</th><th>User</th><th>Action</th><th>Entité</th></tr></thead><tbody>${db.audit.slice(0,150).map(a=>{ const u = db.users.find(x=>x.id===a.user_id); return `<tr><td style="font-size:11px">${new Date(a.at).toLocaleString('fr-FR')}</td><td>${u?esc(u.name):'—'}</td><td><strong>${esc(a.action)}</strong></td><td>${esc(a.entity)}</td></tr>`; }).join('') || '<tr><td colspan="4" class="text-muted">Vide</td></tr>'}</tbody></table></div>`;
 }
 
-/* ===================== FACTURATION (FacturePro-style) ===================== */
 function renderFacturation(root){
-  const clients = db.clients;
-  root.innerHTML = `
-    <div class="container">
-      <div class="card" style="background:linear-gradient(135deg,#7C2D12,#EA580C);color:#fff;border:none">
-        <h2 style="font-size:26px;margin-bottom:6px">🧾 Facturation Venise</h2>
-        <p style="opacity:.95">Générez factures, reçus, devis et proformas — conformité TVA 18% et NCC DGI.</p>
-      </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-title">📑 Type de document</div>
-          <select class="select" id="fact-type" onchange="state.factDocType=this.value">
-            <option value="facture">Facture</option>
-            <option value="reçu">Reçu</option>
-            <option value="devis">Devis</option>
-            <option value="proforma">Facture proforma</option>
-          </select>
-
-          <div class="card-title" style="margin-top:20px">👤 Client</div>
-          <select class="select" id="fact-client">
-            <option value="">Client comptoir (sans nom)</option>
-            ${clients.map(c=>`<option value="${c.id}">${esc(c.name)} — ${esc(c.phone)}</option>`).join('')}
-          </select>
-
-          <div class="card-title" style="margin-top:20px">📦 Lignes</div>
-          <div id="fact-lines"></div>
-          <button class="btn btn-ghost btn-block mt-12" onclick="factAddLine()">➕ Ajouter une ligne</button>
-          <button class="btn btn-ghost btn-block mt-12" onclick="factPickFromMenu()">🍢 Importer du menu</button>
-          <button class="btn btn-ghost btn-block mt-12" onclick="factVoiceDictate()">🎙️ Dicter les lignes</button>
-        </div>
-
-        <div class="card">
-          <div class="card-title">💵 Récapitulatif</div>
-          <div id="fact-totals"></div>
-          <button class="btn btn-green btn-block mt-20" onclick="factGenerate()">🧾 Générer & Imprimer (PDF)</button>
-          <p class="text-muted mt-12" style="font-size:12px">
-            ⚠️ Conformité FNE (DGI) : le QR et la signature sont <strong>simulés</strong>.
-            C'est à vous de soumettre votre facture à la DGI pour validation officielle.
-          </p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">📜 Historique des documents</div>
-        <table class="table">
-          <thead><tr><th>N°</th><th>Type</th><th>Client</th><th>Total</th><th>Date</th><th>Action</th></tr></thead>
-          <tbody>${db.invoices.slice(0,20).reverse().map(i=>`
-            <tr>
-              <td>${esc(i.number)}</td><td>${esc(i.type)}</td>
-              <td>${esc(i.client_name||'Comptoir')}</td>
-              <td>${fmt(i.total)} F</td>
-              <td>${new Date(i.created_at).toLocaleDateString('fr-FR')}</td>
-              <td><button class="btn btn-sm btn-ghost" onclick="factReprint('${esc(i.number)}')">Voir</button></td>
-            </tr>`).join('') || '<tr><td colspan="6" class="text-muted">Aucun document</td></tr>'}</tbody>
-        </table>
-      </div>
-    </div>
-  `;
-  state.factItems = [];
-  factAddLine();
+  root.innerHTML = `<div class="container"><div class="card" style="background:linear-gradient(135deg,#7C2D12,#EA580C);color:#fff;border:none"><h2 style="font-size:26px;margin-bottom:6px">🧾 Facturation</h2><p style="opacity:.95">Factures, reçus, devis — TVA 18% et conformité DGI.</p></div><div class="grid-2"><div class="card"><div class="card-title">📑 Type</div><select class="select" id="fact-type"><option value="facture">Facture</option><option value="reçu">Reçu</option><option value="devis">Devis</option><option value="proforma">Facture proforma</option></select><div class="card-title" style="margin-top:20px">👤 Client</div><select class="select" id="fact-client"><option value="">Client comptoir</option>${db.clients.map(c=>`<option value="${c.id}">${esc(c.name)} — ${esc(c.phone)}</option>`).join('')}</select><div class="card-title" style="margin-top:20px">📦 Lignes</div><div id="fact-lines"></div><button class="btn btn-ghost btn-block mt-12" onclick="factAddLine()">➕ Ajouter une ligne</button></div><div class="card"><div class="card-title">💵 Récapitulatif</div><div id="fact-totals"></div><button class="btn btn-green btn-block mt-20" onclick="factGenerate()">🧾 Générer & Imprimer</button></div></div><div class="card"><div class="card-title">📜 Historique</div><table class="table"><thead><tr><th>N°</th><th>Type</th><th>Client</th><th>Total</th><th>Date</th><th>Action</th></tr></thead><tbody>${db.invoices.slice().reverse().map(i=>`<tr><td>${esc(i.number)}</td><td>${esc(i.type)}</td><td>${esc(i.client_name)}</td><td>${fmt(i.total)} F</td><td>${new Date(i.created_at).toLocaleDateString('fr-FR')}</td><td><button class="btn btn-sm btn-ghost" onclick="factReprint('${esc(i.number)}')">Voir</button></td></tr>`).join('') || '<tr><td colspan="6" class="text-muted">Aucun document</td></tr>'}</tbody></table></div></div>`;
+  state.factItems = []; factAddLine();
 }
-function factAddLine(name='', price=0, qty=1){
-  state.factItems.push({name, price, qty});
-  factRenderLines();
-}
-function factRemoveLine(i){
-  state.factItems.splice(i,1);
-  factRenderLines();
-}
+function factAddLine(name='', price=0, qty=1){ state.factItems.push({name, price, qty}); factRenderLines(); }
+function factRemoveLine(i){ state.factItems.splice(i,1); factRenderLines(); }
 function factRenderLines(){
-  const el = document.getElementById('fact-lines');
-  if(!el) return;
-  el.innerHTML = state.factItems.map((it,i)=>`
-    <div class="flex gap-8" style="margin-bottom:8px">
-      <input class="input" placeholder="Désignation" value="${esc(it.name)}" oninput="state.factItems[${i}].name=this.value;factTotals()" style="margin-bottom:0;flex:3">
-      <input class="input" type="number" placeholder="PU" value="${it.price}" oninput="state.factItems[${i}].price=+this.value;factTotals()" style="margin-bottom:0;flex:1">
-      <input class="input" type="number" placeholder="Qté" value="${it.qty}" oninput="state.factItems[${i}].qty=+this.value;factTotals()" style="margin-bottom:0;width:70px">
-      <button class="btn btn-sm btn-red" onclick="factRemoveLine(${i})">✕</button>
-    </div>
-  `).join('');
+  const el = document.getElementById('fact-lines'); if(!el) return;
+  el.innerHTML = state.factItems.map((it,i)=>`<div class="flex gap-8" style="margin-bottom:8px"><input class="input" placeholder="Désignation" value="${esc(it.name)}" oninput="state.factItems[${i}].name=this.value;factTotals()" style="margin-bottom:0;flex:3"><input class="input" type="number" placeholder="PU" value="${it.price}" oninput="state.factItems[${i}].price=+this.value;factTotals()" style="margin-bottom:0;flex:1"><input class="input" type="number" placeholder="Qté" value="${it.qty}" oninput="state.factItems[${i}].qty=+this.value;factTotals()" style="margin-bottom:0;width:70px"><button class="btn btn-sm btn-red" onclick="factRemoveLine(${i})">✕</button></div>`).join('');
   factTotals();
 }
 function factTotals(){
-  const el = document.getElementById('fact-totals');
-  if(!el) return;
-  const total = state.factItems.reduce((s,i)=>s+(i.price||0)*(i.qty||0),0);
-  const tva = db.settings.tva;
-  const ht = Math.round(total / (1 + tva/100));
-  const tvaAmt = total - ht;
-  el.innerHTML = `
-    <div class="flex justify-between" style="padding:8px 0;border-bottom:1px solid var(--creme-2)"><span>Total HT</span><strong>${fmt(ht)} FCFA</strong></div>
-    <div class="flex justify-between" style="padding:8px 0;border-bottom:1px solid var(--creme-2)"><span>TVA (${tva}%)</span><strong>${fmt(tvaAmt)} FCFA</strong></div>
-    <div class="flex justify-between" style="padding:12px 0;font-size:22px;font-weight:900;color:var(--orange-d);border-top:2px solid var(--orange)"><span>TOTAL TTC</span><span>${fmt(total)} FCFA</span></div>
-  `;
-}
-function factPickFromMenu(){
-  const available = db.menu.filter(m=>m.available);
-  const names = available.map(m=>m.name).join(', ');
-  const choice = prompt('Nom du plat à importer :\n'+names);
-  if(!choice) return;
-  const m = available.find(x=>x.name.toLowerCase()===choice.toLowerCase()) ||
-            available.find(x=>x.name.toLowerCase().includes(choice.toLowerCase()));
-  if(!m){ toast('Plat non trouvé','err'); return; }
-  factAddLine(m.name, m.price, 1);
-}
-function factVoiceDictate(){
-  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if(!SR){ toast('Reconnaissance vocale non supportée','err'); return; }
-  const rec = new SR(); rec.lang='fr-FR';
-  toast('🎙️ Dictez vos lignes (ex: poulet braisé 5000 deux fois)');
-  rec.onresult = (e)=>{
-    const text = e.results[0][0].transcript.toLowerCase();
-    toast('Entendu : ' + text);
-    let found = false;
-    for(const m of db.menu){
-      if(text.includes(m.name.toLowerCase())){ factAddLine(m.name, m.price, 1); found=true; }
-    }
-    if(!found) toast('Aucun plat reconnu','err');
-  };
-  rec.start();
+  const el = document.getElementById('fact-totals'); if(!el) return;
+  const total = state.factItems.reduce((s,i)=>s+(i.price||0)*(i.qty||0),0), tva = db.settings.tva, ht = Math.round(total / (1 + tva/100)), tvaAmt = total - ht;
+  el.innerHTML = `<div class="flex justify-between" style="padding:8px 0;border-bottom:1px solid var(--creme-2)"><span>Total HT</span><strong>${fmt(ht)} F</strong></div><div class="flex justify-between" style="padding:8px 0;border-bottom:1px solid var(--creme-2)"><span>TVA (${tva}%)</span><strong>${fmt(tvaAmt)} F</strong></div><div class="flex justify-between" style="padding:12px 0;font-size:22px;font-weight:900;color:var(--orange-d);border-top:2px solid var(--orange)"><span>TOTAL TTC</span><span>${fmt(total)} F</span></div>`;
 }
 function factGenerate(){
-  const type = document.getElementById('fact-type').value;
-  const clientId = document.getElementById('fact-client').value;
-  const client = clientId ? db.clients.find(c=>c.id===+clientId) : null;
-  const items = state.factItems.filter(i=>i.name && i.price>0);
+  const type = document.getElementById('fact-type').value, clientId = document.getElementById('fact-client').value, client = clientId ? db.clients.find(c=>c.id===+clientId) : null, items = state.factItems.filter(i=>i.name && i.price>0);
   if(!items.length){ toast('Ajoutez au moins une ligne','err'); return; }
-  const total = items.reduce((s,i)=>s+i.price*i.qty,0);
-  const num = (db.settings.invoicePrefix||'FAC') + '-' + new Date().getFullYear() + '-' + String(db.invoices.length+1).padStart(4,'0');
-  const inv = {
-    id: nextId(db.invoices),
-    number: num, type,
-    client_name: client?client.name:'Client comptoir',
-    client_phone: client?client.phone:'',
-    items: items.map(i=>({...i})),
-    total, tva: db.settings.tva,
-    created_at: new Date().toISOString()
-  };
-  db.invoices.push(inv);
-  audit(state.user.id, 'invoice_generate', 'invoices', inv.id, {number:num, total});
-  save();
-  const fakeOrder = {
-    id: inv.id, paid_at: inv.created_at, created_at: inv.created_at,
-    client_name: inv.client_name, table_no: '—',
-    items: inv.items, total: inv.total,
-    payment_method: 'manuel', payment_ref: ''
-  };
-  const w = window.open('', '_blank');
-  w.document.write(buildInvoiceHTML(fakeOrder, type));
-  w.document.close();
-  toast('✅ Document généré');
-  render();
+  const total = items.reduce((s,i)=>s+i.price*i.qty,0), num = (db.settings.invoicePrefix||'FAC') + '-' + new Date().getFullYear() + '-' + String(db.invoices.length+1).padStart(4,'0');
+  const inv = { id:nextId(db.invoices), number:num, type, client_name:client?client.name:'Client comptoir', client_phone:client?client.phone:'', items:items.map(i=>({...i})), total, tva:db.settings.tva, created_at:new Date().toISOString() };
+  db.invoices.push(inv); audit(state.user.id, 'invoice_generate', 'invoices', inv.id, {number:num, total}); save();
+  const fakeOrder = { id:inv.id, paid_at:inv.created_at, created_at:inv.created_at, client_name:inv.client_name, table_no:'—', items:inv.items, total:inv.total, payment_method:'manuel', payment_ref:'' };
+  const html = buildInvoiceHTML(fakeOrder, type); window.open(URL.createObjectURL(new Blob([html], {type:'text/html'})), '_blank'); toast('✅ Document généré'); render();
 }
 function factReprint(num){
-  const inv = db.invoices.find(i=>i.number===num);
-  if(!inv) return;
-  const fakeOrder = {
-    id: inv.id, paid_at: inv.created_at, created_at: inv.created_at,
-    client_name: inv.client_name, table_no: '—',
-    items: inv.items, total: inv.total,
-    payment_method: 'manuel', payment_ref: ''
-  };
-  const w = window.open('', '_blank');
-  w.document.write(buildInvoiceHTML(fakeOrder, inv.type));
-  w.document.close();
+  const inv = db.invoices.find(i=>i.number===num); if(!inv) return;
+  const fakeOrder = { id:inv.id, paid_at:inv.created_at, created_at:inv.created_at, client_name:inv.client_name, table_no:'—', items:inv.items, total:inv.total, payment_method:'manuel', payment_ref:'' };
+  window.open(URL.createObjectURL(new Blob([buildInvoiceHTML(fakeOrder, inv.type)], {type:'text/html'})), '_blank');
 }
 
-/* ===================== SETTINGS ===================== */
 function renderSettings(root){
   const s = db.settings;
-  root.innerHTML = `
-    <div class="container-narrow">
-      <div class="card">
-        <div class="card-title">⚙️ Paramètres de l'entreprise</div>
-        <label class="label">Nom</label>
-        <input class="input" id="set-company" value="${esc(s.company)}">
-        <label class="label">Adresse</label>
-        <input class="input" id="set-address" value="${esc(s.address)}">
-        <label class="label">Téléphone</label>
-        <input class="input" id="set-phone" value="${esc(s.phone)}">
-        <label class="label">NCC (Numéro Compte Contribuable)</label>
-        <input class="input" id="set-ncc" value="${esc(s.ncc||'')}" placeholder="Ex: 1234567A">
-        <label class="label">TVA (%)</label>
-        <input class="input" id="set-tva" type="number" value="${s.tva}">
-        <label class="label">Préfixe factures</label>
-        <input class="input" id="set-prefix" value="${esc(s.invoicePrefix||'FAC')}">
-        <button class="btn btn-green btn-block mt-12" onclick="saveSettings()">💾 Enregistrer</button>
-      </div>
-      <div class="card">
-        <div class="card-title">🗑️ Zone de danger</div>
-        <button class="btn btn-red btn-block" onclick="resetAll()">Réinitialiser TOUTES les données</button>
-        <p class="text-muted mt-12" style="font-size:12px">Action irréversible. Exportez avant.</p>
-        <button class="btn btn-ghost btn-block mt-12" onclick="exportData()">📤 Exporter les données (JSON)</button>
-      </div>
-      <div class="card center">
-        <p class="text-muted">Version ${esc(s.version)} — Fait avec ❤️ pour le maquis ivoirien</p>
-      </div>
-    </div>
-  `;
+  root.innerHTML = `<div class="container-narrow"><div class="card"><div class="card-title">⚙️ Paramètres</div><label class="label">Nom de l'entreprise</label><input class="input" id="set-company" value="${esc(s.company)}"><label class="label">Adresse</label><input class="input" id="set-address" value="${esc(s.address)}"><label class="label">Téléphone</label><input class="input" id="set-phone" value="${esc(s.phone)}"><label class="label">NCC (DGI)</label><input class="input" id="set-ncc" value="${esc(s.ncc||'')}"><label class="label">TVA (%)</label><input class="input" id="set-tva" type="number" value="${s.tva}"><div class="divider" style="height:1px;background:var(--creme-2);margin:16px 0"></div><div class="card-title">💳 Paiements & Contacts</div><label class="label">Lien Wave Business (ex: https://pay.wave.com/m/...)</label><input class="input" id="set-wave" value="${esc(s.waveLink||'')}" placeholder="Laisser vide si non configuré"><label class="label">Numéro WhatsApp Business (Pour l'assistant)</label><input class="input" id="set-whatsapp" value="${esc(s.whatsappNumber||'')}" placeholder="Ex: +2250700000000"><button class="btn btn-green btn-block mt-12" onclick="saveSettings()">💾 Enregistrer</button></div><div class="card"><div class="card-title">🗑️ Danger</div><button class="btn btn-red btn-block" onclick="resetAll()">Réinitialiser TOUT</button><button class="btn btn-ghost btn-block mt-12" onclick="exportData()">📤 Exporter (JSON)</button></div></div>`;
 }
 function saveSettings(){
-  db.settings.company = document.getElementById('set-company').value;
-  db.settings.address = document.getElementById('set-address').value;
-  db.settings.phone = document.getElementById('set-phone').value;
-  db.settings.ncc = document.getElementById('set-ncc').value;
-  db.settings.tva = parseFloat(document.getElementById('set-tva').value)||18;
-  db.settings.invoicePrefix = document.getElementById('set-prefix').value || 'FAC';
-  audit(state.user.id,'settings_update','settings',null);
-  save(); toast('✅ Paramètres enregistrés');
+  db.settings.company = document.getElementById('set-company').value; db.settings.address = document.getElementById('set-address').value; db.settings.phone = document.getElementById('set-phone').value; db.settings.ncc = document.getElementById('set-ncc').value; db.settings.tva = parseFloat(document.getElementById('set-tva').value)||18;
+  db.settings.waveLink = document.getElementById('set-wave').value.trim(); db.settings.whatsappNumber = document.getElementById('set-whatsapp').value.trim();
+  save(); toast('✅ Enregistré');
 }
-function resetAll(){
-  if(!confirm('⚠️ Supprimer TOUTES les données ? Action irréversible.')) return;
-  if(!confirm('Vraiment sûr ?')) return;
-  localStorage.removeItem(DB_KEY);
-  location.reload();
-}
-function exportData(){
-  const blob = new Blob([JSON.stringify(db,null,2)], {type:'application/json'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'venise-backup-'+today()+'.json';
-  a.click();
-}
+function resetAll(){ if(!confirm('⚠️ Supprimer toutes les données ?')) return; if(!confirm('Vraiment sûr ?')) return; localStorage.removeItem(DB_KEY); location.reload(); }
+function exportData(){ const blob = new Blob([JSON.stringify(db,null,2)], {type:'application/json'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'venise-backup-'+today()+'.json'; a.click(); }
 
-/* ===================== INIT ===================== */
-window.addEventListener('online', render);
-window.addEventListener('offline', render);
-window.state = state;
-window.navigate = navigate;
-window.logout = logout;
-window.loginPin = loginPin;
-window.selectLoginUser = selectLoginUser;
-window.cancelLogin = cancelLogin;
-window.pinPress = pinPress;
-window.pinSubmit = pinSubmit;
-window.doRegister = doRegister;
-window.quickAdd = quickAdd;
-window.clientAdd = clientAdd;
-window.clientRemove = clientRemove;
-window.clientSend = clientSend;
-window.toggleVoice = toggleVoice;
-window.toggleMenuGrid = toggleMenuGrid;
-window.serveuseSend = serveuseSend;
-window.renderServeuseCart = renderServeuseCart;
-window.validateOrder = validateOrder;
-window.printReceipt = printReceipt;
-window.stockMove = stockMove;
-window.stockAdjust = stockAdjust;
-window.stockAdd = stockAdd;
-window.clientCredit = clientCredit;
-window.promoCreate = promoCreate;
-window.promoDelete = promoDelete;
-window.plAdd = plAdd;
-window.plDelete = plDelete;
-window.playSong = playSong;
-window.b2bAdd = b2bAdd;
-window.userAdd = userAdd;
-window.factAddLine = factAddLine;
-window.factRemoveLine = factRemoveLine;
-window.factTotals = factTotals;
-window.factPickFromMenu = factPickFromMenu;
-window.factVoiceDictate = factVoiceDictate;
-window.factGenerate = factGenerate;
-window.factReprint = factReprint;
-window.saveSettings = saveSettings;
-window.resetAll = resetAll;
-window.exportData = exportData;
-window.renderAdmin = renderAdmin;
-window.adminJournal = adminJournal;
-window.adminStock = adminStock;
-window.adminClients = adminClients;
-window.adminPromos = adminPromos;
-window.adminPlaylist = adminPlaylist;
-window.adminB2B = adminB2B;
-window.adminUsers = adminUsers;
-window.adminAudit = adminAudit;
+// Export to window
+window.state = state; window.navigate = navigate; window.logout = logout; window.loginPin = loginPin; window.selectLoginUser = selectLoginUser; window.cancelLogin = cancelLogin; window.pinPress = pinPress; window.pinSubmit = pinSubmit; window.doRegister = doRegister; window.quickAdd = quickAdd; window.clientAdd = clientAdd; window.clientRemove = clientRemove; window.clientSend = clientSend; window.toggleVoice = toggleVoice; window.toggleMenuGrid = toggleMenuGrid; window.serveuseSend = serveuseSend; window.renderServeuseCart = renderServeuseCart; window.validateOrder = validateOrder; window.printReceipt = printReceipt; window.stockMove = stockMove; window.stockAdjust = stockAdjust; window.stockAdd = stockAdd; window.clientCredit = clientCredit; window.promoCreate = promoCreate; window.promoDelete = promoDelete; window.plAdd = plAdd; window.plDelete = plDelete; window.playSong = playSong; window.b2bAdd = b2bAdd; window.userAdd = userAdd; window.factAddLine = factAddLine; window.factRemoveLine = factRemoveLine; window.factTotals = factTotals; window.factGenerate = factGenerate; window.factReprint = factReprint; window.saveSettings = saveSettings; window.resetAll = resetAll; window.exportData = exportData; window.renderAdmin = renderAdmin; window.adminJournal = adminJournal; window.adminStock = adminStock; window.adminClients = adminClients; window.adminPromos = adminPromos; window.adminPlaylist = adminPlaylist; window.adminB2B = adminB2B; window.adminUsers = adminUsers; window.adminAudit = adminAudit; window.menuAdd = menuAdd; window.menuToggle = menuToggle; window.menuDelete = menuDelete; window.menuUpdatePrice = menuUpdatePrice; window.eventAdd = eventAdd; window.eventDelete = eventDelete; window.startPresentation = startPresentation; window.stopPresentation = stopPresentation; window.togglePlayPause = togglePlayPause; window.nextSegment = nextSegment; window.prevSegment = prevSegment;
+window.toggleAIAssistant = toggleAIAssistant; window.sendAIMessage = sendAIMessage; window.toggleAIMic = toggleAIMic; window.startVoiceRegistration = startVoiceRegistration; window.stopAllAudio = stopAllAudio;
 
+loadDB();
 render();
-console.log('🍢 Maquis Venise v' + db.settings.version + ' — prêt');
+console.log('🍢 Maquis Venise v' + DB_VERSION + ' — Prêt pour Démo');
 </script>
 </body>
 </html>
