@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<meta name="theme-color" content="#EA580C">
+<title>🍢 Maquis Venise — Commandez · Facturez · Encaissez</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍢</text></svg>">
+<style>
+:root{
+  --orange:#EA580C;--orange-d:#C2410C;--orange-l:#F97316;
+  --jaune:#FBBF24;--vert:#16A34A;--vert-d:#15803D;
+  --bois:#7C2D12;--bois-l:#9A3412;--creme:#FFF7ED;--creme-2:#FED7AA;
+  --dark:#1F1410;--grey:#78716C;--white:#fff;--red:#DC2626;
+  --shadow:0 4px 20px rgba(0,0,0,.08);
+  --shadow-lg:0 16px 40px rgba(194,65,12,.35);
+  --radius:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  background:var(--creme);color:var(--dark);
+  -webkit-tap-highlight-color:transparent;
+  line-height:1.5;
+}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer}
+input,select,textarea{font-family:inherit}
+
+/* ========== NAVBAR ========== */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:linear-gradient(90deg,#7C2D12 0%,#C2410C 60%,#EA580C 100%);
+  padding:12px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  box-shadow:0 2px 16px rgba(0,0,0,.15);
+}
+.nav .brand{
+  font-size:22px;font-weight:900;color:var(--jaune);
+  letter-spacing:.5px;text-shadow:0 2px 8px rgba(0,0,0,.3);margin-right:8px;
+}
+.nav a,.nav .nbtn{
+  padding:9px 14px;border-radius:12px;
+  background:rgba(255,255,255,.15);color:#fff;text-decoration:none;
+  font-weight:700;font-size:13px;border:none;transition:.2s;
+}
+.nav a:hover,.nav .nbtn:hover{background:rgba(255,255,255,.3);transform:translateY(-1px)}
+.nav a.active{background:var(--jaune);color:var(--bois)}
+.nav .spacer{flex:1}
+.nav .user{color:#fff;font-size:13px;font-weight:600}
+
+/* ========== LAYOUT ========== */
+.container{max-width:1200px;margin:0 auto;padding:20px 16px}
+.container-narrow{max-width:600px;margin:0 auto;padding:20px 16px}
+
+/* ========== BUTTONS ========== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 22px;border-radius:14px;border:none;
+  font-size:15px;font-weight:700;transition:.15s;
+  background:linear-gradient(180deg,var(--orange-l),var(--orange));
+  color:#fff;box-shadow:0 6px 18px rgba(234,88,12,.35);
+}
+.btn:active{transform:scale(.97)}
+.btn:disabled{background:#9CA3AF;box-shadow:none;cursor:not-allowed;opacity:.7}
+.btn-green{background:linear-gradient(180deg,#22C55E,var(--vert));box-shadow:0 6px 18px rgba(22,163,74,.35)}
+.btn-red{background:linear-gradient(180deg,#EF4444,var(--red));box-shadow:0 6px 18px rgba(220,38,38,.35)}
+.btn-ghost{background:transparent;color:var(--orange);box-shadow:none;border:2px solid var(--orange)}
+.btn-sm{padding:8px 14px;font-size:13px}
+.btn-block{width:100%}
+
+/* ========== CARDS ========== */
+.card{
+  background:#fff;border-radius:var(--radius);padding:22px;
+  box-shadow:var(--shadow);margin-bottom:16px;
+}
+.card-title{font-size:18px;font-weight:800;color:var(--bois);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+
+/* ========== INPUTS ========== */
+.input,.select,.textarea{
+  width:100%;padding:14px 16px;border-radius:12px;
+  border:2px solid var(--creme-2);background:#fff;
+  font-size:15px;color:var(--dark);transition:.15s;margin-bottom:12px;
+}
+.input:focus,.select:focus,.textarea:focus{outline:none;border-color:var(--orange)}
+.textarea{resize:vertical;min-height:80px}
+.label{display:block;font-size:13px;font-weight:700;color:var(--bois-l);margin-bottom:6px}
+
+/* ========== HERO ========== */
+.hero{
+  position:relative;min-height:380px;border-radius:var(--radius);
+  overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:40px 32px;margin-bottom:24px;color:#fff;
+}
+.hero video,.hero .hero-bg{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;z-index:0;
+}
+.hero::after{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(31,20,16,.3) 0%,rgba(124,45,18,.92) 100%);
+}
+.hero>*{position:relative;z-index:2}
+.hero h1{font-size:clamp(28px,5vw,48px);color:var(--jaune);margin-bottom:10px;line-height:1.1}
+.hero p{font-size:clamp(15px,2vw,19px);opacity:.95;margin-bottom:20px}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap}
+
+/* ========== GRID ========== */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+.grid-2{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+
+/* ========== MENU CARD ========== */
+.menu-card{
+  background:#fff;border-radius:16px;overflow:hidden;
+  box-shadow:var(--shadow);cursor:pointer;transition:.2s;
+  position:relative;
+}
+.menu-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.menu-card:active{transform:scale(.97)}
+.menu-card .img{
+  height:130px;background:linear-gradient(135deg,var(--creme-2),var(--orange-l));
+  display:flex;align-items:center;justify-content:center;
+  font-size:58px;color:#fff;position:relative;overflow:hidden;
+}
+.menu-card .img img{width:100%;height:100%;object-fit:cover}
+.menu-card .body{padding:12px 14px}
+.menu-card .name{font-weight:800;font-size:15px;color:var(--bois);margin-bottom:4px}
+.menu-card .price{font-size:18px;font-weight:900;color:var(--orange)}
+.menu-card .cat{
+  position:absolute;top:10px;right:10px;
+  background:rgba(0,0,0,.6);color:#fff;
+  padding:3px 8px;border-radius:20px;font-size:10px;font-weight:700;
+  text-transform:uppercase;z-index:2;
+}
+
+/* ========== VOICE BUTTON ========== */
+.voice-btn{
+  width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle,#F97316 0%,#C2410C 100%);
+  color:#fff;border:none;font-size:22px;font-weight:900;
+  cursor:pointer;box-shadow:0 16px 40px rgba(194,65,12,.45);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:6px;transition:.2s;
+}
+.voice-btn:active{transform:scale(.95)}
+.voice-btn.listening{
+  background:radial-gradient(circle,#FB923C 0%,#EA580C 100%);
+  animation:pulse 1.2s infinite;
+}
+@keyframes pulse{
+  0%,100%{transform:scale(1);box-shadow:0 16px 40px rgba(194,65,12,.45)}
+  50%{transform:scale(1.06);box-shadow:0 20px 60px rgba(234,88,12,.7)}
+}
+
+/* ========== TABS ========== */
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:8px 0;margin-bottom:16px;border-bottom:2px solid var(--creme-2)}
+.tab{
+  padding:10px 16px;border-radius:12px;border:none;
+  background:transparent;color:var(--bois);
+  font-weight:700;cursor:pointer;white-space:nowrap;font-size:13px;transition:.15s;
+}
+.tab:hover{background:var(--creme-2)}
+.tab.active{background:var(--orange);color:#fff}
+
+/* ========== BADGES ========== */
+.badge{display:inline-block;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:800}
+.badge-pending{background:#FEF3C7;color:#92400E}
+.badge-paid{background:#D1FAE5;color:#065F46}
+.badge-cancelled{background:#FEE2E2;color:#991B1B}
+.badge-admin{background:#EDE9FE;color:#5B21B6}
+
+/* ========== TABLE ========== */
+.table{width:100%;border-collapse:collapse;font-size:13px}
+.table th,.table td{padding:10px 8px;text-align:left;border-bottom:1px solid var(--creme-2)}
+.table th{color:var(--bois);font-weight:800;background:var(--creme);font-size:12px;text-transform:uppercase}
+.table tr:hover{background:var(--creme)}
+
+/* ========== STATS ========== */
+.stats{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin-bottom:20px}
+.stat{background:#fff;border-radius:16px;padding:18px;text-align:center;box-shadow:var(--shadow);border-top:4px solid var(--orange)}
+.stat .lbl{font-size:12px;color:var(--grey);text-transform:uppercase;font-weight:700;letter-spacing:.5px}
+.stat .val{font-size:28px;font-weight:900;color:var(--orange-d);margin-top:6px}
+.stat.green{border-color:var(--vert)} .stat.green .val{color:var(--vert-d)}
+.stat.red{border-color:var(--red)} .stat.red .val{color:var(--red)}
+
+/* ========== TOAST ========== */
+#toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  background:var(--dark);color:#fff;padding:14px 22px;border-radius:14px;
+  font-weight:700;box-shadow:0 8px 30px rgba(0,0,0,.3);
+  z-index:9999;opacity:0;transition:.3s;pointer-events:none;max-width:90vw;
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(-4px)}
+#toast.ok{background:var(--vert)}
+#toast.err{background:var(--red)}
+
+/* ========== PWA / PILL ========== */
+.pill{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 12px;border-radius:999px;background:var(--creme-2);
+  color:var(--bois);font-size:12px;font-weight:700;
+}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.dot.on{background:var(--vert);animation:blink 2s infinite}
+.dot.off{background:var(--grey)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* ========== INVOICE PRINT ========== */
+@media print{
+  body *{visibility:hidden !important}
+  #invoice-print,#invoice-print *{visibility:visible !important}
+  #invoice-print{position:absolute;left:0;top:0;width:100%;background:#fff}
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width:640px){
+  .hero{padding:28px 20px;min-height:300px}
+  .nav{padding:10px 12px}
+  .nav .brand{font-size:18px}
+  .nav a,.nav .nbtn{padding:7px 10px;font-size:12px}
+  .voice-btn{width:170px;height:170px;font-size:18px}
+  .card{padding:16px}
+}
+
+/* ========== MISC ========== */
+.hidden{display:none !important}
+.center{text-align:center}
+.mt-12{margin-top:12px}.mt-20{margin-top:20px}
+.flex{display:flex}.gap-8{gap:8px}.gap-12{gap:12px}
+.items-center{align-items:center}.justify-between{justify-content:space-between}
+.wrap{flex-wrap:wrap}
+.text-muted{color:var(--grey);font-size:13px}
+.divider{height:1px;background:var(--creme-2);margin:16px 0}
+.qr-fake{
+  width:120px;height:120px;
+  background:
+    repeating-linear-gradient(0deg,#000 0 6px,#fff 6px 12px),
+    repeating-linear-gradient(90deg,#000 0 6px,#fff 6px 12px);
+  background-blend-mode:multiply;
+  border:4px solid #000;
+  image-rendering:pixelated;
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav"></nav>
+<main id="main"></main>
+<div id="toast"></div>
+<div id="invoice-print" class="hidden"></div>
+
+<script>
+/* =====================================================
+   MAQUIS VENISE — APPLICATION UNIQUE (localStorage)
+   Version 1.0.0
+   ===================================================== */
+
+/* ===================== STORAGE ===================== */
+const DB_KEY = 'venise_v1';
+const MENU_IMG = {
+  poulet:'https://images.pexels.com/photos/2338407/pexels-photo-2338407.jpeg?auto=compress&cs=tinysrgb&w=600',
+  attieke:'https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=600',
+  alloco:'https://images.pexels.com/photos/541040/pexels-photo-541040.jpeg?auto=compress&cs=tinysrgb&w=600',
+  biere:'https://images.pexels.com/photos/155263/pexels-photo-155263.jpeg?auto=compress&cs=tinysrgb&w=600',
+  jus:'https://images.pexels.com/photos/96974/pexels-photo-96974.jpeg?auto=compress&cs=tinysrgb&w=600',
+  default:'https://images.pexels.com/photos/1105325/pexels-photo-1105325.jpeg?auto=compress&cs=tinysrgb&w=600'
+};
+const HERO_VIDEOS = [
+  'https://videos.pexels.com/video-files/3195394/3195394-uhd_2560_1440_25fps.mp4',
+  'https://videos.pexels.com/video-files/2098989/2098989-hd_1920_1080_30fps.mp4'
+];
+
+const DEFAULT_DB = {
+  users:[
+    {id:1, name:'Patron', role:'admin', pin:'1234'},
+    {id:2, name:'Awa', role:'serveuse', pin:'1111'},
+    {id:3, name:'Koffi', role:'caissier', pin:'2222'}
+  ],
+  clients:[],
+  menu:[
+    {id:1,name:'Poulet braisé',category:'Plats',price:5000,cost:2200,image:MENU_IMG.poulet,aliases:['poulet','braisé','poulet braise'],available:true},
+    {id:2,name:'Attiéké poisson',category:'Plats',price:3000,cost:1200,image:MENU_IMG.attieke,aliases:['attieke','poisson','atieke poisson','atchéké'],available:true},
+    {id:3,name:'Alloco',category:'Accompagnement',price:1000,cost:300,image:MENU_IMG.alloco,aliases:['alloco','banane'],available:true},
+    {id:4,name:'Bière Flag',category:'Boissons',price:1000,cost:600,image:MENU_IMG.biere,aliases:['flag','biere flag','bière'],available:true},
+    {id:5,name:'Bière Castel',category:'Boissons',price:1200,cost:700,image:MENU_IMG.biere,aliases:['castel'],available:true},
+    {id:6,name:'Bissap',category:'Boissons',price:500,cost:150,image:MENU_IMG.jus,aliases:['bissap','jus'],available:true},
+    {id:7,name:'Garba',category:'Plats',price:2000,cost:800,image:MENU_IMG.attieke,aliases:['garba','thoni'],available:true},
+    {id:8,name:'Poulet DG',category:'Plats',price:6000,cost:2800,image:MENU_IMG.poulet,aliases:['dg','poulet dg'],available:true}
+  ],
+  stock:[
+    {id:1,name:'Poulet entier',unit:'u',qty:20,threshold:5},
+    {id:2,name:'Sac de riz',unit:'kg',qty:50,threshold:10},
+    {id:3,name:'Casier Flag',unit:'casier',qty:10,threshold:3},
+    {id:4,name:'Poisson (carpe)',unit:'u',qty:30,threshold:8}
+  ],
+  orders:[], stockMoves:[], audit:[], promos:[], playlist:[], b2b:[], invoices:[],
+  settings:{
+    company:'Maquis Venise',
+    address:'Riviera 4 M\'Pouto, Abidjan, Côte d\'Ivoire',
+    phone:'+225 07 00 00 00 00',
+    ncc:'',
+    tva:18,
+    version:'1.0.0',
+    invoicePrefix:'FAC'
+  }
+};
+
+let db = (()=>{ try{ return JSON.parse(localStorage.getItem(DB_KEY)) || JSON.parse(JSON.stringify(DEFAULT_DB)); }catch(e){ return JSON.parse(JSON.stringify(DEFAULT_DB)); } })();
+
+function save(){ localStorage.setItem(DB_KEY, JSON.stringify(db)); }
+function nextId(arr){ return arr.length ? Math.max(...arr.map(x=>x.id))+1 : 1; }
+function audit(userId, action, entity, entityId, payload){
+  db.audit.unshift({id:Date.now()+Math.random(), user_id:userId, action, entity, entity_id:entityId, payload:payload||{}, at:new Date().toISOString()});
+  if(db.audit.length>1500) db.audit.length=1500;
+  save();
+}
+function fmt(n){ return (n||0).toLocaleString('fr-FR'); }
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function today(){ return new Date().toISOString().slice(0,10); }
+
+/* ===================== STATE ===================== */
+const state = {
+  user: null,
+  page: 'home',
+  cart: [],
+  voiceTranscript: '',
+  listening: false,
+  adminTab: 'dashboard',
+  factDocType: 'facture',
+  factClient: null,
+  factItems: [],
+  printOrder: null
+};
+
+/* ===================== UI HELPERS ===================== */
+function toast(msg, type='ok', ms=2800){
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'show ' + type;
+  clearTimeout(el._t);
+  el._t = setTimeout(()=>{ el.className=''; }, ms);
+}
+function speak(text){
+  try{
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang='fr-FR'; u.rate=.95; u.pitch=1.05;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(u);
+  }catch(e){}
+}
+function navigate(page){
+  state.page = page;
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function logout(){
+  state.user = null;
+  state.cart = [];
+  navigate('home');
+  toast('Déconnecté');
+}
+function loginPin(userId, pin){
+  const u = db.users.find(x=>x.id===userId);
+  if(!u){ toast('Utilisateur inconnu','err'); return false; }
+  if(u.pin !== pin){ toast('PIN incorrect','err'); return false; }
+  state.user = {id:u.id, name:u.name, role:u.role};
+  audit(u.id, 'login', 'users', u.id);
+  toast('Bienvenue ' + u.name + ' 👋');
+  navigate(u.role === 'admin' ? 'admin' : u.role === 'caissier' ? 'cashier' : 'serveuse');
+  return true;
+}
+
+/* ===================== ROUTER ===================== */
+const PAGES = {
+  home: {render: renderHome, public: true, label:'🏠 Accueil'},
+  login: {render: renderLogin, public: true, label:'🔐 Connexion'},
+  register: {render: renderRegister, public: true, label:'📝 Inscription'},
+  client: {render: renderClient, label:'📱 Commander'},
+  serveuse: {render: renderServeuse, roles:['serveuse','admin'], label:'🎙️ Commandes'},
+  cashier: {render: renderCashier, roles:['caissier','admin'], label:'💰 Caisse'},
+  admin: {render: renderAdmin, roles:['admin'], label:'📊 Admin'},
+  facturation: {render: renderFacturation, roles:['admin','caissier'], label:'🧾 Factures'},
+  settings: {render: renderSettings, roles:['admin'], label:'⚙️ Paramètres'}
+};
+
+function render(){
+  renderNav();
+  const page = PAGES[state.page] || PAGES.home;
+  if(page.roles && (!state.user || !page.roles.includes(state.user.role))){
+    toast('Accès refusé — connectez-vous','err');
+    navigate(state.user ? 'home' : 'login');
+    return;
+  }
+  document.getElementById('main').innerHTML = '';
+  page.render(document.getElementById('main'));
+}
+
+/* ===================== NAVBAR ===================== */
+function renderNav(){
+  const nav = document.getElementById('nav');
+  let html = `<div class="brand">🍢 VENISE</div>`;
+  const pages = state.user
+    ? Object.entries(PAGES).filter(([k,p])=>{
+        if(k==='login'||k==='register') return false;
+        if(p.roles && !p.roles.includes(state.user.role)) return false;
+        return true;
+      })
+    : [['home','🏠 Accueil'],['login','🔐 Connexion'],['register','📝 Inscription'],['client','📱 Commander']];
+  pages.forEach(([k,label])=>{
+    html += `<a href="#${k}" class="${state.page===k?'active':''}">${label}</a>`;
+  });
+  html += `<div class="spacer"></div>`;
+  html += `<span class="pill" style="background:rgba(255,255,255,.2);color:#fff">${navigator.onLine?'<span class="dot on"></span>En ligne':'<span class="dot off"></span>Hors-ligne'}</span>`;
+  if(state.user){
+    html += `<span class="user">👤 ${esc(state.user.name)} (${state.user.role})</span>`;
+    html += `<button class="nbtn" onclick="logout()">Quitter</button>`;
+  }
+  nav.innerHTML = html;
+  nav.querySelectorAll('a').forEach(a=>a.onclick=(e)=>{ e.preventDefault(); navigate(a.getAttribute('href').slice(1)); });
+}
+
+/* ===================== HOME ===================== */
+function renderHome(root){
+  const promo = db.promos.filter(p=>p.active).slice(0,3);
+  const videoUrl = HERO_VIDEOS[Math.floor(Math.random()*HERO_VIDEOS.length)];
+  root.innerHTML = `
+    <div class="container">
+      <div class="hero">
+        <video autoplay muted loop playsinline poster="${MENU_IMG.poulet}">
+          <source src="${videoUrl}" type="video/mp4">
+        </video>
+        <h1>Bienvenue au Maquis Venise 🍢</h1>
+        <p>Riviera 4 M'Pouto — Commandez à l'avance, régalez-vous sur place.<br>Factures, reçus, paiement Mobile Money, tout est prêt.</p>
+        <div class="actions">
+          <button class="btn btn-green" onclick="navigate('client')">📱 Commander maintenant</button>
+          <button class="btn btn-ghost" style="color:#fff;border-color:#fff" onclick="navigate('login')">🔐 Espace équipe</button>
+        </div>
+      </div>
+
+      ${promo.length ? `
+      <h2 style="color:var(--bois);margin-bottom:14px;font-size:24px">🎉 Promos du moment</h2>
+      <div class="grid-2" style="margin-bottom:24px">
+        ${promo.map(p=>`
+          <div class="card">
+            <div class="card-title">${esc(p.title)}</div>
+            <p style="color:var(--grey);margin-bottom:10px;font-size:14px">${esc(p.description||'')}</p>
+            ${p.media_type==='video' && p.media_url
+              ? `<video src="${esc(p.media_url)}" controls style="width:100%;border-radius:12px"></video>`
+              : p.media_url
+              ? `<img src="${esc(p.media_url)}" alt="" style="width:100%;border-radius:12px;max-height:220px;object-fit:cover">`
+              : ''}
+          </div>`).join('')}
+      </div>` : ''}
+
+      <h2 style="color:var(--bois);margin-bottom:14px;font-size:24px">📋 Notre carte</h2>
+      <div class="grid">
+        ${db.menu.filter(m=>m.available).slice(0,8).map(m=>`
+          <div class="menu-card" onclick="quickAdd(${m.id})">
+            <span class="cat">${esc(m.category)}</span>
+            <div class="img">${m.image?`<img src="${esc(m.image)}" onerror="this.style.display='none';this.parentElement.innerHTML='🍢'">`:'🍢'}</div>
+            <div class="body">
+              <div class="name">${esc(m.name)}</div>
+              <div class="price">${fmt(m.price)} F</div>
+            </div>
+          </div>`).join('')}
+      </div>
+
+      <div class="card mt-20" style="background:linear-gradient(135deg,var(--creme-2),var(--jaune));border:none">
+        <div class="card-title">🚀 Comment ça marche ?</div>
+        <div class="grid-2" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+          <div><strong>1. 📱 Commandez</strong><p class="text-muted">Depuis chez vous ou à table, en 2 minutes.</p></div>
+          <div><strong>2. 🎙️ Ou dictez</strong><p class="text-muted">Parlez, on vous comprend. Zéro lecture requise.</p></div>
+          <div><strong>3. 💳 Payez</strong><p class="text-muted">Cash ou Mobile Money (Orange, MTN, Moov, Wave).</p></div>
+          <div><strong>4. 🧾 Recevez</strong><p class="text-muted">Reçu PDF immédiat, conforme DGI.</p></div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function quickAdd(menuId){
+  const m = db.menu.find(x=>x.id===menuId);
+  if(!m) return;
+  if(!state.user){ navigate('client'); return; }
+  const existing = state.cart.find(x=>x.menu_id===m.id);
+  if(existing) existing.qty++;
+  else state.cart.push({menu_id:m.id, name:m.name, price:m.price, qty:1});
+  toast(`${m.name} ajouté au panier`);
+}
+
+/* ===================== LOGIN ===================== */
+function renderLogin(root){
+  root.innerHTML = `
+    <div class="container-narrow">
+      <div class="card">
+        <h2 style="color:var(--bois);margin-bottom:8px">🔐 Connexion équipe</h2>
+        <p class="text-muted" style="margin-bottom:20px">Sélectionnez votre profil puis entrez votre code PIN.</p>
+        <div id="login-users"></div>
+        <div id="login-pin" class="hidden">
+          <div id="pin-user" style="text-align:center;font-size:20px;font-weight:800;color:var(--orange-d);margin-bottom:16px"></div>
+          <div id="pin-display" style="text-align:center;font-size:44px;letter-spacing:14px;font-weight:900;color:var(--orange);margin-bottom:20px;min-height:56px">_</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px">
+            ${[1,2,3,4,5,6,7,8,9].map(n=>`<button class="btn btn-sm" style="padding:18px;font-size:22px" onclick="pinPress('${n}')">${n}</button>`).join('')}
+            <button class="btn btn-sm" style="padding:18px;font-size:16px;background:#9CA3AF;box-shadow:none" onclick="pinPress('C')">C</button>
+            <button class="btn btn-sm" style="padding:18px;font-size:22px" onclick="pinPress('0')">0</button>
+            <button class="btn btn-sm btn-green" style="padding:18px;font-size:18px" onclick="pinSubmit()">✓</button>
+          </div>
+          <button class="btn btn-ghost btn-block" onclick="cancelLogin()">← Changer d'utilisateur</button>
+        </div>
+      </div>
+    </div>
+  `;
+  renderLoginUsers();
+}
+
+let _pinBuf = '', _pinUser = null;
+function renderLoginUsers(){
+  const wrap = document.getElementById('login-users');
+  if(!wrap) return;
+  wrap.innerHTML = db.users.filter(u=>u.active!==false).map(u=>`
+    <button class="btn btn-block" style="margin-bottom:10px;font-size:16px" onclick="selectLoginUser(${u.id})">
+      ${u.role==='admin'?'👔':u.role==='caissier'?'💰':'🍽️'} ${esc(u.name)}
+    </button>`).join('');
+}
+function selectLoginUser(id){
+  _pinUser = id; _pinBuf = '';
+  document.getElementById('login-users').classList.add('hidden');
+  document.getElementById('login-pin').classList.remove('hidden');
+  const u = db.users.find(x=>x.id===id);
+  document.getElementById('pin-user').textContent = u.name;
+  updatePinDisplay();
+}
+function cancelLogin(){
+  _pinUser=null; _pinBuf='';
+  document.getElementById('login-users').classList.remove('hidden');
+  document.getElementById('login-pin').classList.add('hidden');
+}
+function pinPress(n){
+  if(n==='C'){ _pinBuf=''; }
+  else if(_pinBuf.length<4){ _pinBuf += n; }
+  updatePinDisplay();
+  if(_pinBuf.length===4) setTimeout(pinSubmit, 150);
+}
+function updatePinDisplay(){
+  const d = document.getElementById('pin-display');
+  if(!d) return;
+  d.textContent = _pinBuf ? '•'.repeat(_pinBuf.length) : '_';
+}
+function pinSubmit(){
+  if(!_pinUser || _pinBuf.length!==4) return;
+  if(loginPin(_pinUser, _pinBuf)){ _pinBuf=''; _pinUser=null; }
+  else { _pinBuf=''; updatePinDisplay(); }
+}
+
+/* ===================== REGISTER (CLIENT) ===================== */
+function renderRegister(root){
+  root.innerHTML = `
+    <div class="container-narrow">
+      <div class="card">
+        <h2 style="color:var(--bois);margin-bottom:8px">📝 Inscrivez-vous</h2>
+        <p class="text-muted" style="margin-bottom:20px">Recevez vos points fidélité, vos promos et commandez plus vite.</p>
+        <label class="label">Nom complet *</label>
+        <input class="input" id="reg-name" placeholder="Ex : Awa Koné">
+        <label class="label">Téléphone *</label>
+        <input class="input" id="reg-phone" type="tel" placeholder="Ex : 0700000000">
+        <label class="label">Adresse (facultatif)</label>
+        <input class="input" id="reg-address" placeholder="Quartier, repère">
+        <div style="display:flex;gap:10px;align-items:flex-start;margin:14px 0;font-size:13px">
+          <input type="checkbox" id="reg-consent" style="margin-top:3px">
+          <label for="reg-consent" class="text-muted">
+            J'accepte que Maquis Venise conserve mes coordonnées pour me contacter (promos, commandes).
+            Conformément à la loi ivoirienne 2013-450, je peux demander la suppression à tout moment.
+          </label>
+        </div>
+        <button class="btn btn-green btn-block" onclick="doRegister()">✅ Créer mon compte</button>
+        <p class="text-muted mt-12" style="text-align:center">Déjà inscrit ? <a href="#login" style="color:var(--orange);font-weight:700" onclick="event.preventDefault();navigate('login')">Connectez-vous</a></p>
+      </div>
+    </div>
+  `;
+}
+function doRegister(){
+  const name = document.getElementById('reg-name').value.trim();
+  const phone = document.getElementById('reg-phone').value.trim();
+  const address = document.getElementById('reg-address').value.trim();
+  const consent = document.getElementById('reg-consent').checked;
+  if(!name || !phone){ toast('Nom et téléphone obligatoires','err'); return; }
+  if(!consent){ toast('Vous devez accepter les conditions','err'); return; }
+  if(db.clients.find(c=>c.phone===phone)){ toast('Ce numéro est déjà inscrit','err'); return; }
+  const c = { id:nextId(db.clients), name, phone, address, points:0, credit_owed:0, credit_limit:0, consent:true, created_at:new Date().toISOString() };
+  db.clients.push(c);
+  audit(null, 'client_register', 'clients', c.id, {name, phone});
+  save();
+  toast('✅ Inscription réussie ! Bienvenue ' + name);
+  navigate('client');
+}
+
+/* ===================== CLIENT (commande) ===================== */
+function renderClient(root){
+  const cats = [...new Set(db.menu.filter(m=>m.available).map(m=>m.category))];
+  root.innerHTML = `
+    <div class="container">
+      <div class="card" style="background:linear-gradient(135deg,var(--orange-l),var(--orange-d));color:#fff;border:none">
+        <h2 style="font-size:26px;margin-bottom:6px">📱 Commandez chez Venise</h2>
+        <p style="opacity:.95">Choisissez vos plats, on prépare, vous récupérez ou mangez sur place.</p>
+      </div>
+
+      <div class="card">
+        <label class="label">Numéro de table (si sur place)</label>
+        <input class="input" id="client-table" placeholder="Ex: 4" value="${state._clientTable||''}">
+      </div>
+
+      ${cats.map(cat=>`
+        <h3 style="color:var(--bois);margin:20px 0 12px;font-size:20px">${esc(cat)}</h3>
+        <div class="grid">
+          ${db.menu.filter(m=>m.available && m.category===cat).map(m=>`
+            <div class="menu-card" onclick="clientAdd(${m.id})">
+              <div class="img">${m.image?`<img src="${esc(m.image)}" onerror="this.style.display='none';this.parentElement.innerHTML='🍢'">`:'🍢'}</div>
+              <div class="body">
+                <div class="name">${esc(m.name)}</div>
+                <div class="price">${fmt(m.price)} F</div>
+              </div>
+            </div>`).join('')}
+        </div>
+      `).join('')}
+
+      <div id="client-cart" class="mt-20"></div>
+    </div>
+  `;
+  renderClientCart();
+}
+function clientAdd(id){
+  const m = db.menu.find(x=>x.id===id); if(!m) return;
+  const e = state.cart.find(x=>x.menu_id===id);
+  if(e) e.qty++; else state.cart.push({menu_id:id, name:m.name, price:m.price, qty:1});
+  renderClientCart();
+  toast(m.name + ' ajouté');
+}
+function clientRemove(idx){
+  state.cart.splice(idx,1);
+  renderClientCart();
+}
+function renderClientCart(){
+  const el = document.getElementById('client-cart');
+  if(!el) return;
+  if(!state.cart.length){
+    el.innerHTML = `<div class="card center text-muted">🛒 Votre panier est vide</div>`;
+    return;
+  }
+  const total = state.cart.reduce((s,i)=>s+i.price*i.qty,0);
+  el.innerHTML = `
+    <div class="card">
+      <div class="card-title">🛒 Votre panier</div>
+      ${state.cart.map((it,i)=>`
+        <div class="flex justify-between items-center" style="padding:10px 0;border-bottom:1px solid var(--creme-2)">
+          <span><strong>${it.qty}×</strong> ${esc(it.name)}</span>
+          <span class="flex gap-8 items-center">
+            <strong>${fmt(it.price*it.qty)} F</strong>
+            <button class="btn btn-sm btn-red" onclick="clientRemove(${i})">✕</button>
+          </span>
+        </div>`).join('')}
+      <div style="margin-top:14px;font-size:22px;font-weight:900;color:var(--orange-d);text-align:right">Total : ${fmt(total)} FCFA</div>
+      <button class="btn btn-green btn-block mt-12" onclick="clientSend()">✅ Envoyer ma commande</button>
+      <p class="text-muted mt-12 center" style="font-size:12px">Paiement : cash ou Mobile Money à la caisse</p>
+    </div>
+  `;
+}
+function clientSend(){
+  if(!state.cart.length) return;
+  const table = (document.getElementById('client-table')?.value||'').trim() || 'client';
+  const total = state.cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const order = {
+    id: nextId(db.orders),
+    client_id: null,
+    user_id: null,
+    table_no: table,
+    status: 'pending',
+    total, payment_method: null, payment_status: 'unpaid',
+    items: state.cart.map(i=>({...i})),
+    created_at: new Date().toISOString()
+  };
+  db.orders.push(order);
+  audit(null, 'client_order', 'orders', order.id, {total});
+  save();
+  state.cart = [];
+  renderClientCart();
+  toast('✅ Commande envoyée ! Nous préparons');
+  speak('Commande envoyée. Merci !');
+}
+
+/* ===================== SERVEUSE (voix + tactile) ===================== */
+let _rec = null;
+function renderServeuse(root){
+  root.innerHTML = `
+    <div class="container">
+      <div class="card">
+        <label class="label">Numéro de table</label>
+        <input class="input" id="serveuse-table" placeholder="Ex: 4" value="${state._serveuseTable||''}">
+      </div>
+      <div class="grid-2">
+        <div class="card center">
+          <button class="voice-btn" id="voice-btn" onclick="toggleVoice()">🎙️<span>Parler</span></button>
+          <p id="voice-status" class="text-muted mt-12">Appuyez et dictez la commande</p>
+          <button class="btn btn-ghost btn-block mt-12" onclick="toggleMenuGrid()">📋 Menu tactile</button>
+        </div>
+        <div>
+          <div class="card">
+            <div class="card-title">🗣️ Ce que j'ai entendu</div>
+            <p id="voice-transcript" style="font-size:18px;color:var(--orange-d);min-height:24px">—</p>
+          </div>
+          <div id="serveuse-cart"></div>
+        </div>
+      </div>
+      <div id="serveuse-menu" class="hidden mt-20">
+        <div class="card">
+          <div class="card-title">📋 Touchez pour ajouter</div>
+          <div class="grid">
+            ${db.menu.filter(m=>m.available).map(m=>`
+              <div class="menu-card" onclick="clientAdd(${m.id});renderServeuseCart()">
+                <div class="img">${m.image?`<img src="${esc(m.image)}" onerror="this.style.display='none';this.parentElement.innerHTML='🍢'">`:'🍢'}</div>
+                <div class="body">
+                  <div class="name">${esc(m.name)}</div>
+                  <div class="price">${fmt(m.price)} F</div>
+                </div>
+              </div>`).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  renderServeuseCart();
+}
+function toggleMenuGrid(){
+  document.getElementById('serveuse-menu').classList.toggle('hidden');
+}
+function renderServeuseCart(){
+  const el = document.getElementById('serveuse-cart');
+  if(!el) return;
+  if(!state.cart.length){
+    el.innerHTML = `<div class="card center text-muted">🛒 Panier vide</div>`;
+    return;
+  }
+  const total = state.cart.reduce((s,i)=>s+i.price*i.qty,0);
+  el.innerHTML = `
+    <div class="card">
+      <div class="card-title">🛒 Panier</div>
+      ${state.cart.map((it,i)=>`
+        <div class="flex justify-between items-center" style="padding:10px 0;border-bottom:1px solid var(--creme-2)">
+          <span><strong>${it.qty}×</strong> ${esc(it.name)}</span>
+          <span class="flex gap-8 items-center">
+            <strong>${fmt(it.price*it.qty)} F</strong>
+            <button class="btn btn-sm btn-red" onclick="clientRemove(${i});renderServeuseCart()">✕</button>
+          </span>
+        </div>`).join('')}
+      <div style="margin-top:14px;font-size:22px;font-weight:900;color:var(--orange-d);text-align:right">Total : ${fmt(total)} FCFA</div>
+      <button class="btn btn-green btn-block mt-12" onclick="serveuseSend()">✅ Envoyer</button>
+    </div>
+  `;
+}
+function serveuseSend(){
+  if(!state.cart.length) return;
+  const table = (document.getElementById('serveuse-table')?.value||'').trim() || 'serveuse';
+  const total = state.cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const order = {
+    id: nextId(db.orders),
+    client_id: null, user_id: state.user.id,
+    table_no: table, status:'pending', total,
+    payment_method:null, payment_status:'unpaid',
+    items: state.cart.map(i=>({...i})),
+    created_at: new Date().toISOString()
+  };
+  db.orders.push(order);
+  audit(state.user.id, 'create_order', 'orders', order.id, {total});
+  save();
+  state.cart = [];
+  renderServeuseCart();
+  speak(`Commande envoyée. Total ${total} francs.`);
+  toast('✅ Commande envoyée');
+}
+function toggleVoice(){
+  if(state.listening){
+    try{ _rec && _rec.stop(); }catch(e){}
+    return;
+  }
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){ toast('Reconnaissance vocale non supportée. Utilisez Chrome ou Edge.','err'); return; }
+  _rec = new SR();
+  _rec.lang='fr-FR'; _rec.continuous=false; _rec.interimResults=true;
+  _rec.onstart = ()=>{ state.listening=true; updateVoiceBtn(); };
+  _rec.onend = ()=>{ state.listening=false; updateVoiceBtn(); };
+  _rec.onerror = (e)=>{ state.listening=false; updateVoiceBtn(); toast('Erreur micro : '+e.error,'err'); };
+  _rec.onresult = (e)=>{
+    let finalText='', interim='';
+    for(let i=e.resultIndex;i<e.results.length;i++){
+      if(e.results[i].isFinal) finalText += e.results[i][0].transcript;
+      else interim += e.results[i][0].transcript;
+    }
+    document.getElementById('voice-transcript').textContent = finalText || interim || '—';
+    if(finalText) parseVoice(finalText);
+  };
+  try{ _rec.start(); }catch(e){ toast('Micro déjà actif','err'); }
+}
+function updateVoiceBtn(){
+  const b = document.getElementById('voice-btn');
+  const s = document.getElementById('voice-status');
+  if(!b) return;
+  if(state.listening){ b.classList.add('listening'); b.innerHTML='🎙️<span>J\'écoute...</span>'; s.textContent='Parlez maintenant'; }
+  else { b.classList.remove('listening'); b.innerHTML='🎙️<span>Parler</span>'; }
+}
+const FR_NUM = {un:1,une:1,deux:2,trois:3,quatre:4,cinq:5,six:6,sept:7,huit:8,neuf:9,dix:10};
+function parseVoice(text){
+  const lower = text.toLowerCase();
+  let added = [];
+  for(const m of db.menu.filter(x=>x.available)){
+    const names = [m.name.toLowerCase(), ...(m.aliases||[]).map(a=>a.toLowerCase())];
+    if(!names.some(n=>lower.includes(n))) continue;
+    let qty = 1;
+    const words = lower.split(/[\s,]+/);
+    for(let i=0;i<words.length;i++){
+      const ahead = words.slice(i+1,i+6);
+      if(ahead.some(x=>names.includes(x))){
+        if(FR_NUM[words[i]]) qty = FR_NUM[words[i]];
+        else if(/^\d+$/.test(words[i])) qty = parseInt(words[i]);
+        break;
+      }
+    }
+    const e = state.cart.find(x=>x.menu_id===m.id);
+    if(e) e.qty += qty; else state.cart.push({menu_id:m.id,name:m.name,price:m.price,qty});
+    added.push(`${qty} ${m.name}`);
+  }
+  renderServeuseCart();
+  if(added.length){
+    speak('J\'ai ajouté ' + added.join(', '));
+    toast('✅ Ajouté : ' + added.join(', '));
+  } else {
+    speak('Je n\'ai pas reconnu. Essayez ou utilisez le menu.');
+    toast('Aucun plat reconnu','err');
+  }
+}
+
+/* ===================== CASHIER ===================== */
+function renderCashier(root){
+  const pending = db.orders.filter(o=>o.status==='pending').reverse();
+  root.innerHTML = `
+    <div class="container">
+      <h2 style="color:var(--bois);margin-bottom:14px">💰 Caisse — Commandes en attente</h2>
+      ${pending.length===0 ? `<div class="card center text-muted">Aucune commande en attente</div>` :
+        `<div class="grid-2">${pending.map(o=>`
+          <div class="card">
+            <div class="flex justify-between items-center" style="margin-bottom:10px">
+              <strong style="color:var(--orange);font-size:22px">#${o.id}</strong>
+              <span class="badge badge-pending">En attente</span>
+            </div>
+            <p class="text-muted">Table ${esc(o.table_no)} · ${o.items.length} article(s)</p>
+            <div style="margin:10px 0">
+              ${o.items.map(i=>`<div class="flex justify-between" style="font-size:13px;padding:3px 0"><span>${i.qty}× ${esc(i.name)}</span><span>${fmt(i.price*i.qty)} F</span></div>`).join('')}
+            </div>
+            <p style="font-size:22px;font-weight:900;color:var(--orange-d);margin:10px 0">${fmt(o.total)} FCFA</p>
+            <label class="label">Mode de paiement</label>
+            <select class="select" id="pay-${o.id}">
+              <option value="cash">💵 Cash</option>
+              <option value="orange">📱 Orange Money</option>
+              <option value="mtn">📱 MTN MoMo</option>
+              <option value="moov">📱 Moov Money</option>
+              <option value="wave">📱 Wave</option>
+            </select>
+            <input class="input" id="ref-${o.id}" placeholder="Référence transaction (Mobile Money)">
+            <div class="flex gap-8">
+              <button class="btn btn-green" style="flex:1" onclick="validateOrder(${o.id})">✅ Valider</button>
+              <button class="btn btn-ghost btn-sm" onclick="printReceipt(${o.id})">🧾 Reçu</button>
+            </div>
+          </div>`).join('')}</div>`
+      }
+      <h2 style="color:var(--bois);margin:30px 0 14px">📜 Commandes payées récentes</h2>
+      <div class="card">
+        <table class="table">
+          <thead><tr><th>#</th><th>Table</th><th>Total</th><th>Paiement</th><th>Date</th><th>Action</th></tr></thead>
+          <tbody>
+            ${db.orders.filter(o=>o.status==='paid').slice(-15).reverse().map(o=>`
+              <tr>
+                <td>${o.id}</td>
+                <td>${esc(o.table_no)}</td>
+                <td>${fmt(o.total)} F</td>
+                <td><span class="badge badge-paid">${o.payment_method||'cash'}</span></td>
+                <td>${new Date(o.created_at).toLocaleString('fr-FR',{dateStyle:'short',timeStyle:'short'})}</td>
+                <td><button class="btn btn-sm btn-ghost" onclick="printReceipt(${o.id})">🧾</button></td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+function validateOrder(id){
+  const o = db.orders.find(x=>x.id===id); if(!o) return;
+  const method = document.getElementById('pay-'+id).value;
+  const ref = document.getElementById('ref-'+id).value.trim();
+  if(method!=='cash' && !ref){ toast('Renseignez la référence Mobile Money','err'); return; }
+  o.status = 'paid';
+  o.payment_status = 'paid';
+  o.payment_method = method;
+  o.payment_ref = ref || null;
+  o.paid_at = new Date().toISOString();
+  audit(state.user.id, 'validate_order', 'orders', id, {method, ref});
+  // Décrémenter le stock pour les articles qui y sont liés (optionnel)
+  save();
+  toast('✅ Commande validée');
+  speak('Commande validée. Merci !');
+  render();
+}
+
+/* ===================== RECEIPT / INVOICE PDF ===================== */
+function buildInvoiceHTML(o, docType='reçu'){
+  const s = db.settings;
+  const num = (s.invoicePrefix||'FAC') + '-' + new Date().getFullYear() + '-' + String(o.id).padStart(4,'0');
+  const totalTTC = o.total;
+  const totalHT = Math.round(totalTTC / (1 + s.tva/100));
+  const tva = totalTTC - totalHT;
+  return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${docType} ${num}</title>
+  <style>
+    body{font-family:Arial,sans-serif;padding:30px;color:#222;max-width:800px;margin:auto}
+    .head{display:flex;justify-content:space-between;align-items:start;padding-bottom:20px;border-bottom:3px solid #EA580C;margin-bottom:20px}
+    .logo{font-size:32px;font-weight:900;color:#EA580C}
+    .company{font-size:13px;color:#555;margin-top:6px;line-height:1.6}
+    .doc-title{text-align:right}
+    .doc-title h1{margin:0;color:#C2410C;font-size:26px}
+    .doc-title .num{font-family:monospace;color:#666;margin-top:6px}
+    .doc-title .date{font-size:13px;color:#888;margin-top:4px}
+    .client{background:#FFF7ED;padding:16px;border-radius:10px;margin-bottom:20px}
+    .client strong{color:#7C2D12}
+    table{width:100%;border-collapse:collapse;margin:20px 0}
+    th{background:#7C2D12;color:#fff;padding:12px;text-align:left;font-size:13px}
+    td{padding:10px 12px;border-bottom:1px solid #FED7AA;font-size:14px}
+    .totals{margin-left:auto;width:320px;margin-top:16px}
+    .totals .row{display:flex;justify-content:space-between;padding:8px 0;font-size:14px}
+    .totals .row.total{font-weight:900;font-size:20px;color:#C2410C;border-top:2px solid #EA580C;padding-top:12px;margin-top:8px}
+    .footer{margin-top:40px;padding-top:20px;border-top:1px solid #ddd;font-size:11px;color:#888;text-align:center}
+    .qr{display:inline-block;width:80px;height:80px;background:repeating-linear-gradient(0deg,#000 0 4px,#fff 4px 8px),repeating-linear-gradient(90deg,#000 0 4px,#fff 4px 8px);background-blend-mode:multiply;border:3px solid #000;margin-top:8px}
+    @media print{body{padding:0}button{display:none}}
+  </style></head><body>
+  <div class="head">
+    <div>
+      <div class="logo">🍢 ${esc(s.company)}</div>
+      <div class="company">${esc(s.address)}<br>Tél : ${esc(s.phone)}${s.ncc?'<br>NCC : '+esc(s.ncc):''}</div>
+    </div>
+    <div class="doc-title">
+      <h1>${esc(docType.toUpperCase())}</h1>
+      <div class="num">N° ${num}</div>
+      <div class="date">Date : ${new Date(o.paid_at||o.created_at).toLocaleDateString('fr-FR')}</div>
+    </div>
+  </div>
+  <div class="client">
+    <strong>Client</strong><br>
+    ${o.client_name?esc(o.client_name):'Client comptoir'}<br>
+    ${o.table_no?'Table : '+esc(o.table_no):''}
+  </div>
+  <table>
+    <thead><tr><th>Désignation</th><th style="width:60px">Qté</th><th style="width:100px">PU</th><th style="width:120px;text-align:right">Total</th></tr></thead>
+    <tbody>
+      ${o.items.map(i=>`<tr><td>${esc(i.name)}</td><td>${i.qty}</td><td>${fmt(i.price)} F</td><td style="text-align:right">${fmt(i.price*i.qty)} F</td></tr>`).join('')}
+    </tbody>
+  </table>
+  <div class="totals">
+    <div class="row"><span>Total HT</span><span>${fmt(totalHT)} FCFA</span></div>
+    <div class="row"><span>TVA (${s.tva}%)</span><span>${fmt(tva)} FCFA</span></div>
+    <div class="row total"><span>NET À PAYER</span><span>${fmt(totalTTC)} FCFA</span></div>
+  </div>
+  <div class="footer">
+    Mode de paiement : <strong>${esc(o.payment_method||'cash')}</strong>
+    ${o.payment_ref?' · Réf : '+esc(o.payment_ref):''}<br>
+    Merci de votre visite au Maquis Venise — À bientôt !<br>
+    <div class="qr" title="QR FNE (simulé)"></div><br>
+    <em>Document généré électroniquement — Signature électronique DGI simulée.</em>
+  </div>
+  <script>window.onload=()=>setTimeout(()=>window.print(),300);</script>
+  </body></html>`;
+}
+function printReceipt(orderId){
+  const o = db.orders.find(x=>x.id===orderId); if(!o) return;
+  const w = window.open('', '_blank');
+  w.document.write(buildInvoiceHTML(o, 'reçu'));
+  w.document.close();
+}
+
+/* ===================== ADMIN ===================== */
+function renderAdmin(root){
+  const tabs = [
+    ['dashboard','📊 Tableau'],
+    ['journal','📔 Journal'],
+    ['stock','📦 Stock'],
+    ['clients','👥 Clients'],
+    ['promos','🎉 Promos'],
+    ['playlist','🎵 Playlist'],
+    ['b2b','🤝 B2B'],
+    ['users','👤 Équipe'],
+    ['audit','🔒 Audit']
+  ];
+  root.innerHTML = `
+    <div class="container">
+      <h2 style="color:var(--bois);margin-bottom:10px">📊 Administration</h2>
+      <div class="tabs">
+        ${tabs.map(([k,l])=>`<button class="tab ${state.adminTab===k?'active':''}" onclick="state.adminTab='${k}';renderAdmin(document.getElementById('main'))">${l}</button>`).join('')}
+      </div>
+      <div id="admin-content"></div>
+    </div>
+  `;
+  const c = document.getElementById('admin-content');
+  if(state.adminTab==='dashboard') adminDashboard(c);
+  else if(state.adminTab==='journal') adminJournal(c);
+  else if(state.adminTab==='stock') adminStock(c);
+  else if(state.adminTab==='clients') adminClients(c);
+  else if(state.adminTab==='promos') adminPromos(c);
+  else if(state.adminTab==='playlist') adminPlaylist(c);
+  else if(state.adminTab==='b2b') adminB2B(c);
+  else if(state.adminTab==='users') adminUsers(c);
+  else if(state.adminTab==='audit') adminAudit(c);
+}
+
+function adminDashboard(root){
+  const paid = db.orders.filter(o=>o.status==='paid');
+  const todayPaid = paid.filter(o=>o.paid_at && o.paid_at.slice(0,10)===today());
+  const totalRevenue = paid.reduce((s,o)=>s+o.total,0);
+  const alerts = db.stock.filter(s=>s.qty<=s.threshold);
+  const topItems = {};
+  paid.forEach(o=>o.items.forEach(i=>{
+    topItems[i.name] = topItems[i.name] || {qty:0, rev:0};
+    topItems[i.name].qty += i.qty;
+    topItems[i.name].rev += i.price*i.qty;
+  }));
+  const top = Object.entries(topItems).sort((a,b)=>b[1].rev-a[1].rev).slice(0,5);
+
+  // 30 derniers jours
+  const last30 = [];
+  for(let i=29;i>=0;i--){
+    const d = new Date(); d.setDate(d.getDate()-i);
+    const key = d.toISOString().slice(0,10);
+    const rev = paid.filter(o=>o.paid_at && o.paid_at.slice(0,10)===key).reduce((s,o)=>s+o.total,0);
+    last30.push({day:key.slice(5), rev});
+  }
+  const maxRev = Math.max(...last30.map(d=>d.rev), 1);
+
+  root.innerHTML = `
+    <div class="stats">
+      <div class="stat green"><div class="lbl">Aujourd'hui</div><div class="val">${fmt(todayPaid.reduce((s,o)=>s+o.total,0))} F</div></div>
+      <div class="stat"><div class="lbl">Total encaissé</div><div class="val">${fmt(totalRevenue)} F</div></div>
+      <div class="stat"><div class="lbl">Commandes</div><div class="val">${paid.length}</div></div>
+      <div class="stat ${alerts.length?'red':'green'}"><div class="lbl">Alertes stock</div><div class="val">${alerts.length}</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📈 Chiffre d'affaires (30 jours)</div>
+      <div style="display:flex;align-items:flex-end;gap:3px;height:160px;padding:10px 0">
+        ${last30.map(d=>`<div title="${d.day} : ${fmt(d.rev)} F" style="flex:1;background:linear-gradient(180deg,var(--orange-l),var(--orange-d));height:${Math.max(4,d.rev/maxRev*100)}%;border-radius:4px 4px 0 0;min-height:4px"></div>`).join('')}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🏆 Top ventes</div>
+      <table class="table">
+        <thead><tr><th>Plat</th><th>Qté</th><th>CA</th></tr></thead>
+        <tbody>${top.map(([n,d])=>`<tr><td>${esc(n)}</td><td>${d.qty}</td><td style="color:var(--vert-d);font-weight:800">${fmt(d.rev)} F</td></tr>`).join('') || '<tr><td colspan="3" class="text-muted">Aucune vente</td></tr>'}</tbody>
+      </table>
+    </div>
+
+    ${alerts.length?`<div class="card" style="border-left:6px solid var(--red)">
+      <div class="card-title" style="color:var(--red)">⚠️ Stock bas</div>
+      <ul style="padding-left:20px">${alerts.map(a=>`<li>${esc(a.name)} — ${a.qty} ${esc(a.unit)} (seuil ${a.threshold})</li>`).join('')}</ul>
+    </div>`:''}
+  `;
+}
+
+function adminJournal(root){
+  const periods = [['day','Jour'],['week','Semaine'],['month','Mois'],['year','Année']];
+  const cur = state._journalPeriod || 'day';
+  const paid = db.orders.filter(o=>o.status==='paid');
+  const groups = {};
+  paid.forEach(o=>{
+    const d = new Date(o.paid_at || o.created_at);
+    let key;
+    if(cur==='day') key = d.toISOString().slice(0,10);
+    else if(cur==='week'){ const onejan = new Date(d.getFullYear(),0,1); const week = Math.ceil((((d - onejan)/86400000)+onejan.getDay()+1)/7); key = d.getFullYear()+'-S'+String(week).padStart(2,'0'); }
+    else if(cur==='month') key = d.toISOString().slice(0,7);
+    else key = String(d.getFullYear());
+    groups[key] = groups[key] || {count:0, rev:0};
+    groups[key].count++; groups[key].rev += o.total;
+  });
+  const rows = Object.entries(groups).sort((a,b)=>b[0].localeCompare(a[0]));
+  root.innerHTML = `
+    <div class="card">
+      <div class="card-title">📔 Journal des ventes</div>
+      <div class="flex gap-8 wrap" style="margin-bottom:16px">
+        ${periods.map(([k,l])=>`<button class="tab ${cur===k?'active':''}" onclick="state._journalPeriod='${k}';adminJournal(document.getElementById('admin-content'))">${l}</button>`).join('')}
+      </div>
+      <table class="table">
+        <thead><tr><th>Période</th><th>Commandes</th><th>CA</th></tr></thead>
+        <tbody>${rows.map(([k,v])=>`<tr><td>${k}</td><td>${v.count}</td><td style="color:var(--vert-d);font-weight:800">${fmt(v.rev)} F</td></tr>`).join('') || '<tr><td colspan="3" class="text-muted">Aucune vente</td></tr>'}</tbody>
+      </table>
+    </div>
+  `;
+}
+
+function adminStock(root){
+  root.innerHTML = `
+    <div class="card">
+      <div class="card-title">📦 Stock</div>
+      <table class="table">
+        <thead><tr><th>Article</th><th>Qté</th><th>Seuil</th><th>Actions</th></tr></thead>
+        <tbody>${db.stock.map(s=>`
+          <tr>
+            <td>${esc(s.name)}</td>
+            <td style="font-weight:800;color:${s.qty<=s.threshold?'var(--red)':'var(--vert-d)'}">${s.qty} ${esc(s.unit)}</td>
+            <td>${s.threshold}</td>
+            <td>
+              <button class="btn btn-sm btn-green" onclick="stockMove(${s.id},1)">+1</button>
+              <button class="btn btn-sm btn-red" onclick="stockMove(${s.id},-1)">−1</button>
+              <button class="btn btn-sm btn-ghost" onclick="stockAdjust(${s.id})">Ajuster</button>
+            </td>
+          </tr>`).join('')}</tbody>
+      </table>
+      <button class="btn btn-block mt-12" onclick="stockAdd()">➕ Ajouter un article</button>
+    </div>
+  `;
+}
+function stockMove(id, delta){
+  const s = db.stock.find(x=>x.id===id); if(!s) return;
+  s.qty += delta;
+  db.stockMoves.unshift({id:Date.now(), item_id:id, qty_change:delta, reason:delta>0?'entrée':'sortie', user_id:state.user.id, at:new Date().toISOString()});
+  audit(state.user.id,'stock_move','stock',id,{delta});
+  save(); adminStock(document.getElementById('admin-content'));
+}
+function stockAdjust(id){
+  const s = db.stock.find(x=>x.id===id); if(!s) return;
+  const v = prompt('Nouvelle quantité pour '+s.name+':', s.qty);
+  if(v===null) return;
+  const n = parseFloat(v);
+  if(isNaN(n)) return;
+  const delta = n - s.qty;
+  s.qty = n;
+  db.stockMoves.unshift({id:Date.now(), item_id:id, qty_change:delta, reason:'ajustement', user_id:state.user.id, at:new Date().toISOString()});
+  audit(state.user.id,'stock_adjust','stock',id,{delta});
+  save(); adminStock(document.getElementById('admin-content'));
+}
+function stockAdd(){
+  const name = prompt('Nom de l\'article :'); if(!name) return;
+  const unit = prompt('Unité (u, kg, casier) :','u') || 'u';
+  const qty = parseFloat(prompt('Quantité :','0')) || 0;
+  const threshold = parseFloat(prompt('Seuil d\'alerte :','0')) || 0;
+  db.stock.push({id:nextId(db.stock), name, unit, qty, threshold});
+  audit(state.user.id,'stock_add','stock',null,{name});
+  save(); adminStock(document.getElementById('admin-content'));
+}
+
+function adminClients(root){
+  root.innerHTML = `
+    <div class="card">
+      <div class="card-title">👥 Clients (${db.clients.length})</div>
+      <table class="table">
+        <thead><tr><th>Nom</th><th>Tél</th><th>Points</th><th>Crédit</th><th>Actions</th></tr></thead>
+        <tbody>${db.clients.map(c=>`
+          <tr>
+            <td>${esc(c.name)}</td>
+            <td>${esc(c.phone)}</td>
+            <td>${c.points}</td>
+            <td style="color:${c.credit_owed>0?'var(--red)':'var(--vert-d)'};font-weight:800">${fmt(c.credit_owed)} F</td>
+            <td>
+              <button class="btn btn-sm btn-ghost" onclick="clientCredit(${c.id},'add')">+Crédit</button>
+              <button class="btn btn-sm btn-green" onclick="clientCredit(${c.id},'pay')">Payer</button>
+            </td>
+          </tr>`).join('') || '<tr><td colspan="5" class="text-muted">Aucun client inscrit</td></tr>'}</tbody>
+      </table>
+    </div>
+  `;
+}
+function clientCredit(id, action){
+  const c = db.clients.find(x=>x.id===id); if(!c) return;
+  const v = parseFloat(prompt(action==='add'?'Montant du crédit à ajouter :':'Montant payé :','0'));
+  if(!v || v<=0) return;
+  if(action==='add'){ c.credit_owed += v; }
+  else { c.credit_owed = Math.max(0, c.credit_owed - v); c.points += Math.floor(v/1000); }
+  audit(state.user.id,'client_credit','clients',id,{action, amount:v});
+  save(); adminClients(document.getElementById('admin-content'));
+}
+
+function adminPromos(root){
+  root.innerHTML = `
+    <div class="card">
+      <div class="card-title">➕ Nouvelle promo</div>
+      <input class="input" id="promo-title" placeholder="Titre (ex: Happy Hour)">
+      <textarea class="textarea" id="promo-desc" placeholder="Description"></textarea>
+      <input class="input" id="promo-url" placeholder="URL image ou vidéo (Pexels, Unsplash, Mixkit...)">
+      <select class="select" id="promo-type"><option value="image">Image</option><option value="video">Vidéo</option></select>
+      <button class="btn btn-green btn-block" onclick="promoCreate()">Publier</button>
+    </div>
+    <div class="grid-2">
+      ${db.promos.filter(p=>p.active).map(p=>`
+        <div class="card">
+          <div class="card-title">${esc(p.title)}</div>
+          <p class="text-muted" style="margin-bottom:10px">${esc(p.description||'')}</p>
+          ${p.media_type==='video'&&p.media_url?`<video src="${esc(p.media_url)}" controls style="width:100%;border-radius:12px"></video>`:p.media_url?`<img src="${esc(p.media_url)}" style="width:100%;border-radius:12px;max-height:200px;object-fit:cover">`:''}
+          <button class="btn btn-sm btn-red mt-12" onclick="promoDelete(${p.id})">Supprimer</button>
+        </div>`).join('') || '<div class="card text-muted">Aucune promo active</div>'}
+    </div>
+  `;
+}
+function promoCreate(){
+  const title = document.getElementById('promo-title').value.trim();
+  const description = document.getElementById('promo-desc').value.trim();
+  const media_url = document.getElementById('promo-url').value.trim();
+  const media_type = document.getElementById('promo-type').value;
+  if(!title){ toast('Titre obligatoire','err'); return; }
+  db.promos.push({id:nextId(db.promos), title, description, media_url, media_type, active:true, created_at:new Date().toISOString()});
+  audit(state.user.id,'promo_create','promos',null,{title});
+  save(); adminPromos(document.getElementById('admin-content')); toast('✅ Promo publiée');
+}
+function promoDelete(id){
+  if(!confirm('Supprimer cette promo ?')) return;
+  db.promos = db.promos.filter(p=>p.id!==id);
+  audit(state.user.id,'promo_delete','promos',id);
+  save(); adminPromos(document.getElementById('admin-content'));
+}
+
+function adminPlaylist(root){
+  root.innerHTML = `
+    <div class="card">
+      <div class="card-title">➕ Ajouter un morceau</div>
+      <input class="input" id="pl-title" placeholder="Titre">
+      <input class="input" id="pl-artist" placeholder="Artiste">
+      <input class="input" id="pl-url" placeholder="URL mp3 ou stream">
+      <button class="btn btn-green btn-block" onclick="plAdd()">Ajouter</button>
+      <p class="text-muted mt-12" style="color:var(--red);font-weight:700">⚠️ Licence BURIDA obligatoire pour musique commerciale en CI.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">🎵 Playlist maquis</div>
+      ${db.playlist.map(p=>`
+        <div class="flex justify-between items-center" style="padding:10px;border-bottom:1px solid var(--creme-2)">
+          <span>🎵 ${esc(p.title)} — ${esc(p.artist)}</span>
+          <span class="flex gap-8">
+            <button class="btn btn-sm" onclick="playSong('${esc(p.url)}')">▶</button>
+            <button class="btn btn-sm btn-red" onclick="plDelete(${p.id})">✕</button>
+          </span>
+        </div>`).join('') || '<p class="text-muted">Aucun morceau</p>'}
+      <div id="player-slot" class="mt-12"></div>
+    </div>
+  `;
+}
+function plAdd(){
+  const title = document.getElementById('pl-title').value.trim();
+  const artist = document.getElementById('pl-artist').value.trim();
+  const url = document.getElementById('pl-url').value.trim();
+  if(!title||!url){ toast('Titre et URL requis','err'); return; }
+  db.playlist.push({id:nextId(db.playlist), title, artist, url, position:db.playlist.length});
+  audit(state.user.id,'playlist_add','playlist',null,{title});
+  save(); adminPlaylist(document.getElementById('admin-content'));
+}
+function plDelete(id){
+  db.playlist = db.playlist.filter(p=>p.id!==id);
+  save(); adminPlaylist(document.getElementById('admin-content'));
+}
+function playSong(url){
+  document.getElementById('player-slot').innerHTML = `<audio src="${esc(url)}" controls autoplay style="width:100%"></audio>`;
+}
+
+function adminB2B(root){
+  root.innerHTML = `
+    <div class="card">
+      <div class="card-title">🤝 Nouveau RDV B2B</div>
+      <input class="input" id="b2b-company" placeholder="Entreprise">
+      <input class="input" id="b2b-contact" placeholder="Contact">
+      <input class="input" id="b2b-phone" placeholder="Téléphone">
+      <input class="input" id="b2b-date" type="datetime-local">
+      <textarea class="textarea" id="b2b-notes" placeholder="Notes"></textarea>
+      <button class="btn btn-green btn-block" onclick="b2bAdd()">Enregistrer</button>
+    </div>
+    <div class="card">
+      <div class="card-title">Rendez-vous (${db.b2b.length})</div>
+      <table class="table">
+        <thead><tr><th>Entreprise</th><th>Contact</th><th>Tél</th><th>Date</th></tr></thead>
+        <tbody>${db.b2b.map(m=>`<tr><td>${esc(m.company)}</td><td>${esc(m.contact_name)}</td><td>${esc(m.phone)}</td><td>${esc(m.scheduled_at)}</td></tr>`).join('') || '<tr><td colspan="4" class="text-muted">Aucun RDV</td></tr>'}</tbody>
+      </table>
+    </div>
+  `;
+}
+function b2bAdd(){
+  const company = document.getElementById('b2b-company').value.trim();
+  const contact_name = document.getElementById('b2b-contact').value.trim();
+  const phone = document.getElementById('b2b-phone').value.trim();
+  const scheduled_at = document.getElementById('b2b-date').value;
+  const notes = document.getElementById('b2b-notes').value;
+  if(!company||!phone){ toast('Entreprise et téléphone requis','err'); return; }
+  db.b2b.push({id:nextId(db.b2b), company, contact_name, phone, scheduled_at, notes, created_at:new Date().toISOString()});
+  save(); adminB2B(document.getElementById('admin-content'));
+}
+
+function adminUsers(root){
+  root.innerHTML = `
+    <div class="card">
+      <div class="card-title">👤 Équipe</div>
+      <table class="table">
+        <thead><tr><th>Nom</th><th>Rôle</th><th>PIN</th></tr></thead>
+        <tbody>${db.users.map(u=>`<tr><td>${esc(u.name)}</td><td><span class="badge badge-${u.role==='admin'?'admin':u.role==='caissier'?'paid':'pending'}">${u.role}</span></td><td>••••</td></tr>`).join('')}</tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title">➕ Ajouter un employé</div>
+      <input class="input" id="u-name" placeholder="Nom">
+      <select class="select" id="u-role"><option value="serveuse">Serveuse</option><option value="caissier">Caissier</option><option value="admin">Admin</option></select>
+      <input class="input" id="u-pin" placeholder="PIN (4 chiffres)" maxlength="4" inputmode="numeric">
+      <button class="btn btn-green btn-block" onclick="userAdd()">Ajouter</button>
+    </div>
+  `;
+}
+function userAdd(){
+  const name = document.getElementById('u-name').value.trim();
+  const role = document.getElementById('u-role').value;
+  const pin = document.getElementById('u-pin').value.trim();
+  if(!name||pin.length!==4){ toast('Nom et PIN 4 chiffres requis','err'); return; }
+  db.users.push({id:nextId(db.users), name, role, pin});
+  audit(state.user.id,'user_add','users',null,{name, role});
+  save(); adminUsers(document.getElementById('admin-content')); toast('✅ Employé ajouté');
+}
+
+function adminAudit(root){
+  root.innerHTML = `
+    <div class="card">
+      <div class="card-title">🔒 Journal d'audit (${db.audit.length})</div>
+      <table class="table">
+        <thead><tr><th>Date</th><th>Utilisateur</th><th>Action</th><th>Entité</th></tr></thead>
+        <tbody>${db.audit.slice(0,200).map(a=>{
+          const u = db.users.find(x=>x.id===a.user_id);
+          return `<tr><td style="font-size:11px">${new Date(a.at).toLocaleString('fr-FR')}</td><td>${u?esc(u.name):'—'}</td><td><strong>${esc(a.action)}</strong></td><td>${esc(a.entity)}#${esc(a.entity_id||'')}</td></tr>`;
+        }).join('') || '<tr><td colspan="4" class="text-muted">Vide</td></tr>'}</tbody>
+      </table>
+    </div>
+  `;
+}
+
+/* ===================== FACTURATION (FacturePro-style) ===================== */
+function renderFacturation(root){
+  const clients = db.clients;
+  root.innerHTML = `
+    <div class="container">
+      <div class="card" style="background:linear-gradient(135deg,#7C2D12,#EA580C);color:#fff;border:none">
+        <h2 style="font-size:26px;margin-bottom:6px">🧾 Facturation Venise</h2>
+        <p style="opacity:.95">Générez factures, reçus, devis et proformas — conformité TVA 18% et NCC DGI.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">📑 Type de document</div>
+          <select class="select" id="fact-type" onchange="state.factDocType=this.value">
+            <option value="facture">Facture</option>
+            <option value="reçu">Reçu</option>
+            <option value="devis">Devis</option>
+            <option value="proforma">Facture proforma</option>
+          </select>
+
+          <div class="card-title" style="margin-top:20px">👤 Client</div>
+          <select class="select" id="fact-client">
+            <option value="">Client comptoir (sans nom)</option>
+            ${clients.map(c=>`<option value="${c.id}">${esc(c.name)} — ${esc(c.phone)}</option>`).join('')}
+          </select>
+
+          <div class="card-title" style="margin-top:20px">📦 Lignes</div>
+          <div id="fact-lines"></div>
+          <button class="btn btn-ghost btn-block mt-12" onclick="factAddLine()">➕ Ajouter une ligne</button>
+          <button class="btn btn-ghost btn-block mt-12" onclick="factPickFromMenu()">🍢 Importer du menu</button>
+          <button class="btn btn-ghost btn-block mt-12" onclick="factVoiceDictate()">🎙️ Dicter les lignes</button>
+        </div>
+
+        <div class="card">
+          <div class="card-title">💵 Récapitulatif</div>
+          <div id="fact-totals"></div>
+          <button class="btn btn-green btn-block mt-20" onclick="factGenerate()">🧾 Générer & Imprimer (PDF)</button>
+          <p class="text-muted mt-12" style="font-size:12px">
+            ⚠️ Conformité FNE (DGI) : le QR et la signature sont <strong>simulés</strong>.
+            C'est à vous de soumettre votre facture à la DGI pour validation officielle.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📜 Historique des documents</div>
+        <table class="table">
+          <thead><tr><th>N°</th><th>Type</th><th>Client</th><th>Total</th><th>Date</th><th>Action</th></tr></thead>
+          <tbody>${db.invoices.slice(0,20).reverse().map(i=>`
+            <tr>
+              <td>${esc(i.number)}</td><td>${esc(i.type)}</td>
+              <td>${esc(i.client_name||'Comptoir')}</td>
+              <td>${fmt(i.total)} F</td>
+              <td>${new Date(i.created_at).toLocaleDateString('fr-FR')}</td>
+              <td><button class="btn btn-sm btn-ghost" onclick="factReprint('${esc(i.number)}')">Voir</button></td>
+            </tr>`).join('') || '<tr><td colspan="6" class="text-muted">Aucun document</td></tr>'}</tbody>
+        </table>
+      </div>
+    </div>
+  `;
+  state.factItems = [];
+  factAddLine();
+}
+function factAddLine(name='', price=0, qty=1){
+  state.factItems.push({name, price, qty});
+  factRenderLines();
+}
+function factRemoveLine(i){
+  state.factItems.splice(i,1);
+  factRenderLines();
+}
+function factRenderLines(){
+  const el = document.getElementById('fact-lines');
+  if(!el) return;
+  el.innerHTML = state.factItems.map((it,i)=>`
+    <div class="flex gap-8" style="margin-bottom:8px">
+      <input class="input" placeholder="Désignation" value="${esc(it.name)}" oninput="state.factItems[${i}].name=this.value;factTotals()" style="margin-bottom:0;flex:3">
+      <input class="input" type="number" placeholder="PU" value="${it.price}" oninput="state.factItems[${i}].price=+this.value;factTotals()" style="margin-bottom:0;flex:1">
+      <input class="input" type="number" placeholder="Qté" value="${it.qty}" oninput="state.factItems[${i}].qty=+this.value;factTotals()" style="margin-bottom:0;width:70px">
+      <button class="btn btn-sm btn-red" onclick="factRemoveLine(${i})">✕</button>
+    </div>
+  `).join('');
+  factTotals();
+}
+function factTotals(){
+  const el = document.getElementById('fact-totals');
+  if(!el) return;
+  const total = state.factItems.reduce((s,i)=>s+(i.price||0)*(i.qty||0),0);
+  const tva = db.settings.tva;
+  const ht = Math.round(total / (1 + tva/100));
+  const tvaAmt = total - ht;
+  el.innerHTML = `
+    <div class="flex justify-between" style="padding:8px 0;border-bottom:1px solid var(--creme-2)"><span>Total HT</span><strong>${fmt(ht)} FCFA</strong></div>
+    <div class="flex justify-between" style="padding:8px 0;border-bottom:1px solid var(--creme-2)"><span>TVA (${tva}%)</span><strong>${fmt(tvaAmt)} FCFA</strong></div>
+    <div class="flex justify-between" style="padding:12px 0;font-size:22px;font-weight:900;color:var(--orange-d);border-top:2px solid var(--orange)"><span>TOTAL TTC</span><span>${fmt(total)} FCFA</span></div>
+  `;
+}
+function factPickFromMenu(){
+  const available = db.menu.filter(m=>m.available);
+  const names = available.map(m=>m.name).join(', ');
+  const choice = prompt('Nom du plat à importer :\n'+names);
+  if(!choice) return;
+  const m = available.find(x=>x.name.toLowerCase()===choice.toLowerCase()) ||
+            available.find(x=>x.name.toLowerCase().includes(choice.toLowerCase()));
+  if(!m){ toast('Plat non trouvé','err'); return; }
+  factAddLine(m.name, m.price, 1);
+}
+function factVoiceDictate(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){ toast('Reconnaissance vocale non supportée','err'); return; }
+  const rec = new SR(); rec.lang='fr-FR';
+  toast('🎙️ Dictez vos lignes (ex: poulet braisé 5000 deux fois)');
+  rec.onresult = (e)=>{
+    const text = e.results[0][0].transcript.toLowerCase();
+    toast('Entendu : ' + text);
+    let found = false;
+    for(const m of db.menu){
+      if(text.includes(m.name.toLowerCase())){ factAddLine(m.name, m.price, 1); found=true; }
+    }
+    if(!found) toast('Aucun plat reconnu','err');
+  };
+  rec.start();
+}
+function factGenerate(){
+  const type = document.getElementById('fact-type').value;
+  const clientId = document.getElementById('fact-client').value;
+  const client = clientId ? db.clients.find(c=>c.id===+clientId) : null;
+  const items = state.factItems.filter(i=>i.name && i.price>0);
+  if(!items.length){ toast('Ajoutez au moins une ligne','err'); return; }
+  const total = items.reduce((s,i)=>s+i.price*i.qty,0);
+  const num = (db.settings.invoicePrefix||'FAC') + '-' + new Date().getFullYear() + '-' + String(db.invoices.length+1).padStart(4,'0');
+  const inv = {
+    id: nextId(db.invoices),
+    number: num, type,
+    client_name: client?client.name:'Client comptoir',
+    client_phone: client?client.phone:'',
+    items: items.map(i=>({...i})),
+    total, tva: db.settings.tva,
+    created_at: new Date().toISOString()
+  };
+  db.invoices.push(inv);
+  audit(state.user.id, 'invoice_generate', 'invoices', inv.id, {number:num, total});
+  save();
+  const fakeOrder = {
+    id: inv.id, paid_at: inv.created_at, created_at: inv.created_at,
+    client_name: inv.client_name, table_no: '—',
+    items: inv.items, total: inv.total,
+    payment_method: 'manuel', payment_ref: ''
+  };
+  const w = window.open('', '_blank');
+  w.document.write(buildInvoiceHTML(fakeOrder, type));
+  w.document.close();
+  toast('✅ Document généré');
+  render();
+}
+function factReprint(num){
+  const inv = db.invoices.find(i=>i.number===num);
+  if(!inv) return;
+  const fakeOrder = {
+    id: inv.id, paid_at: inv.created_at, created_at: inv.created_at,
+    client_name: inv.client_name, table_no: '—',
+    items: inv.items, total: inv.total,
+    payment_method: 'manuel', payment_ref: ''
+  };
+  const w = window.open('', '_blank');
+  w.document.write(buildInvoiceHTML(fakeOrder, inv.type));
+  w.document.close();
+}
+
+/* ===================== SETTINGS ===================== */
+function renderSettings(root){
+  const s = db.settings;
+  root.innerHTML = `
+    <div class="container-narrow">
+      <div class="card">
+        <div class="card-title">⚙️ Paramètres de l'entreprise</div>
+        <label class="label">Nom</label>
+        <input class="input" id="set-company" value="${esc(s.company)}">
+        <label class="label">Adresse</label>
+        <input class="input" id="set-address" value="${esc(s.address)}">
+        <label class="label">Téléphone</label>
+        <input class="input" id="set-phone" value="${esc(s.phone)}">
+        <label class="label">NCC (Numéro Compte Contribuable)</label>
+        <input class="input" id="set-ncc" value="${esc(s.ncc||'')}" placeholder="Ex: 1234567A">
+        <label class="label">TVA (%)</label>
+        <input class="input" id="set-tva" type="number" value="${s.tva}">
+        <label class="label">Préfixe factures</label>
+        <input class="input" id="set-prefix" value="${esc(s.invoicePrefix||'FAC')}">
+        <button class="btn btn-green btn-block mt-12" onclick="saveSettings()">💾 Enregistrer</button>
+      </div>
+      <div class="card">
+        <div class="card-title">🗑️ Zone de danger</div>
+        <button class="btn btn-red btn-block" onclick="resetAll()">Réinitialiser TOUTES les données</button>
+        <p class="text-muted mt-12" style="font-size:12px">Action irréversible. Exportez avant.</p>
+        <button class="btn btn-ghost btn-block mt-12" onclick="exportData()">📤 Exporter les données (JSON)</button>
+      </div>
+      <div class="card center">
+        <p class="text-muted">Version ${esc(s.version)} — Fait avec ❤️ pour le maquis ivoirien</p>
+      </div>
+    </div>
+  `;
+}
+function saveSettings(){
+  db.settings.company = document.getElementById('set-company').value;
+  db.settings.address = document.getElementById('set-address').value;
+  db.settings.phone = document.getElementById('set-phone').value;
+  db.settings.ncc = document.getElementById('set-ncc').value;
+  db.settings.tva = parseFloat(document.getElementById('set-tva').value)||18;
+  db.settings.invoicePrefix = document.getElementById('set-prefix').value || 'FAC';
+  audit(state.user.id,'settings_update','settings',null);
+  save(); toast('✅ Paramètres enregistrés');
+}
+function resetAll(){
+  if(!confirm('⚠️ Supprimer TOUTES les données ? Action irréversible.')) return;
+  if(!confirm('Vraiment sûr ?')) return;
+  localStorage.removeItem(DB_KEY);
+  location.reload();
+}
+function exportData(){
+  const blob = new Blob([JSON.stringify(db,null,2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'venise-backup-'+today()+'.json';
+  a.click();
+}
+
+/* ===================== INIT ===================== */
+window.addEventListener('online', render);
+window.addEventListener('offline', render);
+window.state = state;
+window.navigate = navigate;
+window.logout = logout;
+window.loginPin = loginPin;
+window.selectLoginUser = selectLoginUser;
+window.cancelLogin = cancelLogin;
+window.pinPress = pinPress;
+window.pinSubmit = pinSubmit;
+window.doRegister = doRegister;
+window.quickAdd = quickAdd;
+window.clientAdd = clientAdd;
+window.clientRemove = clientRemove;
+window.clientSend = clientSend;
+window.toggleVoice = toggleVoice;
+window.toggleMenuGrid = toggleMenuGrid;
+window.serveuseSend = serveuseSend;
+window.renderServeuseCart = renderServeuseCart;
+window.validateOrder = validateOrder;
+window.printReceipt = printReceipt;
+window.stockMove = stockMove;
+window.stockAdjust = stockAdjust;
+window.stockAdd = stockAdd;
+window.clientCredit = clientCredit;
+window.promoCreate = promoCreate;
+window.promoDelete = promoDelete;
+window.plAdd = plAdd;
+window.plDelete = plDelete;
+window.playSong = playSong;
+window.b2bAdd = b2bAdd;
+window.userAdd = userAdd;
+window.factAddLine = factAddLine;
+window.factRemoveLine = factRemoveLine;
+window.factTotals = factTotals;
+window.factPickFromMenu = factPickFromMenu;
+window.factVoiceDictate = factVoiceDictate;
+window.factGenerate = factGenerate;
+window.factReprint = factReprint;
+window.saveSettings = saveSettings;
+window.resetAll = resetAll;
+window.exportData = exportData;
+window.renderAdmin = renderAdmin;
+window.adminJournal = adminJournal;
+window.adminStock = adminStock;
+window.adminClients = adminClients;
+window.adminPromos = adminPromos;
+window.adminPlaylist = adminPlaylist;
+window.adminB2B = adminB2B;
+window.adminUsers = adminUsers;
+window.adminAudit = adminAudit;
+
+render();
+console.log('🍢 Maquis Venise v' + db.settings.version + ' — prêt');
+</script>
+</body>
+</html>
